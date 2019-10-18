@@ -15,8 +15,8 @@ from itertools import groupby
 import random
 import re
 import sys
-import unittest
 from time import localtime
+import unittest
 import xml.etree.ElementTree as etree
 
 # 1 line: Output
@@ -148,6 +148,7 @@ class TestMedian(unittest.TestCase):
 # 14 lines: Doctest-based testing
 def median(pool):
     """Statistical median to demonstrate doctest.
+    
     >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
     6 #change to 7 in order to pass the test
     """
