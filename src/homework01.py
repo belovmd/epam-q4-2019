@@ -131,7 +131,7 @@ print(my_account.balance, my_account.overdrawn())
 
 
 # 13 lines: Unit testing with unittest
-def median(pool):
+def median_n(pool):
     copy = sorted(pool)
     size = len(copy)
     if size % 2 == 1:
@@ -142,7 +142,7 @@ def median(pool):
 
 class TestMedian(unittest.TestCase):
     def testMedian(self):
-        self.assertEqual(median([2, 9, 9, 7, 9, 2, 4, 5, 8]), 7)
+        self.assertEqual(median_n([2, 9, 9, 7, 9, 2, 4, 5, 8]), 7)
 
 
 # 14 lines: Doctest-based testing
