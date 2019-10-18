@@ -22,17 +22,14 @@ from time import localtime
 # 1 line: Output
 print('Hello, world!')
 
-
 # 2 lines: Input, assignment
 name = input('What is your name?\n')
 print('Hi, %s.' % name)
-
 
 # 3 lines: For loop, built-in enumerate function, new style formatting
 friends = ['john', 'pat', 'gary', 'michael']
 for i, name in enumerate(friends):
     print('iteration {iteration} is {name}'.format(iteration=i, name=name))
-
 
 # 4 lines: Fibonacci, tuple assignment
 parents, babies = (1, 1)
@@ -50,7 +47,6 @@ greet('Jack')
 greet('Jill')
 greet('Bob')
 
-
 # 6 lines: Import, regular expressions
 for test_string in ['555-1212', 'ILL-EGAL']:
     if re.match(r'^\d{3}-\d{4}$', test_string):
@@ -58,22 +54,20 @@ for test_string in ['555-1212', 'ILL-EGAL']:
     else:
         print(test_string, 'rejected')
 
-
 # 7 lines: Dictionaries, generator expressions
 prices = {'apple': 0.40, 'banana': 0.50}
 my_purchase = {'apple': 1, 'banana': 6}
 grocery_bill = sum(prices[fruit] * my_purchase[fruit] for fruit in my_purchase)
 print('I owe the grocer $%.2f' % grocery_bill)
 
-
 # 8 lines: Command line arguments, exception handling
-# This program adds up integers that have been passed as arguments in the command line
+# This program adds up integers that have been passed as arguments
+# in the command line
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
     print('sum =', total)
 except ValueError:
     print('Please supply integer arguments')
-
 
 # 9 lines: Opening files
 # indent your Python code to put into an email
@@ -86,7 +80,6 @@ for file_name in sorted(python_files):
         for line in f:
             print('    ' + line.rstrip())
     print()
-
 
 # 10 lines: Time, conditionals, from..import, for..else
 activities = {8: 'Sleeping',
@@ -104,7 +97,6 @@ for activity_time in sorted(activities.keys()):
 else:
     print('Unknown, AFK or sleeping!')
 
-
 # 11 lines: Triple-quoted strings, while loop
 REFRAIN = '''
 %d bottles of beer on the wall,
@@ -114,7 +106,7 @@ take one down, pass it around,
 '''
 bottles_of_beer = 9
 while bottles_of_beer > 1:
-    print(REFRAIN % (bottles_of_beer, bottles_of_beer, bottles_of_beer-1))
+    print(REFRAIN % (bottles_of_beer, bottles_of_beer, bottles_of_beer - 1))
     bottles_of_beer -= 1
 
 
@@ -145,7 +137,7 @@ def median(pool):
     if size % 2 == 1:
         return copy[int((size - 1) / 2)]
     else:
-        return (copy[int(size/2 - 1)] + copy[int(size/2)]) / 2
+        return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
 
 
 class TestMedian(unittest.TestCase):
@@ -164,7 +156,7 @@ def median(pool):
     if size % 2 == 1:
         return copy[int((size - 1) / 2)]
     else:
-        return (copy[int(size/2 - 1)] + copy[int(size/2)]) / 2
+        return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
 
 
 # 15 lines: itertools
@@ -179,6 +171,8 @@ This is the second.
 for has_chars, frags in groupby(lines, bool):
     if has_chars:
         print(' '.join(frags))
+
+
 # PRINTS:
 # This is the first paragraph.
 # This is the second.
@@ -206,7 +200,6 @@ with open('stocks.csv', 'r') as stocksFile:
         status = status_labels[cmp(float(change), 0.0)]
         print('%s is %s (%.2f)' % (name, status, float(pct)))
 
-
 # 18 lines: 8-Queens Problem (recursion)
 BOARD_SIZE = 8
 
@@ -225,9 +218,9 @@ def solve(n):
         return [[]]
     smaller_solutions = solve(n - 1)
     return [solution + [(n, i + 1)]
-        for i in range(BOARD_SIZE)
+            for i in range(BOARD_SIZE)
             for solution in smaller_solutions
-                if not under_attack(i + 1, solution)]
+            if not under_attack(i + 1, solution)]
 
 
 for answer in solve(BOARD_SIZE):
@@ -253,7 +246,6 @@ for p in iter_primes():
         break
     print(p)
 
-
 # 21 lines: XML/HTML parsing
 dinner_recipe = '''<html><body><table>
 <tr><th>amt</th><th>unit</th><th>item</th></tr>
@@ -275,7 +267,6 @@ for ingredient in tree.getiterator('tr'):
     if item.tag == "td" and item.text not in pantry:
         print("%s: %s %s" % (item.text, amt.text, unit.text))
 
-
 # 28 lines: 8-Queens Problem (define your own exceptions)
 BOARD_SIZE = 8
 
@@ -287,7 +278,7 @@ class BailOut(Exception):
 def validate(queens):
     left = right = col = queens[-1]
     for r in reversed(queens[:-1]):
-        left, right = left-1, right+1
+        left, right = left - 1, right + 1
         if r in (left, col, right):
             raise BailOut
 
@@ -308,8 +299,7 @@ def add_queen(queens):
 
 queens = add_queen([])
 print(queens)
-print("\n".join('. '*q + 'Q ' + '. '*(BOARD_SIZE-q-1) for q in queens))
-
+print("\n".join('. ' * q + 'Q ' + '. ' * (BOARD_SIZE - q - 1) for q in queens))
 
 # 33 lines: "Guess the Number" Game (edited) from http://inventwithpython.com
 guesses_made = 0
@@ -329,7 +319,6 @@ if guess == number:
     print('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
 else:
     print('Nope. The number I was thinking of was {0}'.format(number))
-
 
 if __name__ == '__main__':
     unittest.main()
