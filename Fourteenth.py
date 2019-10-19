@@ -1,9 +1,8 @@
 def median(pool):
-    """Statistical median to demonstrate doctest.
-      >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
-      7
-
-    """
+    '''Statistical median to demonstrate doctest.
+    >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
+    7
+    '''
 
     copy = sorted(pool)
     size = len(copy)
