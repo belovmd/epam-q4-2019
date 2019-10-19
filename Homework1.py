@@ -1,12 +1,12 @@
-import re
-import glob
-import sys
-import unittest
 import csv
+import glob
 import itertools
-import random
-from time import localtime
 from itertools import groupby
+import random
+import re
+import sys
+from time import localtime
+import unittest
 import xml.etree.ElementTree as Etree
 
 # 1
@@ -139,10 +139,12 @@ if __name__ == '__main__':
 
 # 14
 def medians(pool):
+
     """Statistical median to demonstrate doctest.
-    >>> medians([2, 9, 9, 7, 9, 2, 4, 5, 8])
-    6 #change to 7 in order to pass the test
+        >>> medians([2, 9, 9, 7, 9, 2, 4, 5, 8])
+        6 #change to 7 in order to pass the test
     """
+    
     copy = sorted(pool)
     size = len(copy)
     if size % 2 == 1:
