@@ -140,6 +140,8 @@ def median(pool):
         return copy[int((size - 1) / 2)]
     else:
         return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
+
+
 class TestMedian(unittest.TestCase):
     def testMedian(self):
         self.assertEqual(median([2, 9, 9, 7, 9, 2, 4, 5, 8]), 7)
@@ -207,6 +209,8 @@ with open('stocks.csv', 'r') as stocksFile:
 
 # 18
 BOARD_SIZE = 8
+
+
 def under_attack(col, queens):
     left = right = col
     for r, c in reversed(queens):
@@ -215,6 +219,8 @@ def under_attack(col, queens):
         if c in (left, col, right):
             return True
     return False
+
+
 def solve(n):
     if n == 0:
         return [[]]
@@ -274,14 +280,20 @@ for ingredient in tree.getiterator('tr'):
 
 # 28
 BOARD_SIZE = 8
+
+
 class BailOut(Exception):
     pass
+
+
 def validate(queens):
     left = right = col = queens[-1]
     for r in reversed(queens[:-1]):
         left, right = left - 1, right + 1
         if r in (left, col, right):
             raise BailOut
+
+
 def add_queen(queens):
     for i in range(BOARD_SIZE):
         test_queens = queens + [i]
