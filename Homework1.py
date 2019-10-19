@@ -9,15 +9,22 @@ from time import localtime
 import unittest
 import xml.etree.ElementTree as Etree
 
+
 # 1
 print('Hello, world!')
+
+
 # 2
 name = input('What is your name?\n')
 print('Hi, %s.' % name)
+
+
 # 3
 friends = ['john', 'pat', 'gary', 'michael']
 for i, name in enumerate(friends):
     print("iteration {iteration} is {name}".format(iteration=i, name=name))
+
+
 # 4
 parents, babies = (1, 1)
 while babies < 100:
@@ -28,17 +35,19 @@ while babies < 100:
 # 5
 def greet(nane):
     print('Hello', nane)
-
-
 greet('Jack')
 greet('Jill')
 greet('Bob')
+
+
 # 6
 for test_string in ['555-1212', 'ILL-EGAL']:
     if re.match(r"^\d{3}-\d{4}$", test_string):
         print(test_string, 'is a valid US local phone number')
     else:
         print(test_string, 'rejected')
+
+
 # 7
 prices = {'apple': 0.40, 'banana': 0.50}
 my_purchase = {
@@ -47,27 +56,34 @@ my_purchase = {
 grocery_bill = sum(prices[fruit] * my_purchase[fruit]
                    for fruit in my_purchase)
 print('I owe the grocer $%.2f' % grocery_bill)
-# 8
-# This program adds up integers that have been passed
-# as arguments in the command line
 
+
+# 8
+"""This program adds up integers that have been passed
+
+as arguments in the command line
+"""
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
     print('sum =', total)
 except ValueError:
     print('Please supply integer arguments')
+
+
 # 9
-# indent your Python code to put into an email
-# glob supports Unix style pathname extensions
+"""Indent your Python code to put into an email
+
+glob supports Unix style pathname extensions
+"""
 python_files = glob.glob('*.py')
 for file_name in sorted(python_files):
     print('    ------' + file_name)
-
 with open(file_name) as f:
     for line in f:
         print('    ' + line.rstrip())
-
 print()
+
+
 # 10
 activities = {8: 'Sleeping',
               9: 'Commuting',
@@ -75,16 +91,16 @@ activities = {8: 'Sleeping',
               18: 'Commuting',
               20: 'Eating',
               22: 'Resting'}
-
 time_now = localtime()
 hour = time_now.tm_hour
-
 for activity_time in sorted(activities.keys()):
     if hour < activity_time:
         print(activities[activity_time])
         break
     else:
         print('Unknown, AFK or sleeping!')
+
+
 # 11
 REFRAIN = '''
 %d bottles of beer on the wall,
@@ -111,8 +127,6 @@ class BankAccount(object):
 
     def overdrawn(self):
         return self.balance < 0
-
-
 my_account = BankAccount(15)
 my_account.withdraw(50)
 print(my_account.balance, my_account.overdrawn())
@@ -126,20 +140,15 @@ def median(pool):
         return copy[int((size - 1) / 2)]
     else:
         return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
-
-
 class TestMedian(unittest.TestCase):
     def testMedian(self):
         self.assertEqual(median([2, 9, 9, 7, 9, 2, 4, 5, 8]), 7)
-
-
 if __name__ == '__main__':
     unittest.main()
 
 
 # 14
 def medians(pool):
-
     """Statistical median to demonstrate doctest.
 
     >>> medians([2, 9, 9, 7, 9, 2, 4, 5, 8])
@@ -153,11 +162,11 @@ def medians(pool):
     else:
         return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
 
-
 if __name__ == '__main__':
     import doctest
-
     doctest.testmod()
+
+
 # 15
 lines = '''
 This is the
@@ -179,8 +188,6 @@ for has_chars, frags in groupby(lines, bool):
 # need to define cmp function in Python 3
 def cmp(a, b):
     return (a > b) - (a < b)
-
-
 # write stocks data as comma-separated values
 with open('stocks.csv', 'w', newline='') as stocksFileW:
     writer = csv.writer(stocksFileW)
@@ -189,7 +196,6 @@ with open('stocks.csv', 'w', newline='') as stocksFileW:
         ['YHOO', 'Yahoo! Inc.', 27.38, 0.33, 1.22],
         ['CNET', 'CNET Networks, Inc.', 8.62, -0.13, -1.4901]
     ])
-
 # read stocks data, print status messages
 with open('stocks.csv', 'r') as stocksFile:
     stocks = csv.reader(stocksFile)
@@ -197,37 +203,32 @@ with open('stocks.csv', 'r') as stocksFile:
     for ticker, name, price, change, pct in stocks:
         status = status_labels[cmp(float(change), 0.0)]
         print('%s is %s (%.2f)' % (name, status, float(pct)))
+
+
 # 18
 BOARD_SIZE = 8
-
-
 def under_attack(col, queens):
     left = right = col
-
     for r, c in reversed(queens):
         left, right = left - 1, right + 1
 
         if c in (left, col, right):
             return True
     return False
-
-
 def solve(n):
     if n == 0:
         return [[]]
-
     smaller_solutions = solve(n - 1)
-
     return [solution + [(n, i + 1)]
             for i in range(BOARD_SIZE)
             for solution in smaller_solutions
             if not under_attack(i + 1, solution)]
 
-
 for answer in solve(BOARD_SIZE):
-    print(answer)  # 20
+    print(answer)
 
 
+# 20
 def iter_primes():
     # an iterator of all numbers between 2 and +infinity
     numbers = itertools.count(2)
@@ -241,12 +242,12 @@ def iter_primes():
         # this code iteratively builds up a chain of
         # filters...slightly tricky, but ponder it a bit
         numbers = filter(prime.__rmod__, numbers)
-
-
 for p in iter_primes():
     if p > 1000:
         break
     print(p)
+
+
 # 21
 dinner_recipe = '''<html><body><table>
 <tr><th>amt</th><th>unit</th><th>item</th></tr>
@@ -269,22 +270,18 @@ for ingredient in tree.getiterator('tr'):
     amt, unit, item = ingredient
     if item.tag == "td" and item.text not in pantry:
         print("%s: %s %s" % (item.text, amt.text, unit.text))
+
+
 # 28
 BOARD_SIZE = 8
-
-
 class BailOut(Exception):
     pass
-
-
 def validate(queens):
     left = right = col = queens[-1]
     for r in reversed(queens[:-1]):
         left, right = left - 1, right + 1
         if r in (left, col, right):
             raise BailOut
-
-
 def add_queen(queens):
     for i in range(BOARD_SIZE):
         test_queens = queens + [i]
@@ -297,11 +294,11 @@ def add_queen(queens):
         except BailOut:
             pass
     raise BailOut
-
-
 queens = add_queen([])
 print(queens)
 print("\n".join(". " * q + "Q " + ". " * (BOARD_SIZE - q - 1) for q in queens))
+
+
 # 33
 guesses_made = 0
 name = input('Hello! What is your name?\n')
@@ -316,7 +313,6 @@ while guesses_made < 6:
         print('Your guess is too high.')
     if guess == number:
         break
-
 if guess == number:
     print('Good job, {0}! You guessed my number in {1} guesses!'
           .format(name, guesses_made))
