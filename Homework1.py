@@ -1,3 +1,14 @@
+import re
+import glob
+import sys
+import unittest
+import csv
+import itertools
+import random
+from time import localtime
+from itertools import groupby
+import xml.etree.ElementTree as Etree
+
 # 1
 print('Hello, world!')
 # 2
@@ -23,8 +34,6 @@ greet('Jack')
 greet('Jill')
 greet('Bob')
 # 6
-import re
-
 for test_string in ['555-1212', 'ILL-EGAL']:
     if re.match(r"^\d{3}-\d{4}$", test_string):
         print(test_string, 'is a valid US local phone number')
@@ -39,8 +48,8 @@ grocery_bill = sum(prices[fruit] * my_purchase[fruit]
                    for fruit in my_purchase)
 print('I owe the grocer $%.2f' % grocery_bill)
 # 8
-# This program adds up integers that have been passed as arguments in the command line
-import sys
+# This program adds up integers that have been passed
+# as arguments in the command line
 
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
@@ -49,8 +58,6 @@ except ValueError:
     print('Please supply integer arguments')
 # 9
 # indent your Python code to put into an email
-import glob
-
 # glob supports Unix style pathname extensions
 python_files = glob.glob('*.py')
 for file_name in sorted(python_files):
@@ -62,8 +69,6 @@ with open(file_name) as f:
 
 print()
 # 10
-from time import localtime
-
 activities = {8: 'Sleeping',
               9: 'Commuting',
               17: 'Working',
@@ -111,10 +116,9 @@ class BankAccount(object):
 my_account = BankAccount(15)
 my_account.withdraw(50)
 print(my_account.balance, my_account.overdrawn())
+
+
 # 13
-import unittest
-
-
 def median(pool):
     copy = sorted(pool)
     size = len(copy)
@@ -134,9 +138,9 @@ if __name__ == '__main__':
 
 
 # 14
-def median(pool):
+def medians(pool):
     """Statistical median to demonstrate doctest.
-    >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
+    >>> medians([2, 9, 9, 7, 9, 2, 4, 5, 8])
     6 #change to 7 in order to pass the test
     """
     copy = sorted(pool)
@@ -152,8 +156,6 @@ if __name__ == '__main__':
 
     doctest.testmod()
 # 15
-from itertools import groupby
-
 lines = '''
 This is the
 first paragraph.
@@ -168,10 +170,9 @@ for has_chars, frags in groupby(lines, bool):
 # PRINTS:
 # This is the first paragraph.
 # This is the second.
+
+
 # 16
-import csv
-
-
 # need to define cmp function in Python 3
 def cmp(a, b):
     return (a > b) - (a < b)
@@ -222,7 +223,6 @@ def solve(n):
 
 for answer in solve(BOARD_SIZE):
     print(answer)  # 20
-import itertools
 
 
 def iter_primes():
@@ -254,7 +254,6 @@ dinner_recipe = '''<html><body><table>
 </table></body></html>'''
 
 # From http://effbot.org/zone/element-index.htm
-import xml.etree.ElementTree as Etree
 
 tree = Etree.fromstring(dinner_recipe)
 
@@ -301,8 +300,6 @@ queens = add_queen([])
 print(queens)
 print("\n".join(". " * q + "Q " + ". " * (BOARD_SIZE - q - 1) for q in queens))
 # 33
-import random
-
 guesses_made = 0
 name = input('Hello! What is your name?\n')
 number = random.randint(1, 20)
@@ -318,6 +315,7 @@ while guesses_made < 6:
         break
 
 if guess == number:
-    print('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
+    print('Good job, {0}! You guessed my number in {1} guesses!'
+          .format(name, guesses_made))
 else:
     print('Nope. The number I was thinking of was {0}'.format(number))
