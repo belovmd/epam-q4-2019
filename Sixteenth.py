@@ -2,7 +2,7 @@ import csv
 
 
 def cmp(a, b):
-    return (a > b)-(a < b)
+    return (a > b) - (a < b)
 
 
 with open('stocks.csv', 'w', newline='') as stocksFileW:
