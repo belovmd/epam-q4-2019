@@ -7,7 +7,7 @@ def median(pool):
     if size % 2 == 1:
         return copy[int((size - 1) / 2)]
     else:
-        return (copy[int(size/2 - 1)] + copy[int(size/2)]) / 2
+        return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
 
 
 class TestMedian(unittest.TestCase):
