@@ -7,6 +7,7 @@ while babies < 100:
 def greet(name):
     print('Hello', name)
 
+
 greet('Jack')
 greet('Jill')
 greet('Bob')
@@ -18,3 +19,13 @@ my_purchase = {
 grocery_bill = sum(prices[fruit] * my_purchase[fruit]
                    for fruit in my_purchase)
 print('I owe the grocer $%.2f' % grocery_bill)
+
+name1 = input('What is your name?\n')
+print('Hi, %s.' % name1)
+
+friends = ['john', 'pat', 'gary', 'michael']
+for i, name in enumerate(friends):
+    print('iteration {iteration} is {name}'.format(iteration=i, name=name))
+
+a, b = 3, 4
+print(a, b)
