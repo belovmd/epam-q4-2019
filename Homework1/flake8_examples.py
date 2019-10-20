@@ -1,6 +1,6 @@
+import glob
 import re
 import sys
-import glob
 from time import localtime
 
 print('Hello, world!')
