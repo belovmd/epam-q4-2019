@@ -1,16 +1,17 @@
 BOARD_SIZE = 8
 
+
 def under_attack(col, queens):
+    left = right = col
 
-left = right = col
-
-    for r, c in reversed(queens):
+for r, c in reversed(queens):
         left, right = left - 1, right + 1
 
         if c in (left, col, right):
             return True
 
     return False
+
 
 def solve(n):
 
@@ -26,4 +27,4 @@ def solve(n):
             if not under_attack(i+1, solution)]
 
         for answer in solve(BOARD_SIZE):
-        print(answer)
+print(answer)
