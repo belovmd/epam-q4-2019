@@ -7,7 +7,7 @@ class BailOut(Exception):
 
 
 def validate(queens):
-left = right = col = queens[-1]
+    left = right = col = queens[-1]
 
 for r in reversed(queens[:-1]):
 
