@@ -1,35 +1,32 @@
 BOARD_SIZE = 8
 
 
-def under_attack(col, queens):
-    left = right = col
+class BailOut(Exception):
+    pass
 
-    for r, c in reversed(queens):
+
+def validate(queens):
+    left = right = col = queens[-1]
+    for r in reversed(queens[:-1]):
         left, right = left - 1, right + 1
-
-        if c in (left, col, right):
-            return True
-    return False
+        if r in (left, col, right):
+            raise BailOut
 
 
-def solve(n):
-    if n == 0:
-        return [[]]
+def add_queen(queens):
+    for i in range(BOARD_SIZE):
+        test_queens = queens + [i]
+        try:
+            validate(test_queens)
+            if len(test_queens) == BOARD_SIZE:
+                return test_queens
+            else:
+                return add_queen(test_queens)
+        except BailOut:
+            pass
+    raise BailOut
 
-    smaller_solutions = solve(n - 1)
 
-    return [solution+[(n, i+1)]
-        for i in range(BOARD_SIZE)
-            for solution in smaller_solutions
-                if not under_attack(i+1, solution)]
-for answer in solve(BOARD_SIZE):
-    print (answer)
-
-# read stocks data, print status messages
-with open('stocks.csv', 'r') as stocksFile:
-    stocks = csv.reader(stocksFile)
-
-    status_labels = {-1: 'down', 0: 'unchanged', 1: 'up'}
-    for ticker, name, price, change, pct in stocks:
-        status = status_labels[cmp(float(change), 0.0)]
-        print ('%s is %s (%.2f)' % (name, status, float(pct)))
+queens = add_queen([])
+print(queens)
+print("\n".join(". " * q + "Q " + ". " * (BOARD_SIZE - q - 1) for q in queens))
