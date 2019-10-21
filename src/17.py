@@ -25,4 +25,4 @@ def solve(n):
 
 
 for answer in solve(BOARD_SIZE):
-    print (answer)
+    print(answer)
