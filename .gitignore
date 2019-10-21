@@ -107,3 +107,4 @@ venv.bak/
 .idea/
 .tox/
 .gitignore/
+.vscode/
