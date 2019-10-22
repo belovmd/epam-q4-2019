@@ -14,7 +14,7 @@ if __name__ == '__main__':
     is_palindrome = 0
     cl_length = len(codes_list)
     if len(codes_list) % 2 != 0:
-        del(codes_list[cl_length//2])
+        del(codes_list[cl_length // 2])
     for i in range(cl_length // 2):
-        is_palindrome += (codes_list[i] - codes_list[-(i+1)])
+        is_palindrome += (codes_list[i] - codes_list[-(i + 1)])
     print(not is_palindrome)
