@@ -1,7 +1,7 @@
 def median(pool):
     '''Statistical median to demonstrate doctest.
     >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
-    6 #change to 7 in order to pass the test 
+    6 #change to 7 in order to pass the test
     '''
 
     copy = sorted(pool)
