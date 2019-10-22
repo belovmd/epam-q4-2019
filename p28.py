@@ -12,7 +12,7 @@ def validate(queens):
         if r in (left, col, right):
             raise BailOut
 
-   
+
 def add_queen(queens):
     for i in range(BOARD_SIZE):
         test_queens = queens + [i]
