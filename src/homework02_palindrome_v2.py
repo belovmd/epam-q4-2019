@@ -11,8 +11,8 @@ import math
 
 
 def reverse_number(num):
-    return num != 0 and ((num % 10) * (10 ** int(math.log(num, 10)))
-                         + reverse_number(num // 10))
+    return num != 0 and ((num % 10) * (10 ** int(math.log(num, 10))) +
+                         reverse_number(num // 10))
 
 
 if __name__ == '__main__':
