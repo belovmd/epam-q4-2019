@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# coding: utf8
+
+"""
+EPAM python q4 homework 02.1 Finding palindrome
+Sergey Streltsov 2019-10-22
+"""
+
+import math
+
+
+def reverse_number(number):
+    return int(number != 0) and ((number % 10) * (10 ** int(math.log(number, 10))) + reverse_number(number // 10))
+
+
+if __name__ == '__main__':
+    input_str = input('Enter a number: ')
+    try:
+        num_value = int(input_str)
+        print('Is palindrome: {}'.format(num_value == reverse_number(num_value)))
+    except ValueError:
+        print('Error, not a number')
