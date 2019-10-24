@@ -10,8 +10,8 @@ Sergey Streltsov 2019-10-22
 import math
 
 
-def reverse_number(number):
-    return int(number != 0) and ((number % 10) * (10 ** int(math.log(number, 10))) + reverse_number(number // 10))
+def reverse_number(num):
+    return num != 0 and ((num % 10) * (10 ** int(math.log(num, 10))) + reverse_number(num // 10))
 
 
 if __name__ == '__main__':
