@@ -1,7 +1,7 @@
 number = str(input('input number: '))
 pos = 0
 while pos < len(number) / 2:
-    if number[0 + pos] == number[-1 -pos]:
+    if number[0 + pos] == number[-1 - pos]:
         pos += 1
         continue
     else:
