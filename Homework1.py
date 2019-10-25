@@ -9,7 +9,6 @@ from time import localtime
 import unittest
 import xml.etree.ElementTree as Etree
 
-
 # 1
 print('Hello, world!')
 
@@ -35,6 +34,8 @@ while babies < 100:
 # 5
 def greet(nane):
     print('Hello', nane)
+
+
 greet('Jack')
 greet('Jill')
 greet('Bob')
@@ -59,10 +60,9 @@ print('I owe the grocer $%.2f' % grocery_bill)
 
 
 # 8
-"""This program adds up integers that have been passed
+# This program adds up integers that have been passed
+# as arguments in the command line
 
-as arguments in the command line
-"""
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
     print('sum =', total)
@@ -71,16 +71,16 @@ except ValueError:
 
 
 # 9
-"""Indent your Python code to put into an email
-
-glob supports Unix style pathname extensions
-"""
+# indent your Python code to put into an email
+# glob supports Unix style pathname extensions
 python_files = glob.glob('*.py')
 for file_name in sorted(python_files):
     print('    ------' + file_name)
+
 with open(file_name) as f:
     for line in f:
         print('    ' + line.rstrip())
+
 print()
 
 
@@ -91,8 +91,10 @@ activities = {8: 'Sleeping',
               18: 'Commuting',
               20: 'Eating',
               22: 'Resting'}
+
 time_now = localtime()
 hour = time_now.tm_hour
+
 for activity_time in sorted(activities.keys()):
     if hour < activity_time:
         print(activities[activity_time])
@@ -127,6 +129,8 @@ class BankAccount(object):
 
     def overdrawn(self):
         return self.balance < 0
+
+
 my_account = BankAccount(15)
 my_account.withdraw(50)
 print(my_account.balance, my_account.overdrawn())
@@ -145,16 +149,17 @@ def median(pool):
 class TestMedian(unittest.TestCase):
     def testMedian(self):
         self.assertEqual(median([2, 9, 9, 7, 9, 2, 4, 5, 8]), 7)
+
+
 if __name__ == '__main__':
     unittest.main()
 
 
 # 14
 def medians(pool):
+
     """Statistical median to demonstrate doctest.
-
     >>> medians([2, 9, 9, 7, 9, 2, 4, 5, 8])
-
     6 #change to 7 in order to pass the test
     """
     copy = sorted(pool)
@@ -164,8 +169,10 @@ def medians(pool):
     else:
         return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
 
+
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod()
 
 
@@ -173,7 +180,6 @@ if __name__ == '__main__':
 lines = '''
 This is the
 first paragraph.
-
 This is the second.
 '''.splitlines()
 # Use itertools.groupby and bool to return groups of
@@ -190,6 +196,8 @@ for has_chars, frags in groupby(lines, bool):
 # need to define cmp function in Python 3
 def cmp(a, b):
     return (a > b) - (a < b)
+
+
 # write stocks data as comma-separated values
 with open('stocks.csv', 'w', newline='') as stocksFileW:
     writer = csv.writer(stocksFileW)
@@ -198,6 +206,7 @@ with open('stocks.csv', 'w', newline='') as stocksFileW:
         ['YHOO', 'Yahoo! Inc.', 27.38, 0.33, 1.22],
         ['CNET', 'CNET Networks, Inc.', 8.62, -0.13, -1.4901]
     ])
+
 # read stocks data, print status messages
 with open('stocks.csv', 'r') as stocksFile:
     stocks = csv.reader(stocksFile)
@@ -213,6 +222,7 @@ BOARD_SIZE = 8
 
 def under_attack(col, queens):
     left = right = col
+
     for r, c in reversed(queens):
         left, right = left - 1, right + 1
 
@@ -224,17 +234,19 @@ def under_attack(col, queens):
 def solve(n):
     if n == 0:
         return [[]]
+
     smaller_solutions = solve(n - 1)
+
     return [solution + [(n, i + 1)]
             for i in range(BOARD_SIZE)
             for solution in smaller_solutions
             if not under_attack(i + 1, solution)]
 
+
 for answer in solve(BOARD_SIZE):
-    print(answer)
+    print(answer)  # 20
 
 
-# 20
 def iter_primes():
     # an iterator of all numbers between 2 and +infinity
     numbers = itertools.count(2)
@@ -248,6 +260,8 @@ def iter_primes():
         # this code iteratively builds up a chain of
         # filters...slightly tricky, but ponder it a bit
         numbers = filter(prime.__rmod__, numbers)
+
+
 for p in iter_primes():
     if p > 1000:
         break
@@ -306,6 +320,8 @@ def add_queen(queens):
         except BailOut:
             pass
     raise BailOut
+
+
 queens = add_queen([])
 print(queens)
 print("\n".join(". " * q + "Q " + ". " * (BOARD_SIZE - q - 1) for q in queens))
@@ -325,6 +341,7 @@ while guesses_made < 6:
         print('Your guess is too high.')
     if guess == number:
         break
+
 if guess == number:
     print('Good job, {0}! You guessed my number in {1} guesses!'
           .format(name, guesses_made))
