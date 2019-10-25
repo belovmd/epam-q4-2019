@@ -1,6 +1,6 @@
 def find_message(text: str) -> str:
-
     """Gather all capital letters in one word in the order that
+
     they appear in the text.
     """
     line = ""

@@ -1,7 +1,5 @@
 def checkio(array):
-
-    """sums even-indexes elements and multiply at the last
-    """
+    """sums even-indexes elements and multiply at the last."""
     sum = 0
     if array == []:
         return 0

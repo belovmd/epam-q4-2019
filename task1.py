@@ -1,6 +1,6 @@
 def say_hi(name: str, age: int) -> str:
-
     """In this mission you should write a function that introduces a person
+
     with the given parameter's attributes.
     Input: Two arguments. String and positive integer.
     Output: String.

@@ -1,7 +1,5 @@
 def checkio(number: int) -> int:
-
-    """Calculate the product of the digits excluding any zeroes.
-    """
+    """Calculate the product of the digits excluding any zeroes."""
     number = str(number)
     prod = 1
     for num in number:
