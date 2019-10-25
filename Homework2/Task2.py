@@ -10,4 +10,5 @@ L = int(input("Enter L : "))
 dollars = M * L + N * L // 100
 cents = N * L % 100
 
-print("Total cost: {dollars} dollars {cents} cents".format(dollars=dollars, cents=cents))
+print("Total cost: {dollars} dollars {cents} cents"
+      .format(dollars=dollars, cents=cents))
