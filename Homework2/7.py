@@ -2,7 +2,6 @@
 Task from Checkio.
 Print only uppercase letters
 """
-import re
 
 
 def find_message(text: str) -> str:

@@ -16,7 +16,6 @@ def checkio(array):
     return sum * array[len(array) - 1]
 
 
-
 print('Example:')
 print(checkio([0, 1, 2, 3, 4, 5]))
 

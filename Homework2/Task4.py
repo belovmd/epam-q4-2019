@@ -5,7 +5,7 @@ Change all letters, except last 4, to "#"
 
 
 def maskify(cc):
-    return "#"*(len(cc) - 4) + cc[-4:]
+    return "#" * (len(cc) - 4) + cc[-4:]
 
 
 cc = input()
