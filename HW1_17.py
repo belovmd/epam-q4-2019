@@ -24,7 +24,7 @@ def solve(n):
 
            for i in range(BOARD_SIZE)
 
-           or solution in smaller_solutions
+        or solution in smaller_solutions
 
            if not under_attack(i + 1, solution)]
 
