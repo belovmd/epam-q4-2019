@@ -8,19 +8,19 @@
 
 
 # PALINDROME
-# print('input number')
-# n = int(input())
-# ONum = n
-# ost = 0
-# RNum = 0
-# while n != 0:
-#     ost = n % 10
-#     RNum = RNum * 10 + ost
-#     n = n // 10
-# if ONum == RNum:
-#     print(ONum, 'is a palindrome')
-# else:
-#     print(ONum, 'is not a palindrome')
+print('input number')
+n = int(input())
+ONum = n
+ost = 0
+RNum = 0
+while n != 0:
+    ost = n % 10
+    RNum = RNum * 10 + ost
+    n = n // 10
+if ONum == RNum:
+    print(ONum, 'is a palindrome')
+else:
+    print(ONum, 'is not a palindrome')
 
 # MULTIPLIER
 print('input one item price is')
@@ -33,15 +33,15 @@ print('your total=', int(summa), 'dollars',
       round((summa - int(summa)) * 100), 'cents')
 
 # FIZZBUZZ
-# num = 1
-# while num <= 100:
-#     if (num % 3) == 0:
-#         if (num % 5) == 0:
-#             print('FizzBuzz')
-#         else:
-#             print('Fizz')
-#     elif (num % 5) == 0:
-#         print('Buzz')
-#     else:
-#         print(num)
-#     num += 1
+num = 1
+while num <= 100:
+    if (num % 3) == 0:
+        if (num % 5) == 0:
+            print('FizzBuzz')
+        else:
+            print('Fizz')
+    elif (num % 5) == 0:
+        print('Buzz')
+    else:
+        print(num)
+    num += 1
