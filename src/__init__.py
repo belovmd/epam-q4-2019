@@ -1,6 +1,7 @@
 # Multiply: multiply 2 numbers
 # Easy Unpack: return 1st, 3rd and second to last element from tuple
-# Index Power:power Nth element of list in the N degree, if x[N] doesn't exists then return (-1)
+# Index Power:power Nth element of list in the N degree,
+# if x[N] doesn't exists then return (-1)
 # Digits Manipulation:Multiply all but 0 digits of positive integers.
 # Secret Message:Gather all capital letters in one word
 # in the order that they appear in the chunk of text.
@@ -28,7 +29,8 @@ print('input count')
 cnt = float(input())
 summa = 0
 summa = (price * cnt)
-print('your total=', int(summa), 'dollars', round((summa - int(summa)) * 100), 'cents')
+print('your total=', int(summa), 'dollars',\
+      round((summa - int(summa)) * 100), 'cents')
 
 # FIZZBUZZ
 num = 1
