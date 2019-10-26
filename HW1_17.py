@@ -10,7 +10,7 @@ for r, c in reversed(queens):
         if c in (left, col, right):
             return True
 
-        return False
+    return False
 
 
 def solve(n):
