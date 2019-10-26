@@ -5,7 +5,8 @@ Input: List.
 
 Output: Bool.
 """
-from typing import List, Any
+from typing import List
+from typing import Any
 
 
 def all_the_same(elements: List[Any]) -> bool:
