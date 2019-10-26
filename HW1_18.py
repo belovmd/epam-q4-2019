@@ -9,7 +9,7 @@ def iter_primes():
     while True:
         # get the first number from the iterator (always a prime)
         prime = next(numbers)
-yield prime
+        yield prime
 
 # this code iteratively builds up a chain of
 # filters...slightly tricky, but ponder it a bit
