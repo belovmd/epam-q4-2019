@@ -1,31 +1,43 @@
-parents, babies = (1, 1)
-while babies < 100:
-    print('This generation has {0} babies'.format(babies))
-    parents, babies = (babies, parents + babies)
+#Multiply: multiply 2 numbers
+#Easy Unpack: return 1st, 3rd and second to last element from tuple
+#Index Power:power Nth element of list in the N degree, if x[N] doesn't exists then return (-1)
+#Digits Manipulation:Multiply all but 0 digits of positive integers.
+#Secret Message:Gather all capital letters in one word in the order that they appear in the chunk of text.
 
 
-def greet(name):
-    print('Hello', name)
+#PALINDROME
+print('input number')
+n=int(input())
+ONum=n
+ost=0
+RNum=0
+while n!= 0:
+    ost = n % 10
+    RNum=RNum*10+ost
+    n = n//10
+if ONum==RNum:
+    print(ONum, 'is a palindrome')
+else:
+    print(ONum, 'is not a palindrome')
 
+# MULTIPLIER
+print('input price')
+price=float(input())
+print('input count')
+cnt=float(input())
+sum = price * cnt
+print('your total=',sum)
 
-greet('Jack')
-greet('Jill')
-greet('Bob')
-
-prices = {'apple': 3.40, 'banana': 6.50}
-my_purchase = {
-    'apple': 1,
-    'banana': 6}
-grocery_bill = sum(prices[fruit] * my_purchase[fruit]
-                   for fruit in my_purchase)
-print('I owe the grocer $%.2f' % grocery_bill)
-
-name1 = input('What is your name?\n')
-print('Hi, %s.' % name1)
-
-friends = ['john', 'pat', 'gary', 'michael']
-for i, name in enumerate(friends):
-    print('iteration {iteration} is {name}'.format(iteration=i, name=name))
-
-a, b = 3, 4
-print(a, b)
+#FIZZBUZZ
+num=1
+while num<=100:
+    if (num % 3)==0:
+        if (num % 5)==0:
+            print('FizzBuzz')
+        else:
+            print('Fizz')
+    elif (num % 5)==0:
+        print('Buzz')
+    else:
+        print(num)
+    num+=1
