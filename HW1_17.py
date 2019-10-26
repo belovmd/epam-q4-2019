@@ -1,10 +1,10 @@
 BOARD_SIZE = 8
 
 
-def under_attack(col, queens): 
-    left = right = col
+def under_attack(col, queens):
+left = right = col
 
-for r, c in reversed(queens): 
+for r, c in reversed(queens):
         left, right = left - 1, right + 1
 
         if c in (left, col, right):
