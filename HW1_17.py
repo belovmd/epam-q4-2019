@@ -2,7 +2,7 @@ BOARD_SIZE = 8
 
 
 def under_attack(col, queens):
-    (left= right= col)
+    (left=right=col)
 
 for r, c in reversed(queens):
         left, right = left - 1, right + 1
@@ -23,7 +23,6 @@ def solve(n):
     return[solution + [(n, i + 1)]
 
            for i in range(BOARD_SIZE)
-
     or solution in smaller_solutions
 
            if not under_attack(i + 1, solution)]
