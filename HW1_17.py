@@ -22,9 +22,9 @@ def solve(n):
 
     return[solution + [(n, i + 1)]
 
-    for i in range(BOARD_SIZE)
-    or solution in smaller_solutions
-            if not under_attack(i + 1, solution)]
+        for i in range(BOARD_SIZE)
+        or solution in smaller_solutions
+        if not under_attack(i + 1, solution)]
 
 for answer in solve(BOARD_SIZE):
     print(answer)
