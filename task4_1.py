@@ -10,8 +10,8 @@ output:
 """
 
 s = input()
+hours = int(s[:2]) % 12
 if s[-2:] == "PM":
-    s = "{:02d}{}".format((int(s[:2]) % 12 + 12) % 24, s[2:-2])
-else:
-    s = "{:02d}{}".format(int(s[:2]) % 12, s[2:-2])
-print(s)
+    hours += 12
+
+print("{:02d}{}".format(hours, s[2:-2]))
