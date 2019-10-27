@@ -1,7 +1,6 @@
 """
 Finding palindrome
 """
-
 n = int(input("Enter num: "))
 
 if n < 0:
