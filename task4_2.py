@@ -1,7 +1,8 @@
 """
 Given N integers, find the minimum and maximum values that can be
 calculated by summing exactly M of the N integers. Then print the respective
-minimum and maximum values as a single line of two space-separated long integers.
+minimum and maximum values as a single line of two space-separated
+long integers.
 
 For example,
 input:

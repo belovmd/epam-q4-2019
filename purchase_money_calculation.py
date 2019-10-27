@@ -1,5 +1,6 @@
 """
-Write a program to calculate total cost. One item costs M dollars and N cents. Customer bought L items.
+Write a program to calculate total cost. One item costs M dollars and N cents.
+Customer bought L items.
 Print total price in dollars and cents for L items.
 For example
 Input data:  one item price is 3 dollars 20 cents, calculate price for 3 items
