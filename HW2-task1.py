@@ -14,10 +14,11 @@ if number:
             break
     is_palindrome = True
     for n in range(len_of_number // 2):
-        if (number // (10 ** (len_of_number - n - 1))) % 10 != (number // (10 ** n)) % 10:
+        if (number // (10 ** (len_of_number - n - 1))) % 10 != \
+                (number // (10 ** n)) % 10:
             is_palindrome = False
             break
-    print('This number is palindrome' if is_palindrome else 'This number is not palindrome')
+    print('It is a palindrome' if is_palindrome else 'It is not a palindrome')
 
 else:
     print("Sorry, you enter empty number")
