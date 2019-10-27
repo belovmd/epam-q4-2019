@@ -42,7 +42,6 @@ print("Total cost in cents:", cost1 % 100 + cost2 % 100 + cost3 % 100)
 '''
 second way
 '''
-
 price1_dol = 3
 price1_cen = 20
 
