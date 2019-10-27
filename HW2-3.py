@@ -12,5 +12,5 @@ for i in range(100):
 
     elif i % 5 == 0:
         i = "Buzz"
- 
+
     print(i)
