@@ -4,7 +4,6 @@
 '''
 first way
 '''
-
 price1 = 320
 price2 = 250
 price3 = 855
@@ -58,4 +57,3 @@ for i in range(num1):
         cost5 = 0
 
 print(cost4, cost5)
-
