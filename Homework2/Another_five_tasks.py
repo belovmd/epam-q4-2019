@@ -2,27 +2,17 @@ import math
 
 ''' Даны три целых числа. Выведите значение наименьшего из них. '''
 
-number_1 = int(input())
-number_2 = int(input())
-number_3 = int(input())
-if number_1 < number_2 and number_1 < number_3:
-    print(number_1)
-elif number_2 < number_3:
-    print(number_2)
-else:
-    print(number_3)
+print(min(int(input()), int(input()), int(input())))
 
 
 ''' Даны три целых числа. Определите, сколько среди них совпадающих.
 Программа должна вывести одно из чисел: 3 (если все совпадают),
 2 (если два совпадает) или 0 (если все числа различны). '''
 
-number_1 = int(input())
-number_2 = int(input())
-number_3 = int(input())
-if number_1 == number_2 == number_3:
+different_numbers = {int(input()), int(input()), int(input())}
+if len(different_numbers) == 1:
     print(3)
-elif number_1 == number_2 or number_1 == number_3 or number_2 == number_3:
+elif len(different_numbers) == 2:
     print(2)
 else:
     print(0)
