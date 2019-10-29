@@ -1,3 +1,6 @@
+"""Write a program that check whether a number is palindrome or Not.
+Input string contains only numbers.
+Please work only arithmetic operations, loops and if-condition."""
 num = input("Please enter the number:")
 length = len(num)
 number = int(num)
