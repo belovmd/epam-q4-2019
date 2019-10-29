@@ -1,3 +1,10 @@
+"""
+Write a program that check whether a number is palindrome or Not.
+Input string contains only numbers.
+Please work only arithmetic operations, loops and if-condition
+"""
+
+
 def palindrome(number):
     reverse = 0
     copy_number = number
@@ -6,10 +13,7 @@ def palindrome(number):
         reverse += copy_number % 10
         copy_number = copy_number // 10
 
-    if number == reverse:
-        return True
-    else:
-        return False
+    return number == reverse
 
 
 if __name__ == '__main__':
