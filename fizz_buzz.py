@@ -6,11 +6,10 @@ For numbers which are multiples of both three and five, print “FizzBuzz”.
 """
 
 for num in range(1, 101):
-    if not num % 3:
-        if not num % 5:
-            print("FizzBuzz")
-        else:
-            print("Fizz")
+    if not num % 15:
+        print("FizzBuzz")
+    elif not num % 3:
+        print("Fizz")
     elif not num % 5:
         print("Buzz")
     else:

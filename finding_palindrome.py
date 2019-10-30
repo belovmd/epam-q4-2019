@@ -4,19 +4,16 @@ Input string contains only numbers.
 Please work only arithmetic operations, loops and if-condition
 """
 
-number = input()
-len_number = len(number)
-number = int(number)
+number = abs(int(input()))
 
-palindrome = True
-for left in range(len_number - 1, 0, -2):
-    if number % 10 != number // 10 ** left:
-        palindrome = False
-        break
-    number %= 10 ** left
+original_number = number
+reversed_number = 0
+
+while number:
+    reversed_number = reversed_number * 10 + number % 10
     number //= 10
 
-if palindrome:
+if original_number == reversed_number:
     print("It is palindrome")
 else:
     print("It is not palindrome")
