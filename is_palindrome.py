@@ -1,11 +1,11 @@
-number = str(input('input number: '))
-pos = 0
-while pos < len(number) / 2:
-    if number[0 + pos] == number[-1 - pos]:
-        pos += 1
-        continue
-    else:
-        print(number, 'is not palindrome.')
-        break
+number = int(input('input number: '))
+a = number
+pal = 0
+while number:
+    res = number % 10
+    pal = pal * 10 + res
+    number //= 10
+if a == pal:
+    print(a, 'is palindrome.')
 else:
-    print(number, 'is palindrome.')
+    print(a, 'is not palindrome.')
