@@ -3,7 +3,7 @@
 
 def fizz_bazz(range_):
     for digit in range(range_):
-        if digit % 15 == 0 :
+        if digit % 15 == 0:
             yield 'FizzBuzz'
         elif digit % 3 == 0:
             yield 'Fizz'
