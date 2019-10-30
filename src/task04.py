@@ -31,13 +31,13 @@ because 9**2 is 81 and 1**2 is 1.
 
 
 def square_digits(num):
-    s = str(num)
-    rezs = ""
-    for c in s:
-        v = int(c)
-        rezs += str(v ** 2)
+    stringRepresentation = str(num)
+    rezstring = ""
+    for char in stringRepresentation:
+        currentDigit = int(char)
+        rezstring += str(currentDigit ** 2)
 
-    return int(rezs)
+    return int(rezstring)
 
 
 """
@@ -50,20 +50,11 @@ This is only applicable to the natural numbers.
 """
 
 
-def num2collection(num) -> list:
-    rez = []
+def digital_root(number):
+    while number > 9:
+        digitsSum = 0
+        for digit in str(number):
+            digitsSum += int(digit)
+        number = digitsSum
 
-    while num:
-        rez.append(num % 10)
-        num //= 10
-
-    return rez
-
-
-def digital_root(n):
-    s = sum(num2collection(n))
-
-    while len(str(s)) > 1:
-        n = s
-        s = sum(num2collection(n))
-    return s
+    return number

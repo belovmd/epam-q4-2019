@@ -1,17 +1,17 @@
-"""
-Determine if given number is polynome.
-"""
+"""Determine if given number is polynome."""
+
+
+def isPoly(number):
+    buff = number
+    reversed = 0
+
+    while buff:
+        reversed *= 10
+        reversed += buff % 10
+        buff //= 10
+
+    return reversed == number
+
+
 num = int(input("Please, enter number to test\n"))
-
-ditgits = []
-while num:
-    ditgits.append(num % 10)
-    num //= 10
-
-while ditgits:
-    if ditgits[:1] != ditgits[-1:]:
-        print("not poly")
-        break
-    ditgits = ditgits[1:-1]
-else:
-    print("poly")
+print(isPoly(num))
