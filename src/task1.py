@@ -2,7 +2,9 @@
 
 
 def money_calculator(cost, quantity):
-    return f'Total cost:{int(cost * quantity)} dollars {int((cost * quantity % 1) * 100)} cents'
+    dollars = cost*quantity
+    cents = int((dollars%1) *100)
+    return f'Total cost:{int(dollars)} dollars {cents} cents'
 
 
 if __name__ == '__main__':
