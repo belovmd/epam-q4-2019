@@ -10,4 +10,3 @@ def money_calculator(dollars, cents, quantity):
 
 if __name__ == '__main__':
     print(money_calculator(3, 20, 3))
-
