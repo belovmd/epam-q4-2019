@@ -1,5 +1,7 @@
 '''
-You are given the year, and you have to write a function to check if the year is leap or not
+You are given the year, 
+and you have to write a function
+to check if the year is leap or not
 '''
 
 
