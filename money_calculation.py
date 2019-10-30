@@ -15,8 +15,5 @@ while att > 0:
         break
     else:
         print('Please input correct amount of cents, you have {0} attempts'.
-              format(att-1))
+              format(att - 1))
         att -= 1
-
-
-
