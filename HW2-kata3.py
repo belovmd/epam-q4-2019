@@ -29,7 +29,7 @@ value of the beginning of the plateau. For example: pickPeaks([1, 2, 2, 2,
 def pick_peaks(arr):
     answer = {"pos": [], "peaks": []}
     for pos, number in enumerate(arr[1:-1], 1):
-        if (arr[pos-1] < number) & (number >= arr[pos+1]):
+        if (arr[pos - 1] < number) & (number >= arr[pos + 1]):
             for k in arr[pos:]:
                 if k > number:
                     break

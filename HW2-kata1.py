@@ -10,8 +10,8 @@ move_zeros([false,1,0,1,2,0,1,3,"a"]) # returns[false,1,1,2,1,3,"a",0,0]
 
 def move_zeros(array):
     array_without_zero = [i for i in array if i or (type(i) == bool)]
-    new_array = (array_without_zero
-                 + [0] * (len(array) - len(array_without_zero)))
+    new_array = (array_without_zero +
+                 [0] * (len(array) - len(array_without_zero)))
     return new_array
 
 
