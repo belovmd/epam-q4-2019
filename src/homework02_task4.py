@@ -22,5 +22,5 @@ if __name__ == '__main__':
     print('Python, basics and application: {}'.format(
         python_basics_lnk))
     codewars_profile = 'https://www.codewars.com/users/Mantikor'
-    print('My profile ay Codewars, but only JS and Go katas: {}'.format(
+    print('My profile at Codewars, but only JS and Go katas: {}'.format(
         codewars_profile))
