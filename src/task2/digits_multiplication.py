@@ -10,11 +10,4 @@ def checkio(number: int) -> int:
     return result
 
 
-if __name__ == '__main__':
-    print('Example:')
-    print(checkio(123405))
-
-    assert checkio(123405) == 120
-    assert checkio(999) == 729
-    assert checkio(1000) == 1
-    assert checkio(1111) == 1
+print(checkio(123405))

@@ -14,6 +14,6 @@ while number_to_check_len:
     reversed_number += number_to_check[number_to_check_len]
 
 if reversed_number == number_to_check:
-    print(f"{number_to_check} is a palindrome")
+    print("{} is a palindrome".format(number_to_check))
 else:
-    print(f"{number_to_check} is not a palindrome")
+    print("{} is not a palindrome".format(number_to_check))
