@@ -28,28 +28,15 @@ value of the beginning of the plateau. For example: pickPeaks([1, 2, 2, 2,
 
 def pick_peaks(arr):
     answer = {"pos": [], "peaks": []}
-    if not arr:
-        return answer
-
-    direction = ""
-    previous_number = arr[0]
-    previous_pos = 0
-    answer = {"pos": [], "peaks": []}
-
-    for pos, number in enumerate(arr[1:], 1):
-        if number > previous_number:
-            previous_number = number
-            previous_pos = pos
-            direction = "uphill"
-        elif number == previous_number:
-            pass
-        elif number < previous_number:
-            if direction == "uphill":
-                answer["pos"].append(previous_pos)
-                answer["peaks"].append(previous_number)
-            previous_number = number
-            previous_pos = pos
-            direction = "downhill"
+    for pos, number in enumerate(arr[1:-1], 1):
+        if (arr[pos-1] < number) & (number >= arr[pos+1]):
+            for k in arr[pos:]:
+                if k > number:
+                    break
+                elif k < number:
+                    answer["pos"].append(pos)
+                    answer["peaks"].append(number)
+                    break
     return answer
 
 

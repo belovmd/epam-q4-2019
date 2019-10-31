@@ -61,18 +61,18 @@ def justify(text, width):
                 spaces_between_words = 0
                 one_more_space = 0
             else:
-                spaces_between_words = (empty_space_in_row // spaces_in_my_row
-                                        + 1)
+                spaces_between_words = ((empty_space_in_row //
+                                        spaces_in_my_row) + 1)
                 one_more_space = empty_space_in_row % spaces_in_my_row
 
             my_row = my_row.split(' ')
             for word_number in range(len(my_row) - 1):
                 if word_number < one_more_space:
-                    new_row = (new_row + my_row[word_number]
-                               + ' ' * (spaces_between_words + 1))
+                    new_row = (new_row + my_row[word_number] +
+                               ' ' * (spaces_between_words + 1))
                 else:
-                    new_row = (new_row + my_row[word_number]
-                               + (' ' * spaces_between_words))
+                    new_row = (new_row + my_row[word_number] +
+                               (' ' * spaces_between_words))
             if len(my_row) > 1:
                 new_row = new_row + my_row[-1]
             elif len(my_row) == 1:
