@@ -1,4 +1,4 @@
-'''Output first word in string'''
+'''Print first word in string'''
 
 
 def first_word(str_):
