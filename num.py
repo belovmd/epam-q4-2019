@@ -1,3 +1,7 @@
+'''
+how many units in the binary
+number system of the number n
+'''
 num = int(input("Enter num: "))
 b = ''
 counter = 0
