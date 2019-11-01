@@ -1,7 +1,7 @@
-'''Palindrom'''
+'''Palindrome'''
 
 
-def palinrom(num):
+def palindrome(num):
     power = len(str(num)) - 1
     for i in range(1, (len(str(num)) // 2) + 1):
         first_digit = num // 10 ** power
@@ -15,4 +15,4 @@ def palinrom(num):
 
 
 if __name__ == '__main__':
-    print(palidrom(11112))
+    print(palindrome(12121))
