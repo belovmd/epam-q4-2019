@@ -5,7 +5,8 @@ def money_calculator(dollars, cents, quantity):
     cost = dollars + cents / 100
     dollars = cost * quantity
     cents = int((dollars % 1) * 100)
-    return 'Total cost:{dollars} dollars {cents} cents'.format(dollars=int(dollars), cents=cents)
+    dollars = int(dollars)
+    return 'Total cost:{0} dollars {1} cents'.format(dollars, cents)
 
 
 if __name__ == '__main__':
