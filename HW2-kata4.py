@@ -45,7 +45,7 @@ def justify(text, width):
             text = text[len(line) + 1:]
             words = line.split(' ')
             if len(words) > 1:
-                spaces_to_some_w = (width-len(line)) % (len(words) - 1)
+                spaces_to_some_w = (width - len(line)) % (len(words) - 1)
                 spaces_to_all_w = (width - len(line)) // (len(words) - 1)
                 for word_n in range(spaces_to_some_w):
                     words[word_n] += ' '
