@@ -8,10 +8,7 @@ def generate_numbers(n=20):
 
 
 def count_characters(s):
-    """Function count and return the numbers of each character
-    
-    in a string s.
-    """
+    """Function count and return the numbers of each character in a string s."""
     dct = {}
     for symb in s:
         if symb in dct:
