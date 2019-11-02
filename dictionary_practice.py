@@ -1,6 +1,5 @@
 def generate_numbers(n=20):
     """Function returns dictionary.
-
     The keys are numbers between 1 and n (both included) and the values
     are square of keys. n – function argument. Default is 20.
     """
