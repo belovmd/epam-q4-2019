@@ -1,5 +1,6 @@
 def generate_numbers(n=20):
     """Function returns dictionary.
+
     The keys are numbers between 1 and n (both included) and the values
     are square of keys. n – function argument. Default is 20.
     """
@@ -7,8 +8,9 @@ def generate_numbers(n=20):
 
 
 def count_characters(s):
-    """
-    Function count and return the numbers of each character in a string s.
+    """Function count and return the numbers of each character
+    
+    in a string s.
     """
     dct = {}
     for symb in s:
