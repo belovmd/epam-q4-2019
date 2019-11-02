@@ -34,52 +34,25 @@ imperdiet tellus.
 
 
 def justify(text, width):
-    curr_pos_in_text = 0
-    new_text = ''
-    while curr_pos_in_text < len(text):
-        if text[curr_pos_in_text] == ' ':
-            curr_pos_in_text += 1
-            continue
-        if len(text) - curr_pos_in_text <= width:
-            new_text = new_text + text[curr_pos_in_text:]
-            break
-
-        if curr_pos_in_text == 0:
-            empty_space_in_row = text[curr_pos_in_text + width:: -1].find(' ')
+    answer = ''
+    while len(text) > width:
+        line = text[:width]
+        if (text[width] == ' ') or (line.find(' ') == -1):
+            answer += line + '\n'
+            text = text[width + (1 if text[width] == ' ' else 0):]
         else:
-            empty_space_in_row = text[curr_pos_in_text + width:
-                                      curr_pos_in_text - 1: -1].find(' ')
-
-        my_row = text[curr_pos_in_text:
-                      curr_pos_in_text + width - empty_space_in_row]
-        new_row = ''
-        if empty_space_in_row <= 0:
-            new_row = my_row
-        else:
-            spaces_in_my_row = my_row.count(' ')
-            if spaces_in_my_row == 0:
-                spaces_between_words = 0
-                one_more_space = 0
+            line = line[:line.rfind(' ')]
+            text = text[len(line) + 1:]
+            words = line.split(' ')
+            if len(words) > 1:
+                spaces_to_some_w = (width-len(line)) % (len(words) - 1)
+                spaces_to_all_w = (width - len(line)) // (len(words) - 1)
+                for word_n in range(spaces_to_some_w):
+                    words[word_n] += ' '
+                answer += (' ' * (1 + spaces_to_all_w)).join(words) + '\n'
             else:
-                spaces_between_words = ((empty_space_in_row //
-                                        spaces_in_my_row) + 1)
-                one_more_space = empty_space_in_row % spaces_in_my_row
-
-            my_row = my_row.split(' ')
-            for word_number in range(len(my_row) - 1):
-                if word_number < one_more_space:
-                    new_row = (new_row + my_row[word_number] +
-                               ' ' * (spaces_between_words + 1))
-                else:
-                    new_row = (new_row + my_row[word_number] +
-                               (' ' * spaces_between_words))
-            if len(my_row) > 1:
-                new_row = new_row + my_row[-1]
-            elif len(my_row) == 1:
-                new_row = my_row[0]
-        new_text = new_text + new_row + '\n'
-        curr_pos_in_text = curr_pos_in_text + width - empty_space_in_row
-    return new_text
+                answer += line + '\n'
+    return answer + text
 
 
 print(justify('My name is Anton Stychnevsky. I am from Vitebsk, and now I '
