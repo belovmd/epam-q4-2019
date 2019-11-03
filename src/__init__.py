@@ -10,18 +10,18 @@
 
 # PALINDROME
 print('input number')
-n = int(input())
-o_num = n
-ost = 0
-r_num = 0
-while n != 0:
-    ost = n % 10
-    r_num = r_num * 10 + ost
-    n = n // 10
-if o_num == r_num:
-    print(o_num, 'is a palindrome')
+number = int(input())
+original_num = number
+ostatok = 0
+reversd_num = 0
+while number != 0:
+    ostatok = number % 10
+    reversd_num = reversd_num * 10 + ostatok
+    number = number // 10
+if original_num == reversd_num:
+    print(original_num, 'is a palindrome')
 else:
-    print(o_num, 'is not a palindrome')
+    print(original_num, 'is not a palindrome')
 
 # MULTIPLIER
 print('input one item price in dollars:')
