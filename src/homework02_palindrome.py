@@ -5,6 +5,10 @@
 """
 EPAM python q4 homework 02.1 Finding palindrome
 Sergey Streltsov 2019-10-22
+
+Write a program that check whether a number is palindrome or Not.
+Input string contains only numbers.
+Please work only arithmetic operations, loops and if-condition.
 """
 
 
