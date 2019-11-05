@@ -33,11 +33,9 @@ num_vs, num_hs = [int(x) for x in input().split()]
 vrt_str = [int(input()) for x in range(num_vs)]
 hrz_str = [int(input()) for x in range(num_hs)]
 coolness = max(min(hrz_str[0], vrt_str[num_vs - 1]),
-               min(vrt_str[0], hrz_str[num_hs - 1]))
-if num_vs > 2:
-    coolness = max(coolness,
-                   min(hrz_str[0], max(vrt_str[1:-1]), hrz_str[num_hs - 1]))
-if num_hs > 2:
-    coolness = max(coolness,
-                   min(vrt_str[0], max(hrz_str[1:-1]), vrt_str[num_vs - 1]))
+               min(vrt_str[0], hrz_str[num_hs - 1]),
+               min(hrz_str[0], max(vrt_str[1:-1], default=0),
+                   hrz_str[num_hs - 1]),
+               min(vrt_str[0], max(hrz_str[1:-1], default=0),
+                   vrt_str[num_vs - 1]))
 print(coolness)
