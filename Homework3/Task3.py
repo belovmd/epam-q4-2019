@@ -2,9 +2,10 @@
 
 
 def generate_numbers(n=20):
-    """Returns a dict, where the keys are numbers between 1 and n (both are included) and
-    values are square of keys
+    """Returns a dict, where the keys are numbers between 1 and n
+    (both are included) and values are square of keys
     """
+
     return dict({key: key**2 for key in range(n + 1)[1:]})
 
 
