@@ -15,7 +15,8 @@ def frequency_sort(items):
     for elem in items:
         dct[elem] += 1
 
-    for key, value in sorted(dct.items(), key=lambda item: item[1], reverse=True):
+    for key, value in sorted(dct.items(), key=lambda item: item[1],
+                             reverse=True):
         for i in range(value):
             lst.append(key)
 
