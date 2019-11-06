@@ -32,10 +32,8 @@ Output a single integer which is a maximal possible route coolness."""
 num_vs, num_hs = [int(x) for x in input().split()]
 vrt_str = [int(input()) for x in range(num_vs)]
 hrz_str = [int(input()) for x in range(num_hs)]
-coolness = max(min(hrz_str[0], vrt_str[num_vs - 1]),
-               min(vrt_str[0], hrz_str[num_hs - 1]),
-               min(hrz_str[0], max(vrt_str[1:-1], default=0),
-                   hrz_str[num_hs - 1]),
-               min(vrt_str[0], max(hrz_str[1:-1], default=0),
-                   vrt_str[num_vs - 1]))
+coolness = max(min(hrz_str[0], vrt_str[-1]),
+               min(vrt_str[0], hrz_str[-1]),
+               min(hrz_str[0], max(vrt_str[1:-1], default=0), hrz_str[-1]),
+               min(vrt_str[0], max(hrz_str[1:-1], default=0), vrt_str[-1]))
 print(coolness)
