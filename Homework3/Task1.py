@@ -1,3 +1,5 @@
+"""Task 1 from Homework 3 (lists)"""
+
 list1 = [symbol1 + symbol2 for symbol1 in "ab" for symbol2 in "bcd"]
 print(list1)
 
