@@ -1,7 +1,7 @@
 """" List Practice  """""
 
 # ['ab','ac','ad','bb',' bc', 'db']
-list_1 = [fir + sec_el for fir_el in 'ab' for sec_el in 'bcd']
+list_1 = [fir_el + sec_el for fir_el in 'ab' for sec_el in 'bcd']
 print(list_1)
 
 # ['ab', 'ad', 'bc']
