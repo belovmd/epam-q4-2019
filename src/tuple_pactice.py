@@ -14,6 +14,7 @@ print(f'{tuple_2} \n{list_2}')
 a, b, c = 'a', 2, 'gamma'
 print(f'a = {a}, \nb = {b} \nc = {c}')
 
-# Create a tuple containing just a single element  which in turn contains three elements 'a', 'b', 'v'
+# Create a tuple containing just a single element  which in turn contains
+# three elements 'a', 'b', 'v'
 tuple_3 = (tuple_2,)
 print(f'tuple: {tuple_3} \nlength = {len(tuple_3)}')

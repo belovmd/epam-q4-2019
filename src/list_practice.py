@@ -1,7 +1,7 @@
 """" List Practice  """""
 
 # ['ab','ac','ad','bb',' bc', 'db']
-list_1 = [first_el + second_el for first_el in ['a', 'b'] for second_el in ['b', 'c', 'd']]
+list_1 = [fir + sec_el for fir_el in 'ab' for sec_el in 'bcd']
 print(list_1)
 
 # ['ab', 'ad', 'bc']
@@ -16,7 +16,7 @@ print(list_3)
 print(list_3.pop(1))
 print(list_3)
 
-# Copy the above list and add '2a' back into the list such as the original is still missing
+# Copy the above list and add '2a' back into the list
 list_4 = list_3.copy()
 list_4.insert(1, '2a')
 print(list_4)
