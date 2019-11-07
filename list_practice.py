@@ -11,7 +11,7 @@ lst2 = [x + 'a' for x in ('1', '2', '3', '4')]
 # 4. Simultaneously remove the element '2a' from the above list and print it.
 lst2.pop(1)
 
-#5. Copy the above list and add '2a' back into the list
+# 5. Copy the above list and add '2a' back into the list
 # such that the original is still missing it.
 lst3 = lst2.copy()
 lst3.insert(1, '2a')
