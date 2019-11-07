@@ -15,4 +15,4 @@ def count_characters(s):
             dct[symb] += 1
         else:
             dct[symb] = 1
-    return {k: dct[k] for k in sorted(dct)}
+    return dct
