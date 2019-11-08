@@ -1,4 +1,5 @@
-# Use a list comprehension to construct the list ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
+# Use a list comprehension to construct the list 
+# ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
 
 list_1 = [i + j for i in ['a', 'b'] for j in ['b', 'c', 'd']]
 
@@ -14,8 +15,8 @@ list_3 = [str(i) + 'a' for i in range(1, 5)]
 
 print(list_3.pop(1))
 
-# Copy the above list and add '2a' back into the list such that the original
-# # is still missing it.
+# Copy the above list and add '2a' back into the list such that the 
+# original is still missing it.
 
 copied_list = list_3.copy()
 copied_list.insert(1, '2a')
@@ -43,9 +44,9 @@ a, b, c = 'a', 2, 'gamma'
 tuple_3 = (('a', 'b', 'c'),)
 print(len(tuple_3))
 
-# Define a function generate_numbers(number) which returns a dictionary where
-# the keys are numbers between 1 and n (both included) and the values are square
-# of keys. n – function argument. Default is 20.
+# Define a function generate_numbers(number) which returns a dictionary 
+# where the keys are numbers between 1 and n (both included) and the values 
+# are square of keys. n – function argument. Default is 20.
 
 
 def generate_numbers(n=20):
