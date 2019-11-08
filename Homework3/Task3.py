@@ -52,8 +52,8 @@ print(len(tuple_3))
 def generate_numbers(n=20):
     return {i: i ** 2 for i in range(1, n + 1)}
 
-# Define a function count_characters(count_me_string) which count and return the
-# numbers of each character in a count_me_string argument.
+# Define a function count_characters(count_me_string) which count and return
+# the numbers of each character in a count_me_string argument.
 
 
 def count_characters(count_me_string):
