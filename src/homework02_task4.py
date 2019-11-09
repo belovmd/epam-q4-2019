@@ -25,10 +25,10 @@ import sys
 
 
 def letter_change():
-    """In each word in the text change k-th letter to the
-    selected symbol.
+    """ Letter change.
 
-    If k > len(word) - exchange not needed.
+    In each word in the text change k-th letter to the
+    selected symbol. If k > len(word) - exchange not needed.
     """
     input_text = input('Input text: ')
     position_index = input('Input index for change: ')
@@ -48,12 +48,13 @@ def letter_change():
 
 
 def snowden():
-    """The program should be executed by calling
+    """Snowden.
+
+    The program should be executed by calling
     'python snowden.py cipheredmessage.txt' where "cipheredmessage.txt"
     is a file with a ciphered message sent by Bob.
     The message consists of lowercase English letters and its length
     is at most 100 000. Output the message after step
-
     2). The program should produce an answer in less than a few seconds.
     """
     if len(sys.argv) == 2:
