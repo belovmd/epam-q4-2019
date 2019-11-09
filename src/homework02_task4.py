@@ -25,7 +25,7 @@ import sys
 
 
 def letter_change():
-    """ Letter change.
+    """Letter change.
 
     In each word in the text change k-th letter to the
     selected symbol. If k > len(word) - exchange not needed.
