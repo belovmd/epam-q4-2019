@@ -10,6 +10,7 @@ Sergey Streltsov 2019-11-09
 
 def list_practice():
     """List practice
+
     """
     src_lst = [i + j for i in 'ab' for j in 'bcd']
     print(src_lst)
@@ -25,6 +26,7 @@ def list_practice():
 
 def tuple_practice():
     """Tuple practice
+
     """
     simple_lst = ['a', 'b', 'c']
     print(simple_lst)
@@ -40,14 +42,16 @@ def tuple_practice():
 
 def generate_numbers(number=20):
     """Dictionary practice
+
     """
     return {n: n * n for n in range(1, number + 1)}
 
 
 def count_characters(count_me_string):
     """Dictionary practice 2
+    
     """
-    return {letter: count_me_string.count(letter) for letter in count_me_string}
+    return {ch: count_me_string.count(ch) for ch in count_me_string}
 
 
 if __name__ == '__main__':
