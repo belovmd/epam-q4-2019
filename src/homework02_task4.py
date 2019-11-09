@@ -28,6 +28,7 @@ def letter_change():
     """In each word in the text change k-th letter to the
     selected symbol. If k > len(word) - exchange not needed.
     """
+
     input_text = input('Input text: ')
     position_index = input('Input index for change: ')
     position_index = int(position_index)
@@ -53,6 +54,7 @@ def snowden():
     is at most 100 000. Output the message after step
     2). The program should produce an answer in less than a few seconds.
     """
+    
     if len(sys.argv) == 2:
         in_file = sys.argv[1]
     else:
