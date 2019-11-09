@@ -48,8 +48,8 @@ def generate_numbers(number=20):
 
 
 def count_characters(count_me_string):
-    """Dictionary practice 2
-    
+    """Dictionary practice
+        
     """
     return {ch: count_me_string.count(ch) for ch in count_me_string}
 
