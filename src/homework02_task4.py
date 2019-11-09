@@ -25,10 +25,8 @@ import sys
 
 
 def letter_change():
-    """
-    In each word in the text change k-th letter to the
-    selected symbol. If k > len(word) - exchange not needed.
-    """
+    """In each word in the text change k-th letter to the
+    selected symbol. If k > len(word) - exchange not needed."""
     input_text = input('Input text: ')
     position_index = input('Input index for change: ')
     position_index = int(position_index)
@@ -42,7 +40,7 @@ def letter_change():
     text_list = input_text.split(' ')
     for word in text_list:
         if position_index <= len(word):
-            word = word[:position_index-1] + symbol + word[position_index:]
+            word = word[:position_index - 1] + symbol + word[position_index:]
         print(word, end=' ')
 
 
@@ -52,8 +50,7 @@ def snowden():
     is a file with a ciphered message sent by Bob.
     The message consists of lowercase English letters and its length
     is at most 100 000. Output the message after step
-    2). The program should produce an answer in less than a few seconds.
-    """
+    2). The program should produce an answer in less than a few seconds."""
     if len(sys.argv) == 2:
         in_file = sys.argv[1]
     else:
