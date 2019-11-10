@@ -8,7 +8,7 @@ tup1 = tuple(list1)
 print(list1, "\n", tup1)
 
 # Create the tuple ('a', 'b', 'c'), then create a list
-# from that tuple. (Hint: the material needed to do this
+# from that tuple.(Hint: the material needed to do this
 # has been covered, but it's not entirely obvious)
 tup2 = ('a', 'b', 'c')
 list2 = list(tup2)
