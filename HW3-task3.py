@@ -19,4 +19,7 @@ def generate_numbers(number=20):
 
 
 def count_characters(count_me_string):
-    return {lett: count_me_string.count(lett) for lett in set(count_me_string)}
+    letters_dict = {}
+    for lett in count_me_string:
+        letters_dict[lett] = letters_dict.get(lett, 0) + 1
+    return letters_dict

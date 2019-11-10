@@ -8,10 +8,10 @@
 is still missing it. """
 
 
-list1 = [lett1 + lett2 for lett1 in ['a', 'b'] for lett2 in ['b', 'c', 'd']]
+list1 = [lett1 + lett2 for lett1 in 'ab' for lett2 in 'bcd']
 sliced_list = list1[::2]
 
-list2 = [(str(pos) + 'a') for pos in range(1, 5)]
+list2 = [pos + 'a' for pos in '1234']
 
 number_to_pop = list2.index('2a')
 print(list2.pop(number_to_pop))

@@ -13,8 +13,7 @@ lst1 = ['a', 'b', 'c']
 tuple1 = (tuple(lst1))
 
 tuple2 = ('a', 'b', 'c')
-lst2_1 = list(tuple2)  # way1
-lst2_2 = [i for i in tuple2]  # way2, using generators
+lst2 = list(tuple2)
 
 a, b, c = 'a', 2, 'gamma'
 
