@@ -47,15 +47,13 @@ print(len(tuple_3))
 
 def generate_numbers(n=20):
     """returns a dictionary where the keys are numbers between 1 and n
-    (both included) and the values are square of keys
-    """
+    (both included) and the values are square of keys"""
     return {i: i ** 2 for i in range(1, n + 1)}
 
 
 def count_characters(count_me_string):
     """count and return the numbers of each character in a
-    count_me_string argument
-    """
+    count_me_string argument"""
     chars_counter = {}
     for i in count_me_string:
         chars_counter[i] = chars_counter.get(i, 0) + 1
