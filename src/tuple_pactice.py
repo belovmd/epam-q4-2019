@@ -1,4 +1,4 @@
-""" Tuple practice"""
+""" Tuple practice """
 
 # Create  the list ['a', 'b', 'c'], then create tuple from this list
 list_1 = ['a', 'b', 'c']
