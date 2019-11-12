@@ -47,162 +47,18 @@ print(len(tuple_3))
 
 def generate_numbers(n=20):
     """returns a dictionary where the keys are numbers between 1 and n
+
     (both included) and the values are square of keys
     """
-
     return {i: i ** 2 for i in range(1, n + 1)}
 
 
 def count_characters(count_me_string):
     """count and return the numbers of each character in a
+
     count_me_string argument
     """
-
     chars_counter = {}
     for i in count_me_string:
         chars_counter[i] = chars_counter.get(i, 0) + 1
     return chars_counter
-
-
-def test1(a):
-
-    """count and return the numbers of each character
-
-    in a count_me_string argument"""
-
-    return a
-
-
-def test2(a):
-
-    """count and return the numbers of each character
-
-    in a count_me_string argument"""
-    return a
-
-
-def test3(a):
-
-    """count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-    return a
-
-
-def test4(a):
-
-    """count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-
-    return a
-
-
-def test5(a):
-
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument"""
-
-    return a
-
-
-def test6(a):
-
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument"""
-    return a
-
-
-def test7(a):
-
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-    return a
-
-
-def test8(a):
-
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-
-    return a
-
-
-def test9(a):
-    """count and return the numbers of each character
-
-    in a count_me_string argument"""
-
-    return a
-
-
-def test10(a):
-    """count and return the numbers of each character
-
-    in a count_me_string argument"""
-    return a
-
-
-def test11(a):
-    """count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-    return a
-
-
-def test12(a):
-    """count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-
-    return a
-
-
-def test13(a):
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument"""
-
-    return a
-
-
-def test14(a):
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument"""
-    return a
-
-
-def test15(a):
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-    return a
-
-
-def test16(a):
-    """
-    count and return the numbers of each character
-
-    in a count_me_string argument
-    """
-
-    return a
