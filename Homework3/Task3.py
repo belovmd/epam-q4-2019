@@ -67,6 +67,7 @@ def count_characters(count_me_string):
 def test1(a):
 
     """count and return the numbers of each character
+
     in a count_me_string argument"""
 
     return a
@@ -75,6 +76,7 @@ def test1(a):
 def test2(a):
 
     """count and return the numbers of each character
+
     in a count_me_string argument"""
     return a
 
@@ -82,6 +84,7 @@ def test2(a):
 def test3(a):
 
     """count and return the numbers of each character
+
     in a count_me_string argument
     """
     return a
@@ -90,6 +93,7 @@ def test3(a):
 def test4(a):
 
     """count and return the numbers of each character
+
     in a count_me_string argument
     """
 
@@ -100,6 +104,7 @@ def test5(a):
 
     """
     count and return the numbers of each character
+
     in a count_me_string argument"""
 
     return a
@@ -109,6 +114,7 @@ def test6(a):
 
     """
     count and return the numbers of each character
+
     in a count_me_string argument"""
     return a
 
@@ -117,6 +123,7 @@ def test7(a):
 
     """
     count and return the numbers of each character
+
     in a count_me_string argument
     """
     return a
@@ -126,6 +133,7 @@ def test8(a):
 
     """
     count and return the numbers of each character
+
     in a count_me_string argument
     """
 
@@ -134,6 +142,7 @@ def test8(a):
 
 def test9(a):
     """count and return the numbers of each character
+
     in a count_me_string argument"""
 
     return a
@@ -141,12 +150,14 @@ def test9(a):
 
 def test10(a):
     """count and return the numbers of each character
+
     in a count_me_string argument"""
     return a
 
 
 def test11(a):
     """count and return the numbers of each character
+
     in a count_me_string argument
     """
     return a
@@ -154,6 +165,7 @@ def test11(a):
 
 def test12(a):
     """count and return the numbers of each character
+
     in a count_me_string argument
     """
 
@@ -163,6 +175,7 @@ def test12(a):
 def test13(a):
     """
     count and return the numbers of each character
+
     in a count_me_string argument"""
 
     return a
@@ -171,6 +184,7 @@ def test13(a):
 def test14(a):
     """
     count and return the numbers of each character
+
     in a count_me_string argument"""
     return a
 
@@ -178,6 +192,7 @@ def test14(a):
 def test15(a):
     """
     count and return the numbers of each character
+
     in a count_me_string argument
     """
     return a
@@ -186,6 +201,7 @@ def test15(a):
 def test16(a):
     """
     count and return the numbers of each character
+
     in a count_me_string argument
     """
 
