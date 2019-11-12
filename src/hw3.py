@@ -1,5 +1,6 @@
 # lists
-# 1 Use a list comprehension to construct the list ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
+# 1 Use a list comprehension to construct the list
+# ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
 list1_1 = [let1 + let2 for let1 in 'ab' for let2 in 'bcd']
 print(list1_1)
 # 2 Use a slice on the above list to construct the list ['ab', 'ad', 'bc'].
@@ -10,7 +11,8 @@ list1_3 = [str(let + 'a') for let in '1234']
 print(list1_3)
 # 4 Simultaneously remove the element '2a' from the above list and print it.
 print(list1_3.pop(1))
-# 5 Copy the above list and add '2a' back into the list such that the original is still missing it.
+# 5 Copy the above list and add '2a' back into the list
+# such that the original is still missing it.
 list1_5 = list1_3.copy()
 list1_5.insert(1, '2a')
 print(list1_5)
@@ -25,7 +27,8 @@ tuple2_2 = ('a', 'b', 'c')
 print(tuple2_2)
 list2_2 = list(tuple2_2)
 print(list2_2)
-# 3 Make the following instantiations simultaneously: a = 'a', b=2, c='gamma'.
+# 3 Make the following instantiations simultaneously:
+# a = 'a', b=2, c='gamma'.
 # (That is, in one line of code).
 a, b, c = 'a', 2, 'gamma'
 print("a =", a, ", b =", b, ", c =", c)
@@ -52,9 +55,8 @@ print(generate_numbers())
 
 
 # 2 Define a function count_characters(count_me_string)
-# which count and return the numbers of each character in a count_me_string argument.
-# If we need to count 'a' and 'A' separately then remove the 'string' variable
-# and use count_me in cycle both times instead
+# which count and return the numbers of each character in a count_me_string 
+# argument.
 def count_characters(count_me):
     """count the number of characters in the string (case non-sensitive)"""
     dict3_2 = {}
