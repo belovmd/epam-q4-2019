@@ -55,7 +55,7 @@ print(generate_numbers())
 
 
 # 2 Define a function count_characters(count_me_string)
-# which count and return the numbers of each character 
+# which count and return the numbers of each character
 # in a count_me_string argument.
 def count_characters(count_me):
     """count the number of characters in the string (case non-sensitive)"""
