@@ -6,17 +6,18 @@ def functions_results(func):
 
     the result during program start
     """
-    if 'func_results' not in globals():
-        global func_results
-        func_results = {}
+    if 'results' not in globals():
+        global results
+        results = {}
 
     def wrapper(*args, **kwargs):
         before_call = datetime.datetime.now()
         res = func(*args, **kwargs)
         after_call = datetime.datetime.now()
-        res_time = after_call - before_call
-        func_results[func.__name__] = func_results.get(func.__name__, []) + [(res, str(res_time))]
-        return func_results
+        time = after_call - before_call
+        name = func.__name__
+        results[name] = results.get(name, []) + [(res, str(time))]
+        return results
     return wrapper
 
 
@@ -36,4 +37,4 @@ def test2(count_me_string):
 test1()
 test2('abc')
 test2('mytest')
-print(func_results)
+print(results)
