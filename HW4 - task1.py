@@ -4,8 +4,8 @@
 """
 
 from time import gmtime
-from time import strftime
 from time import sleep
+from time import strftime
 
 
 def func_calls_history(func):
