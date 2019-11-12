@@ -1,4 +1,5 @@
 """Dictionary exercises"""
+from collections import Counter
 
 
 # Define a function generate_numbers(number) which returns a dictionary where
@@ -16,4 +17,12 @@ def generate_numbers(n=20):
 # Then, the return result of the function should be:
 # {'a': 2, 'b': 2, 'c': 2, 'd': 1, 'e': 1, 'f': 1, 'g': 1}
 def count_characters(count_me_string):
-    return dict([(ltr, count_me_string.count(ltr)) for ltr in count_me_string])
+    dct = {}
+    for ltr in count_me_string:
+        dct[ltr] = dct.get(ltr, 0) + 1
+    return dct
+
+
+# second version
+def count_characters2(count_me_string):
+    return dict(Counter(count_me_string))
