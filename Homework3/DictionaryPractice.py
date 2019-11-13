@@ -1,4 +1,5 @@
 """ Dictionary practice """
+from collections import Counter
 
 
 # Define a function generate_numbers(number)
@@ -13,8 +14,17 @@ def generate_numbers(n=20):
 # which count and return the numbers of each character
 # in a count_me_string argument.
 def count_characters(count_me_string):
-    return {sym: count_me_string.count(sym) for sym in count_me_string}
+    count = {}
+    for symbol in count_me_string:
+        count[symbol] = count.setdefault(symbol, 0) + 1
+    return count
+
+
+# second try
+def count_characters2(count_me_string):
+    return dict(Counter(count_me_string))
 
 
 print(generate_numbers(20))
 print(count_characters("abcdefgabc"))
+print(count_characters2("abcdefgabc"))

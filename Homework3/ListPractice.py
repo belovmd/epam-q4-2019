@@ -10,7 +10,7 @@ lst2 = lst1[::2]
 print(lst2)
 
 # 3)Use a list comprehension to construct the list ['1a', '2a', '3a', '4a'].
-lst3 = [str(symbol1) + "a" for symbol1 in range(1, 5)]
+lst3 = [symbol1 + "a" for symbol1 in "1234"]
 print(lst3)
 
 # 4)Simultaneously remove the element '2a' from the above list and print it.
