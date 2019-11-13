@@ -1,6 +1,6 @@
-'''
+"""
 Tuple practice
-'''
+"""
 # Create the list ['a', 'b', 'c'],
 # then create a tuple from that list.
 list1 = ['a', 'b', 'c']
