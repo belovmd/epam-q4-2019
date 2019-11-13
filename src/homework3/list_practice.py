@@ -2,13 +2,13 @@
 
 # Use a list comprehension to construct the list
 # ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
-lst = [ab + bcd for ab in "ab" for bcd in "bcd"]
+lst = [i + j for i in "ab" for j in "bcd"]
 
 # Use a slice on the above list to construct the list ['ab', 'ad', 'bc'].
 slc = lst[::2]
 
 # Use a list comprehension to construct the list ['1a', '2a', '3a', '4a'].
-lst2 = [str(i) + 'a' for i in range(1, 5)]
+lst2 = [i + 'a' for i in "1234"]
 
 # Simultaneously remove the element '2a' from the above list and print it.
 print(lst2.pop(1))
