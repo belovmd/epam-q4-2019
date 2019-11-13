@@ -1,6 +1,5 @@
 def get_ranges(lst):
-    """
-    Function "get_ranges".
+    """Function "get_ranges".
 
     This function takes list of unique sorted ascending integer numbers
     and returns this list rolled up.
