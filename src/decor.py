@@ -1,8 +1,8 @@
 """ Создать декоратор, который хранит в себе результы вызовов
 функций и время получения программы за время запуска """
 
-from time import time
 from collections import defaultdict
+from time import time
 
 dict_ = defaultdict(list)
 
