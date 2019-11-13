@@ -1,6 +1,6 @@
-'''
+"""
 List practice
-'''
+"""
 # Use a list comprehension to construct the list
 # ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
 list1 = [e1 + e2 for e1 in 'ab' for e2 in 'bcd']
