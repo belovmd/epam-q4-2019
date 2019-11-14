@@ -7,7 +7,6 @@ mutable.
 
 # Checks if there is a winner
 def check_winner(lst, wn):
-    n = len(lst)
     num = 1
     prev_symbol = lst[0]
     lst += "."
@@ -25,7 +24,6 @@ def check_winner(lst, wn):
 # Line check
 def check_line(game_field, wn):
     n = len(game_field[0])
-    new_lst = ["."] * n
     for i in range(n):
         ans = check_winner(game_field[i], wn)
         if ans:
