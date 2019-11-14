@@ -49,7 +49,7 @@ def write_histogram(filename, histo, symbol='#'):
                 file.write('\t\t')
             file.write('\n')
         for key in keys:
-            file.write(str(key) + '\t')
+            file.write(str(key) + ' \t')
 
 
 def main():
