@@ -18,18 +18,18 @@ import sys
 
 
 def runner(*args):
-	if not args:
-		for attr in dir(pytasks):
-			if attr[:2] == "__":
-				continue
-			print(getattr(pytasks, attr)())
-	else:
-		for attr in args:
-			if hasattr(pytasks, attr):
-				print(getattr(pytasks, attr)())
-			else:
-				print("Module pytasks has no func {}".format(attr))
+    if not args:
+        for attr in dir(pytasks):
+            if attr[:2] == "__":
+                continue
+            print(getattr(pytasks, attr)())
+    else:
+        for attr in args:
+            if hasattr(pytasks, attr):
+                print(getattr(pytasks, attr)())
+            else:
+                print("Module pytasks has no func {}".format(attr))
 
 
 if __name__ == "__main__":
-	runner(*sys.argv[1:])
+    runner(*sys.argv[1:])
