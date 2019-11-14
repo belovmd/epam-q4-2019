@@ -4,15 +4,14 @@
 from collections import defaultdict
 from time import time
 
-dict_ = defaultdict(list)
+data = defaultdict(list)
 
 
 def storage(func):
     def wrapper(*args, **kwargs):
         start_time = time()
         res = func(*args, **kwargs)
-        dict_[func.__name__].extend([res, start_time - time()])
-        print(dict_)
+        data[func.__name__].extend([res, start_time - time()])
         return res
 
     return wrapper
@@ -32,4 +31,4 @@ if __name__ == '__main__':
     print((sum_(1, 2, 3)))
     print(storage(sum_)(1, 2, 3))
     print(hi())
-    print(dict_)
+    print(data)
