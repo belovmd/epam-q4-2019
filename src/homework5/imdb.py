@@ -46,18 +46,24 @@ def write_histogram(filename, histo, symbol='#'):
             for key in keys:
                 if histo[key] >= i:
                     file.write(symbol)
-                else:
-                    file.write(' ')
-                file.write('\t')
+                file.write('\t\t')
             file.write('\n')
         for key in keys:
             file.write(str(key) + '\t')
 
 
-if __name__ == "__main__":
+def main():
     movies = read_data("ratings.list")
+
+    if not movies:
+        return
+
     write_titles("top250_movies.txt", movies)
     histo = create_histogram(movies, "rating")
     write_histogram("ratings.txt", histo)
     histo = create_histogram(movies, "year")
     write_histogram("years.txt", histo)
+
+
+if __name__ == "__main__":
+    main()

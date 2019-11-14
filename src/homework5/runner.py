@@ -20,9 +20,8 @@ import sys
 def runner(*args):
     if not args:
         for attr in dir(pytasks):
-            if attr[:2] == "__":
-                continue
-            print(getattr(pytasks, attr)())
+            if attr[:2] != "__":
+                print(getattr(pytasks, attr)())
     else:
         for attr in args:
             if hasattr(pytasks, attr):
