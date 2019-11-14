@@ -6,8 +6,8 @@ def get_ranges(lst):
             if i == len(lst) - 1:
                 ans += "-" + str(lst[i])
         else:
-            if first != lst[i-1]:
-                ans += "-" + str(lst[i-1]) + "," + str(lst[i])
+            if first != lst[i - 1]:
+                ans += "-" + str(lst[i - 1]) + "," + str(lst[i])
             else:
                 ans += "," + str(lst[i])
             diff = lst[i] - i

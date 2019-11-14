@@ -10,7 +10,7 @@ def timer(f):
         t1 = time.time()
         log.append({"function_name": f.__name__,
                     "result": res,
-                    "execution_time": t1-t0,
+                    "execution_time": t1 - t0,
                     })
         return res
     return wrapper
