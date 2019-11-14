@@ -1,7 +1,7 @@
 """List practice"""
 lst = [ltr + ltr2 for ltr in "ab" for ltr2 in "bcd"]
 lst = lst[::2]
-new_list = ['1a', '2a', '3a', '4a']
+new_list = [ltr + 'a' for ltr in '1234']
 new_list.pop(1)
 list_copy = new_list.copy()
 list_copy.insert(1, '2a')
@@ -21,4 +21,8 @@ def generate_numbers(number=20):
 
 
 def count_characters(count_me_string):
-    return {dict_: count_me_string.count(dict_) for dict_ in count_me_string}
+    dct = {}
+    dct = dct.fromkeys(count_me_string, 0)
+    for i in count_me_string:
+        dct[i] = dct[i]+1
+    return dct
