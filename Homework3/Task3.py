@@ -2,19 +2,12 @@
 
 
 def generate_numbers(n=20):
-
-    return dict({key: key**2 for key in range(n + 1)[1:]})
+    return {key: key**2 for key in range(1, n + 1)}
 
 
 def count_me_string(str1):
     """Returns the numbers of each character in a count_me_string argument"""
-    dct = {}
-
-    for symbol in str1:
-        if symbol in dct:
-            dct[symbol] += 1
-        else:
-            dct[symbol] = 1
+    dct = {elem: str1.count(elem) for elem in str1}
     return dct
 
 

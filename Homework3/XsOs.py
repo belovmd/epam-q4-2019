@@ -1,33 +1,118 @@
-"""Task from checkio 'Xs and Os Referee' (Check, who won)"""
+"""Task from checkio 'Xs and Os Referee' (Check, who won)
+Changed:
+Now size of the matrix and number of Xs and Os to win are
+mutable.
+"""
 
-from typing import List
+
+# Checks if there is a winner
+def check_winner(lst, wn):
+    n = len(lst)
+    num = 1
+    prev_symbol = lst[0]
+    lst += "."
+    for symbol in lst[1:]:
+        if symbol == prev_symbol:
+            num += 1
+            prev_symbol = symbol
+        else:
+            if num >= wn and prev_symbol != ".":
+                return prev_symbol
+            prev_symbol = symbol
+            num = 1
 
 
-def checkio(game_result: List[str]) -> str:
-    if (game_result[0].count("X") == 3) or \
-            (game_result[1].count("X") == 3) or \
-            (game_result[2].count("X") == 3):
-        return "X"
-    if (game_result[0].count("O") == 3) or \
-            (game_result[1].count("O") == 3) or \
-            (game_result[2].count("O") == 3):
-        return "O"
-    if game_result[0][0] == game_result[1][0] == game_result[2][0] != ".":
-        return game_result[0][0]
-    if game_result[0][1] == game_result[1][1] == game_result[2][1] != ".":
-        return game_result[0][1]
-    if game_result[0][2] == game_result[1][2] == game_result[2][2] != ".":
-        return game_result[0][2]
-    if game_result[0][0] == game_result[1][1] == game_result[2][2] != ".":
-        return game_result[0][0]
-    if game_result[0][2] == game_result[1][1] == game_result[2][0] != ".":
-        return game_result[2][0]
+# Line check
+def check_line(game_field, wn):
+    n = len(game_field[0])
+    new_lst = ["."] * n
+    for i in range(n):
+        ans = check_winner(game_field[i], wn)
+        if ans:
+            return ans
+
+
+# Column check
+def check_column(game_field, wn):
+    n = len(game_field[0])
+    new_lst = ["."] * n
+    for i in range(n - wn + 1):
+        for j in range(n):
+            new_lst[j] = game_field[j][i]
+
+        return check_winner(new_lst, wn)
+
+
+# Diagonal(left to right) check
+def check_diagonal_lr(game_field, wn):
+    n = len(game_field[0])
+    new_lst1 = ["."] * n
+    new_lst2 = ["."] * n
+
+    for i in range(n - wn + 1):
+        for j in range(n - i):
+            new_lst1[j] = game_field[j][i + j]
+            new_lst2[j] = game_field[i + j][j]
+        ans = check_winner(new_lst1, wn)
+        if ans:
+            return ans
+        ans = check_winner(new_lst2, wn)
+        if ans:
+            return ans
+
+
+# Diagonal(right to left check)
+def check_diagonal_rl(game_field, wn):
+    n = len(game_field[0])
+    new_lst1 = ["."] * n
+    new_lst2 = ["."] * n
+    for i in range(n - wn + 1):
+        for j in range(n - i):
+            new_lst1[j] = game_field[j][n - i - j - 1]
+            new_lst2[j] = game_field[i + j][n - i - j - 1]
+
+        ans = check_winner(new_lst1, wn)
+        if ans:
+            return ans
+        ans = check_winner(new_lst2, wn)
+        if ans:
+            return ans
+
+
+def xo_referee(game_field, wn):
+
+    ans = check_line(game_field, wn)
+
+    if ans:
+        return ans
+    ans = check_column(game_field, wn)
+    if ans:
+        return ans
+    ans = check_diagonal_lr(game_field, wn)
+    if ans:
+        return ans
+    ans = check_diagonal_rl(game_field, wn)
+    if ans:
+        return ans
 
     return "D"
 
 
 if __name__ == '__main__':
     print("Example:")
-    print(checkio(["X.O",
-                   "XX.",
-                   "XOO"]))
+    win_number = int(input("Enter win number"))
+    print(xo_referee(["XOXXOOO",
+                      "X......",
+                      ".X..O..",
+                      "..XO...",
+                      "..OXXX.",
+                      ".O..O..",
+                      "O......"], win_number))
+
+#    X......
+#    .X.....
+#    ..X....
+#    ...X...
+#    ....X..
+#    .......
+#    .......
