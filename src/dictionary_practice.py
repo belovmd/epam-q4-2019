@@ -14,7 +14,7 @@ def count_characters(str_):
 
 
 def count_characters2(str_):
-    return Counter(str_)
+    return dict(Counter(str_))
 
 
 def count_characters3(str_):
