@@ -1,5 +1,6 @@
 """ Contains definition for functions from previous tasks """
 
+
 def generate_numbers(n=20):
     return {key: key ** 2 for key in range(1, n + 1)}
 

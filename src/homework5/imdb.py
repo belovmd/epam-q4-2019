@@ -2,9 +2,10 @@
 Our application imdb.py can open and read ratings.list file.
 If rating.list file does not exists, script completes with error message.
 Find list of Top250 movies. Extract  titles information.
-Create 3 text files top250_movies.txt – contains titles, ratings.txt – 
+Create 3 text files top250_movies.txt – contains titles, ratings.txt –
 contains histogram for rating, years.txt – contains histogram for years.
 """
+
 
 def read_data(filename):
     try:
@@ -14,7 +15,7 @@ def read_data(filename):
                 file.readline()
 
             for i in range(250):
-                movie = [mov for mov in file.readline().strip().split(' ') if mov]
+                movie = [i for i in file.readline().strip().split(' ') if i]
                 movies.append({
                     "title": ' '.join(movie[3:-1]),
                     "rating": float(movie[2]),
@@ -34,7 +35,7 @@ def write_titles(filename, data):
 def create_histogram(data, key):
     histo = {}
     for movie in data:
-        histo[movie[key]] = histo.get(movie[key], 0) + 1 
+        histo[movie[key]] = histo.get(movie[key], 0) + 1
     return histo
 
 
