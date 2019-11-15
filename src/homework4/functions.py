@@ -8,7 +8,7 @@
 from functools import reduce
 
 
-# first solution
+# first solution, works only with positive numbers
 def get_ranges(int_list):
     return ",".join(reduce(gluing, int_list, []))
 
@@ -28,7 +28,7 @@ def gluing(res_lst, num):
     return res_lst
 
 
-# second solution
+# second solution, works with all numbers
 def get_ranges2(int_list):
     res = []
     length = len(int_list)
@@ -39,6 +39,7 @@ def get_ranges2(int_list):
         if l == r:
             res.append(str(int_list[l]))
         else:
-            res.append(str(int_list[l]) + "-" + str(int_list[r]))
+            res.append(str(int_list[l]) + "-" + "(" * (int_list[r] < 0) +
+                       str(int_list[r]) + ")" * (int_list[r] < 0))
         l = r = r + 1
     return ",".join(res)
