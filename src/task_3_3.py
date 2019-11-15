@@ -13,7 +13,7 @@ def generate_numbers(number=20):
     square of keys. n – function argument. Default is 20.
     """
     square_num_dict = {}
-    for index in range(1, number+1):
+    for index in range(1, number + 1):
         square_num_dict[index] = index * index
 
     return square_num_dict
