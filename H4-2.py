@@ -1,24 +1,22 @@
 """
-Создайте декоратор, который хранит в себе
-результаты вызовов функций и время получения
-результата за время запуска программы.
+Реализовать функцию get_ranges 
+которая получает на вход непустой список 
+неповторяющихся целых чисел,
+отсортированных по возрастанию,
+которая этот список “сворачивает”
 """
-import time
 
 
-def timer(f):
-    def wrapper(*args, **kwargs):
-        t0 = time.time()
-        res = f(*args, **kwargs)
-        t1 = time.time()
-        print("time %f" % (t1 - t0))
-        return res
-    return wrapper
+def  get_ranges(line):
+    new_line = ""
+    for i in range(len((line)) - 1):
+        if line[i] + 1 != line[i + 1] :
+            new_line += str(line[i]) + "," 
+        elif line[i] - 1 != line[i - 1]:
+            new_line += str(line[i]) + "-"     
+    new_line += str(line[-1])        
+    return new_line
 
-
-@timer
-def func(x, y):
-    return x + y
-
-
-print(func(2, 4))
+print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10])) # "0-4,7-8,10"
+print(get_ranges([4,7,10]) )#// "4,7,10"
+print(get_ranges([2, 3, 8, 9])) #// "2-3,8-9"
