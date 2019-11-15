@@ -13,7 +13,8 @@ def get_ranges(lst):
     start_el = lst[0]
     for pos, element in enumerate(lst[1:]):
         if element - lst[pos] != 1:
-            res += str(start_el) + ("-" + str(lst[pos])) * (start_el != lst[pos]) + ","
+            res += str(start_el) + ("-" + str(lst[pos])) * \
+                   (start_el != lst[pos]) + ","
             start_el = element
     return res + str(start_el) + ("-" + str(element)) * (start_el != element)
 
