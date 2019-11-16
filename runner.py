@@ -7,6 +7,7 @@ def runner(*functions):
     results to screen.
     runner() calls all functions from pytasks
     """
+
     if not functions:
         functions = dir(pytasks)
     for func in functions:

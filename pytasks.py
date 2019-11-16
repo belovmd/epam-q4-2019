@@ -1,6 +1,8 @@
 def finding_palindrome():
-    """ Check whether a number is palindrome or Not.
-    Number must be string contains only numbers. """
+    """
+    Check whether a number is palindrome or Not.
+    Number must be string contains only numbers.
+    """
 
     number = int(input("Enter number to palindrome test: "))
     number_copy = number
@@ -14,12 +16,14 @@ def finding_palindrome():
 
 
 def fizzbuzz():
-    """ FizzBuzz
+    """
+    FizzBuzz
     Program prints the numbers from 1 to 100, but for multiples of
     three print “Fizz” instead of the number and for multiples of five print
     “Buzz”. For numbers which are multiples of both three and five,
     print “FizzBuzz”.
     """
+
     lst = []
     for number in range(1, 101):
         if number % 15 == 0:

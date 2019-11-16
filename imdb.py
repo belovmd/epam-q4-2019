@@ -1,5 +1,5 @@
-import os
 import getpass
+import os
 import sys
 
 
