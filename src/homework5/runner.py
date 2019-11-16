@@ -20,14 +20,14 @@ import sys
 def runner(*args):
     if not args:
         for attr in dir(pytasks):
-            if attr[:2] != "__":
+            if not attr.startswith("__") and callable(getattr(pytasks, attr)):
                 print(getattr(pytasks, attr)())
     else:
         for attr in args:
-            if hasattr(pytasks, attr):
+            if hasattr(pytasks, attr) and callable(getattr(pytasks, attr)):
                 print(getattr(pytasks, attr)())
             else:
-                print("Module pytasks has no func {}".format(attr))
+                print("Module pytasks has no function {}".format(attr))
 
 
 if __name__ == "__main__":

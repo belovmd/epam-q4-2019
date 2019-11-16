@@ -41,15 +41,17 @@ def create_histogram(data, key):
 
 def write_histogram(filename, histo, symbol='#'):
     keys = sorted(histo.keys())
+    width = max([len(str(key)) for key in histo]) + 1
     with open(filename, 'w') as file:
-        for i in range(max(histo.values()), -1, -1):
+        for i in range(max(histo.values()), 0, -1):
             for key in keys:
                 if histo[key] >= i:
-                    file.write(symbol)
-                file.write('\t\t')
+                    file.write(symbol.center(width))
+                else:
+                    file.write(' ' * width)
             file.write('\n')
         for key in keys:
-            file.write(str(key) + ' \t')
+            file.write(str(key).center(width))
 
 
 def main():
