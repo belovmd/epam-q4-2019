@@ -31,8 +31,8 @@ def count_and_write_to_file(filename, column):
 
 movies_top250 = []
 try:
-    with open(os.path.join("homework5", "2", "data",
-                           "ratings.list")) as rating_file:
+    with open(os.path.join("homework5", "2", "data", "ratings.list"),
+              encoding="windows-1252") as rating_file:
         for i, line in enumerate(rating_file):
             if i == 27:  # read keys
                 keys = line.split()
@@ -46,12 +46,12 @@ try:
                 break
 
         with open(os.path.join("homework5", "2", "data", "top250_movies.txt"),
-                  "w") as titles_file:
+                  "w", encoding="windows-1252") as titles_file:
             [titles_file.write(movie["Title"] + "\n") for movie in
              movies_top250]
 
         count_and_write_to_file("ratings.txt", "Rank")
 
         count_and_write_to_file("years.txt", "Year")
-except Exception:
-    print("File does not exist")
+except Exception as e:
+    print(str(e))
