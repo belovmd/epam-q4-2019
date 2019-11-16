@@ -4,19 +4,25 @@ def generate_numbers(n=20):
     The keys are numbers between 1 and n (both included) and the values
     are square of keys. n – function argument. Default is 20.
     """
-    return {num: num ** 2 for num in range(1, n + 1)}
+    print({num: num ** 2 for num in range(1, n + 1)})
 
 
-def count_characters(s):
-    """Function count and return the numbers of each character in a string."""
+def count_characters(s='Eyjafjallajökull'):
+    """Function count and return the numbers of each character in a string.
+
+    Default is "Eyjafjallajökull".
+    """
     dct = {}
     for symb in s:
         dct[symb] = dct.get(symb, 0) + 1
-    return dct
+    print(dct)
 
 
-def is_palindrome(string_of_numbers):
-    """Program checks whether a number is palindrome (True) or not (False)"""
+def is_palindrome(string_of_numbers='12345678987654321'):
+    """Program checks whether a number is palindrome (True) or not (False).
+
+    Default is "12345678987654321".
+    """
     number = int(string_of_numbers)
     a = number
     palindrome = 0
@@ -25,17 +31,17 @@ def is_palindrome(string_of_numbers):
         palindrome = palindrome * 10 + res
         number //= 10
     if a == palindrome:
-        return True
+        print(True)
     else:
-        return False
+        print(False)
 
 
-def fiz_buzz(num):
+def fiz_buzz(num=101):
     """Program returns list of numbers from 1 to "num".
 
     For multiples of three prints “Fizz” instead of the number. For multiples
     of five prints “Buzz”. For numbers which are multiples of both three and
-    five prints “FizzBuzz”.
+    five prints “FizzBuzz”. Default is 101.
     """
     result_list = []
     for number in range(num):
@@ -47,4 +53,11 @@ def fiz_buzz(num):
             result_list.append('Buzz')
         else:
             result_list.append(number)
-    return result_list
+    print(result_list)
+
+
+def main():
+    fiz_buzz()
+    is_palindrome()
+    count_characters()
+    generate_numbers()
