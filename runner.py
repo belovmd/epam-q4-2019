@@ -36,9 +36,9 @@ def runner(*args):
 
 
 runner()
-print('-'*79)
+print('-' * 79)
 runner('generate_numbers')
-print('-'*79)
+print('-' * 79)
 runner('fiz_buzz', 'count_character')
-print('-'*79)
+print('-' * 79)
 runner('is_palindrome', 'count_characters', 'generate_numbers')
