@@ -32,13 +32,13 @@ def wr_other(data, key_, file):
     lst_str = [[str(line)] for line in range(height, 0, -1)]  # elem - str
     for key in sorted(data.keys()):
         len_str = len(key)
-        space_x = len_str // 2
-        space_after_x = space_x - 1 + len_str % 2
         for lst in range(len(lst_str)):
             indent = len(lst_str[lst][0]) - 1
+            space_x = len_str // 2
+            space_after_x = space_x - 1 + len_str % 2 + indent
+            space_x -= indent
             if len(lst_str) - data[key] <= lst:
-                str_ = ' ' * (space_x - indent) + 'x' + ' ' * (space_after_x + indent)
-                lst_str[lst].append(str_)
+                lst_str[lst].append(' ' * space_x + 'x' + ' ' * space_after_x)
             else:
                 lst_str[lst].append(' ' * len_str)
     lst_str.append(sorted(data.keys()))
