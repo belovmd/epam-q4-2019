@@ -19,11 +19,11 @@ def func_calls_history_v1(func):
 
     def wrapper(*args, **kwargs):
         func_call_result = func(*args, **kwargs)
-        func_calls_history_v1.calls_history.append({
-            'func': func.__name__,
-            'end_time': strftime("%Y-%m-%d %T", gmtime()),
-            'result': func_call_result
-            })
+        func_calls_history_v1.calls_history.append(
+            {'func': func.__name__,
+             'end_time': strftime("%Y-%m-%d %T", gmtime()),
+             'result': func_call_result
+             })
         sleep(1)
         return func_call_result
     return wrapper
