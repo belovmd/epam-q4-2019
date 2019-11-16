@@ -6,7 +6,8 @@ def runner(*functions):
 
     Called function(s) from pytasks module with default values and printed
     results to screen.
-    runner() calls all functions from pytasks"""
+    runner() calls all functions from pytasks
+    """
 
     if not functions:
         functions = dir(pytasks)
