@@ -15,18 +15,16 @@ runner(‘generate_numbers’, ‘happy_numbers’) – print results
 for generate_numbers() and  happy_numbers(). Any combination
 of functions can be specified.
 """
-from pytasks import fizz_buzz, generate_numbers, count_characters, palindrome
+import pytasks
 import sys
 
 
 def runner(*args):
     if not args:
-        args = ("fizz_buzz", "generate_numbers", "count_characters", "palindrome")
-    possibles = globals().copy()
-    possibles.update(locals())
+        args = [attr for attr in dir(pytasks) if not attr.startswith("__")]
     for arg in args:
-        method = possibles.get(arg)
-        print(method())
+        if hasattr(pytasks, arg) and callable(getattr(pytasks, arg)):
+            print(getattr(pytasks, arg)())
 
 
 if __name__ == '__main__':
