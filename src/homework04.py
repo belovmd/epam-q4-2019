@@ -12,6 +12,9 @@ import math
 import time
 
 
+alternatively_history = []
+
+
 def save_history(f_name):
     """History decorator
 
@@ -19,16 +22,19 @@ def save_history(f_name):
     time it takes to get the result during program startup
     """
     history = list()
+    global alternatively_history
 
     def wrapper(*args, **kwargs):
-        start_time = int(round(time.time() * 1000))
+        start_time = time.time()
         f_result = f_name(*args, **kwargs)
-        stop_time = int(round(time.time() * 1000))
-        est_time = stop_time - start_time
+        stop_time = time.time()
+        est_time_msec = (int(stop_time - start_time) * 1000)
         history.append({'name': f_name.__name__,
                         'result': f_result,
-                        'time_ms': est_time})
-        print(history)
+                        'time_ms': est_time_msec})
+        alternatively_history.append({'name': f_name.__name__,
+                                      'result': f_result,
+                                      'time_ms': est_time_msec})
         return f_result
     return wrapper
 
