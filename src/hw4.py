@@ -40,7 +40,6 @@ def get_ranges(input_list):
     output_list = []
     range_start = 0
     range_end = -1
-    final_string = ''
     while cnt < len(input_list):
         if cnt == 0 or input_list[cnt] - input_list[cnt - 1] > 1:
             range_start = cnt
