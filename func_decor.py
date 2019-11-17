@@ -3,8 +3,8 @@ from time import time
 registry = {}
 
 
-def wrapper(func):
-    def timer(*args, **kwargs):
+def timer(func):
+    def wrapper(*args, **kwargs):
         start = time()
         res = func(*args, **kwargs)
         stop = time()
@@ -13,15 +13,15 @@ def wrapper(func):
             (result=res, timer=stop - start))
         return res
 
-    return timer
+    return wrapper
 
 
-@wrapper
+@timer
 def spam(*args):
     return {arg: arg ** 2 for arg in args}  # spam = wrapper(spam)
 
 
-@wrapper
+@timer
 def get_ranges(lst):
     """Function "get_ranges".
 
@@ -31,23 +31,26 @@ def get_ranges(lst):
     get_ranges([0, 1, 2, 3, 4, 7, 8, 10]) // "0-4,7-8,10"
     """
     pos = 0
-    rolled_list = str(lst[0])
+    roll = str(lst[0])
     while pos <= len(lst) - 1:
         if pos == len(lst) - 1:
-            rolled_list += '-' + str(lst[pos])
-            break
+            if lst[pos] == lst[pos - 1] + 1:
+                roll += '-' + str(lst[pos])
+                break
+            else:
+                break
         elif lst[pos] + 1 == lst[pos + 1]:
             pos += 1
         elif lst[pos] - 1 == lst[pos - 1]:
-            rolled_list += '-' + str(lst[pos]) + ', ' + str(lst[pos + 1])
+            roll += '-' + str(lst[pos]) + ', ' + str(lst[pos + 1])
             pos += 1
         else:
-            rolled_list += ', ' + str(lst[pos + 1])
+            roll += ', ' + str(lst[pos + 1])
             pos += 1
-    return rolled_list
+    return roll
 
 
-@wrapper
+@timer
 def count_characters(s):
     """Function count and return the numbers of each character in a string."""
     dct = {}
@@ -58,7 +61,7 @@ def count_characters(s):
 
 if __name__ == "__main__":
     spam(1, 2, 3)
-    get_ranges([1, 2, 3, 5, 10, 11, 14, 15, 16])
+    get_ranges([1, 2, 3, 5, 10, 11, 14, 15, 114])
     count_characters('ds[pfpkefw[efkas[eofkjsdkvna')
     for func in registry:
         print('Function ' + func + ' ===>', registry[func])

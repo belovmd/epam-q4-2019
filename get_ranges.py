@@ -7,17 +7,20 @@ def get_ranges(lst):
     get_ranges([0, 1, 2, 3, 4, 7, 8, 10]) // "0-4,7-8,10"
     """
     pos = 0
-    rolled_list = str(lst[0])
+    roll = str(lst[0])
     while pos <= len(lst) - 1:
         if pos == len(lst) - 1:
-            rolled_list += '-' + str(lst[pos])
-            break
+            if lst[pos] == lst[pos - 1] + 1:
+                roll += '-' + str(lst[pos])
+                break
+            else:
+                break
         elif lst[pos] + 1 == lst[pos + 1]:
             pos += 1
         elif lst[pos] - 1 == lst[pos - 1]:
-            rolled_list += '-' + str(lst[pos]) + ', ' + str(lst[pos + 1])
+            roll += '-' + str(lst[pos]) + ', ' + str(lst[pos + 1])
             pos += 1
         else:
-            rolled_list += ', ' + str(lst[pos + 1])
+            roll += ', ' + str(lst[pos + 1])
             pos += 1
-    return rolled_list
+    return roll
