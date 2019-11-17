@@ -8,10 +8,9 @@ result = []
 def store(f):
     def wrapper(*args, **kwargs):
         start = time.time()
-        for i in range(1000):  # to make time bigger
-            res = f(*args, **kwargs)
+        res = f(*args, **kwargs)
         stop = time.time()
-        result.append({"result": res % (10 ** 8), "time": (stop - start)})
+        result.append({"result": res, "time": (stop - start)})
 
     return wrapper
 
@@ -21,9 +20,8 @@ def pow(a, b):
     return a ** b
 
 
-for i, j in zip(range(10 ** 2), range(10 ** 3)):
-    pow(i, j)
-print(result)
+[pow(11111 ** 1111, j) for j in range(10)]
+[print(r) for r in result]
 
 
 # another solution, sort of cache
@@ -35,10 +33,9 @@ def store2(f):
             return result2[args].result
         else:
             start = time.time()
-            for i in range(1000):  # to make time bigger
-                res = f(*args, **kwargs)
+            res = f(*args, **kwargs)
             stop = time.time()
-            result2[args] = {"result": res % (10 ** 8), "time": (stop - start)}
+            result2[args] = {"result": res, "time": (stop - start)}
             return result2[args]
 
     return wrapper
@@ -49,5 +46,4 @@ def pow2(a, b):
     return a ** b
 
 
-for i, j in zip(range(10 ** 2), range(10 ** 3)):
-    print(pow2(i, j))
+[print(pow2(11111 ** 1111, j)) for j in range(10)]

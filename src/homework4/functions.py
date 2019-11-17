@@ -15,10 +15,10 @@ def get_ranges(int_list):
 
 def gluing(res_lst, num):
     if res_lst:
-        last = res_lst[-1].rpartition("-")[-1]
+        last = res_lst[-1].split("-")[-1]
         if (int(last) + 1 == num):
             if res_lst[-1].isdigit():
-                res_lst[-1] += "-" + str(num)
+                res_lst[-1] += "-{}".format(num)
             else:
                 res_lst[-1] = res_lst[-1].replace(last, str(num))
         else:
@@ -32,14 +32,25 @@ def gluing(res_lst, num):
 def get_ranges2(int_list):
     res = []
     length = len(int_list)
-    l = r = 0
-    while l < length:
-        while r < length - 1 and int_list[r] + 1 == int_list[r + 1]:
-            r += 1
-        if l == r:
-            res.append(str(int_list[l]))
+    start = 0
+    while start < length:
+        end = find_end(int_list, length, start)
+        if start == end:
+            res.append("{}".format(int_list[start]))
         else:
-            res.append(str(int_list[l]) + "-" + "(" * (int_list[r] < 0) +
-                       str(int_list[r]) + ")" * (int_list[r] < 0))
-        l = r = r + 1
+            res.append("{}-{}".format(int_list[start], braces(int_list[end])))
+        start = end + 1
     return ",".join(res)
+
+
+def braces(number):
+    if number >= 0:
+        return number
+    else:
+        return "({})".format(number)
+
+
+def find_end(intlist, length, ptr):
+    while ptr < length - 1 and intlist[ptr] + 1 == intlist[ptr + 1]:
+        ptr += 1
+    return ptr
