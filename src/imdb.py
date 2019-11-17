@@ -7,9 +7,9 @@ EPAM python q4 homework 05 2
 Sergey Streltsov 2019-11-17
 """
 
+from operator import itemgetter
 import os
 import sys
-from operator import itemgetter
 
 
 def load_ratings(filename):
@@ -63,4 +63,3 @@ if __name__ == '__main__':
         for key, value in sorted(year_db.items(), key=itemgetter(1),
                                  reverse=True):
             out_file.write(key + ': ' + '#' * value + '\n')
-
