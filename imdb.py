@@ -13,26 +13,33 @@ if path[-1] == '\\':
     file_path = os.path.join(path, "ratings.list")
 else:
     file_path = os.path.join(path, "\\ratings.list")
+films = []
+rating = []
+years = []
 try:
     with open(file_path) as ratings_list:
-        top250 = open('top20_movies.txt', 'w')
-        rating_histogram = open('rating.txt', 'w')
-        years_histogram = open('years.txt', 'w')
-        rating = []
-        years = []
         for num, line in enumerate(ratings_list):
             if num in range(28, 278):
-                top250.write(' '.join(line.split()[3:-1]) + '\n')
-                rating.append(line.split()[2])
-                years.append(line.split()[-1][1:-1])
-        top250.close()
-        for rate in sorted(set(rating), reverse=True):
-            rating_histogram.write(rate + ' ' +
-                                   '#' * rating.count(rate) + '\n')
-        rating_histogram.close()
-        for year in sorted(set(years), reverse=True):
-            years_histogram.write(year + ' ' +
-                                  '#' * years.count(year) + '\n')
-        years_histogram.close()
+                film_name_start = 3
+                film_name_end = -1
+                films.append(' '.join(line.split()[film_name_start:
+                                                   film_name_end]))
+                rating_column = 2
+                rating.append(line.split()[rating_column])
+                years_column = -1
+                year_start_pos = 1
+                year_end_pos = 5
+                years.append(line.split()[years_column][year_start_pos:
+                                                        year_end_pos])
 except FileNotFoundError:
     print("File \"ratings.list\" doesn\'t exist")
+
+with open('top20_movies.txt', 'w') as top250:
+    for film in films:
+        top250.write(film + '\n')
+with open('rating.txt', 'w') as rating_histogram:
+    for rate in sorted(set(rating), reverse=True):
+        rating_histogram.write(rate + ' ' + '#' * rating.count(rate) + '\n')
+with open('years.txt', 'w') as years_histogram:
+    for year in sorted(set(years), reverse=True):
+        years_histogram.write(year + ' ' + '#' * years.count(year) + '\n')

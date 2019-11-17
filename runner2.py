@@ -13,27 +13,29 @@ specified.
 """
 import pytasks
 
+x = {}
+for method in dir(pytasks):
+    if not method.startswith('__') and callable(getattr(pytasks, method)):
+        x[str(method)] = getattr(pytasks, method)
 
-def runner(*args):
+
+def runner2(*args):
     """Function prints result of args taken function."""
     if not args:
-        pytasks.generate_numbers()
-        pytasks.is_palindrome()
-        pytasks.fiz_buzz()
-        pytasks.count_characters()
+        for func in x.values():
+            func()
     else:
         for func_name in args:
-            if hasattr(pytasks, func_name):
-                method_to_call = getattr(pytasks, func_name)
-                method_to_call()
+            if func_name in x.keys():
+                x[func_name]()
             else:
-                print(func_name, 'Name doesn\'t exist')
+                print(func_name, 'Name doesnt exist')
 
 
-runner()
+runner2()
 print('-' * 79)
-runner('generate_numbers')
+runner2('generate_numbers')
 print('-' * 79)
-runner('fiz_buzz', 'count_character')
+runner2('fiz_buzz', 'count_character')
 print('-' * 79)
-runner('is_palindrome', 'count_characters', 'generate_numbers')
+runner2('is_palindrome', 'count_characters', 'generate_numbers')
