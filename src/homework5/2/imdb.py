@@ -13,26 +13,25 @@ import os
 
 def count_and_write_to_file(filename, column):
     data = Counter([movie[column] for movie in movies_top250])
-    min_data_num, max_data_num = min(data.values()), max(data.values())
-    max_len = len(str(max_data_num))
-    max_len_value = max(len(str(key)) for key in data)
+    min_value, max_value = min(data.values()), max(data.values())
+    max_len = len(str(max_value))
+    max_key_len = max(len(str(key)) for key in data) + 1
     data_order = sorted(data)
-    with open(os.path.join("homework5", "2", "data", filename),
-              "w") as data_file:
-        for data_val in range(max_data_num, min_data_num - 1, -1):
-            data_file.write(str(data_val).zfill(max_len))
-            [data_file.write(max_len_value * " " + "#" if data[key] >= data_val
-                             else (max_len_value + 1) * " ")
-             for key in data_order]
-            data_file.write("\n")
-        data_file.write((max_len + 1) * " ")
-        [data_file.write(" " + str(key)) for key in data_order]
+    filepath = os.path.join("homework5", "2", "data", filename)
+    with open(filepath, "w") as file:
+        for value in range(max_value, min_value - 1, -1):
+            file.write(str(value).rjust(max_len))
+            [file.write("#".rjust(max_key_len) if data[key] >= value
+                        else " ".rjust(max_key_len)) for key in data_order]
+            file.write("\n")
+        file.write((max_len + 1) * " ")
+        [file.write(str(key).rjust(max_key_len)) for key in data_order]
 
 
 movies_top250 = []
 try:
-    with open(os.path.join("homework5", "2", "data", "ratings.list"),
-              encoding="latin_1") as rating_file:
+    path = os.path.join("homework5", "2", "data", "ratings.list")
+    with open(path, encoding="latin_1") as rating_file:
         for i, line in enumerate(rating_file):
             if i == 27:  # read keys
                 keys = line.split()
@@ -45,8 +44,8 @@ try:
             elif i > 277:  # 27+250
                 break
 
-        with open(os.path.join("homework5", "2", "data", "top250_movies.txt"),
-                  "w", encoding="utf-8") as titles_file:
+        t_path = os.path.join("homework5", "2", "data", "top250_movies.txt")
+        with open(t_path, "w", encoding="utf_8") as titles_file:
             [titles_file.write(movie["Title"] + "\n") for movie in
              movies_top250]
 
