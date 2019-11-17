@@ -19,7 +19,7 @@ def histogram(dct, file_name):
             file_to_write.write("\n")
             maximal = maximal - 1
         for key in dct.keys():
-            file_to_write.write(str(key) + " " * (6-len(key)))
+            file_to_write.write(str(key) + " " * (6 - len(key)))
 
 
 year_lst = []
