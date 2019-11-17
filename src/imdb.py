@@ -78,8 +78,8 @@ def wr_other2(data, key, file, space=3, sym='x'):
 
 if __name__ == '__main__':
     data = rd_data()
-    # print(wr_title(data, 'top250_movies'))
-    # print(wr_other(data, 'rank', 'ranting'))
-    # print(wr_other(data, 'year', 'years'))
+    print(wr_title(data, 'top250_movies'))
+    print(wr_other(data, 'rank', 'ranting'))
+    print(wr_other(data, 'year', 'years'))
     print(wr_other2(data, 'rank', 'ranting2'))
     print(wr_other2(data, 'year', 'years2'))
