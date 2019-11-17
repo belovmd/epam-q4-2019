@@ -2,8 +2,10 @@
 def runner(*functions):
     """Функция импорта из pytasks.py"""
     if not functions:
-        from pytasks import generate_numbers, count_characters, \
-                            fizzbuzz, is_palindrome
+        from pytasks import generate_numbers
+        from pytasks import count_characters
+        from pytasks import fizzbuzz
+        from pytasks import is_palindrome
         print(generate_numbers())
         print(count_characters())
         print(fizzbuzz())
