@@ -1,4 +1,4 @@
-import datetime
+from time import time
 
 
 def functions_results(func):
@@ -11,12 +11,14 @@ def functions_results(func):
         results = {}
 
     def wrapper(*args, **kwargs):
-        before_call = datetime.datetime.now()
+        before_call = time()
         res = func(*args, **kwargs)
-        after_call = datetime.datetime.now()
-        time = after_call - before_call
+        after_call = time()
+        time_passed = after_call - before_call
         name = func.__name__
-        results[name] = results.get(name, []) + [(res, str(time))]
+        result_time = results.get(name, [])
+        result_time.append((res, str(time_passed)))
+        results[name] = result_time
         return results
     return wrapper
 
