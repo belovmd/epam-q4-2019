@@ -16,7 +16,8 @@ def get_ranges(nums):
             dash = str(current_num) + '-'
             curtail_nums += dash
         ind += 1
-    curtail_nums += str(nums[-1])
+    last_num = str(nums[-1])
+    curtail_nums += last_num
     return curtail_nums
 
 
