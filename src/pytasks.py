@@ -24,6 +24,7 @@ def count_characters(count_me = 'abcdefg'):
 
 #3
 def fizzbuzz(n=20):
+    """Fizzbuzz функция"""
     number = 1
     output_list = []
     while number <= n:
@@ -40,6 +41,7 @@ def fizzbuzz(n=20):
 
 #4
 def is_palindrome(input_number = 1):
+    """Проверка числа на палиндром"""
     original_num = input_number
     ostatok = 0
     reversd_num = 0
