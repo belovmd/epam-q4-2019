@@ -11,7 +11,7 @@ def gen_numbers(numbers=20):
 # key is character, value is quantity of this character
 def count_characters(str_):
     return {sym: str_.count(sym) for sym in set(str_)}
-*
+
 
 def count_characters2(str_):
     return dict(Counter(str_))
