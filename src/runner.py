@@ -1,3 +1,9 @@
+""" Function runner can  de called as:
+runner() – print results of all function
+runner(‘generate_numbers’) – print result  only for generate_numbers()
+runner(‘generate_numbers’, ‘happy_numbers’) – print results for generate_numbers() and
+happy_numbers(). Any combination of functions can be specified."""
+
 import pytasks
 from random import choice
 
@@ -17,7 +23,7 @@ def runner(*funcs):
                 func = choice(module_funcs)
                 print(getattr(pytasks, func)())
             else:
-                print('My function : {0}'. format(','.join(module_funcs)))
+                print('My function : {0}'.format(','.join(module_funcs)))
     elif funcs:
         for func in funcs:
             print(getattr(pytasks, func)())

@@ -1,3 +1,6 @@
+""" Find list of top250 movies in ratings.list. Create 3 text file:
+  top250_movies - contains titles, rating - contains histogram for rating,
+   years - contains histogram for years """
 from collections import Counter
 from collections import defaultdict
 
@@ -24,6 +27,9 @@ def wr_title(data, file, key='title'):
     if key == 'title':
         with open(file + '.txt', 'w') as wr_file:
             wr_file.write('\n'.join(data[key]))
+        return 'Done'
+    else:
+        return 'You should use other func '
 
 
 def wr_other(data, key_, file):
@@ -54,8 +60,26 @@ def wr_other(data, key_, file):
     return out_str
 
 
+def wr_other2(data, key, file, space=3, sym='x'):
+    data = dict(Counter(data[key]))
+    max_len_key = len(max(data.keys()))
+    out_str = ''
+    for key in sorted(data.keys()):
+        len_key = len(key)
+        difference = max_len_key - len_key
+        indent = difference * ' '
+        quantity_sym = data[key]
+        data[key] = indent + data[key] * (sym + ' ' * space)
+        out_str += f'{key}{data[key]}:{quantity_sym} \n'
+    with open(file + '.txt', 'w') as wr_file:
+        wr_file.write(out_str)
+    return out_str
+
+
 if __name__ == '__main__':
     data = rd_data()
-    wr_title(data, 'top250_movies')
+    print(wr_title(data, 'top250_movies'))
     print(wr_other(data, 'rank', 'ranting'))
     print(wr_other(data, 'year', 'years'))
+    print(wr_other2(data, 'rank', 'ranting2'))
+    print(wr_other2(data, 'year', 'years2'))

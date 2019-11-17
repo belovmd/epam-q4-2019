@@ -1,0 +1,12 @@
+8.0x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   :35 
+8.1x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   :67 
+8.2x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   :41 
+8.3x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   :37 
+8.4x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   :19 
+8.5x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   :25 
+8.6x   x   x   x   x   x   x   x   :8 
+8.7x   x   x   x   x   x   x   :7 
+8.8x   x   x   :3 
+8.9x   x   x   x   :4 
+9.0x   x   :2 
+9.2x   x   :2 

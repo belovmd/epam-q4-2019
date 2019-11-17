@@ -1,3 +1,5 @@
+""" Function from  previous tasks """
+
 from collections import Counter
 
 
