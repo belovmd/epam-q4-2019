@@ -70,7 +70,7 @@ def wr_other2(data, key, file, space=3, sym='x'):
         indent = difference * ' '
         quantity_sym = data[key]
         data[key] = indent + data[key] * (sym + ' ' * space)
-        out_str += f'{key}{data[key]}:{quantity_sym} \n'
+        out_str += '{0}{1}:{2} \n'.format(key, data[key], quantity_sym)
     with open(file + '.txt', 'w') as wr_file:
         wr_file.write(out_str)
     return out_str
@@ -78,8 +78,8 @@ def wr_other2(data, key, file, space=3, sym='x'):
 
 if __name__ == '__main__':
     data = rd_data()
-    print(wr_title(data, 'top250_movies'))
-    print(wr_other(data, 'rank', 'ranting'))
-    print(wr_other(data, 'year', 'years'))
+    # print(wr_title(data, 'top250_movies'))
+    # print(wr_other(data, 'rank', 'ranting'))
+    # print(wr_other(data, 'year', 'years'))
     print(wr_other2(data, 'rank', 'ranting2'))
     print(wr_other2(data, 'year', 'years2'))
