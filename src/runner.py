@@ -1,8 +1,8 @@
 """ Function runner can  de called as:
 runner() – print results of all function
 runner(‘generate_numbers’) – print result  only for generate_numbers()
-runner(‘generate_numbers’, ‘happy_numbers’) – print results for generate_numbers() and
-happy_numbers(). Any combination of functions can be specified."""
+runner(‘generate_numbers’, ‘happy_numbers’) – print results for gen_numbers()
+and happy_numbers(). Any combination of functions can be specified."""
 
 import pytasks
 from random import choice
