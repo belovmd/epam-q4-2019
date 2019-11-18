@@ -1,18 +1,29 @@
+"""Реализовать функцию get_ranges которая получает на вход непустой список
+неповторяющихся целых чисел, отсортированных по возрастанию, которая этот
+список 'сворачивает'"""
+
+
 def get_ranges(lst):
-    diff, first = lst[0], lst[0]
-    ans = str(lst[0])
-    for i in range(len(lst)):
-        if lst[i] == i + diff:
-            if i == len(lst) - 1:
-                ans += "-" + str(lst[i])
+    first = lst[0]
+    last = first
+    glued = ""
+    for elem in lst[1:]:
+        if elem == last + 1:
+            last += 1
         else:
-            if first != lst[i - 1]:
-                ans += "-" + str(lst[i - 1]) + "," + str(lst[i])
+            if first != last:
+                glued += str(first) + "-" + str(last) + ","
             else:
-                ans += "," + str(lst[i])
-            diff = lst[i] - i
-            first = lst[i]
-    return ans
+                glued += str(first) + ","
+            first = elem
+            last = first
+
+    if first != last:
+        glued += str(first) + "-" + str(last)
+    else:
+        glued += str(first)
+
+    return glued
 
 
 print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10]))
