@@ -107,3 +107,6 @@ venv.bak/
 .idea/
 .tox/
 .gitignore/
+.vscode/
+src/task2/ratings.list
+src/task2/ratings.list.zip
