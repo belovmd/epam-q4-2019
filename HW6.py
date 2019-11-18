@@ -1,5 +1,5 @@
 import random
-""" Homework 6 - Kitchen
+"""Homework 6 - Kitchen
 
 This program describe family using refrigerators. Users (parents and children)
 can put and take products from refrigerators, eat product. Children can also
@@ -8,12 +8,12 @@ hit refrigerator, and if it will broke, parents need call to the master.
 
 
 class User(object):
-    """ User is person who can use refrigerator"""
+    """User is person who can use refrigerator"""
     def __init__(self, name):
         self.name = name
 
     def take_product(self, refr, product):
-        """ Method try to take product from refrigerator
+        """Method try to take product from refrigerator
 
         If refrigerator is broken or product not in it, we do nothing.
         Otherwise user take product, and cells we it lie become free.
@@ -33,7 +33,7 @@ class User(object):
                                                                   self.name))
 
     def put_product(self, refr, product):
-        """ Method try to put product in refrigerator
+        """Method try to put product in refrigerator
 
         If refrigerator is broken or product is already in refrigerator, we do
         nothing.
@@ -61,7 +61,7 @@ class User(object):
                       .format(self.name, product.name, refr.name))
 
     def eat(self, product):
-        """ If product is in refrigerator, in will be deleted forever"""
+        """If product is in refrigerator, in will be deleted forever"""
         if not product.in_freeze_cam or not product.in_cold_cam:
             print('{} can\'t eat product from refrigerator!'.format(self.name))
         else:
@@ -70,11 +70,11 @@ class User(object):
 
 
 class Parent(User):
-    """ Parent is User who can call to master, pay and earn money"""
+    """Parent is User who can call to master, pay and earn money"""
     money = 1400
 
     def call_to_master(self, master, refr):
-        """ Using this method parent can call to master.
+        """Using this method parent can call to master.
 
         After call master will try to fix refrigerator using master.try_to_fix
         method. This method returns result (True o False), and this result will
@@ -85,7 +85,7 @@ class Parent(User):
         print('He fixed it' if job_result else 'He can\'t fix it')
 
     def earn_money(self, salary=200):
-        """ Parent get some money after this method"""
+        """Parent get some money after this method"""
         self.money += salary
 
 
@@ -101,7 +101,7 @@ class Child(User):
 
 
 class Master(object):
-    """ Master is a person who can fix refrigerators if he have enough skill"""
+    """Master is a person who can fix refrigerators if he have enough skill"""
     money = 100
 
     def __init__(self, skill, name='Master', company='own'):
@@ -110,7 +110,7 @@ class Master(object):
         self.company = company
 
     def advertisement(self):
-        """ Advertising of master. Skills always increase by two"""
+        """Advertising of master. Skills always increase by two"""
         print('Highly skilled master {0} from {1} company is looking for work!'
               ' My skill is {2}. Prices:\nImport refrigerator: {3}\nDomestic '
               'refrigerator: {4}'.format(self.name, self.company,
@@ -119,7 +119,7 @@ class Master(object):
                                          str(self.skill * 100)))
 
     def try_to_fix(self, customer, refr):
-        """ Master will try to fix refrigerator
+        """Master will try to fix refrigerator
 
         Price formula: skill * 100 * сoeff
         Netherlands refrigerators can be fixed by only masters with >=7 skill,
@@ -143,7 +143,7 @@ class Master(object):
         return False
 
     def study(self):
-        """ Master can pay money and improve his skills"""
+        """Master can pay money and improve his skills"""
         if self.money >= 100:
             self.money -= 100
             self.skill += 1
@@ -152,7 +152,7 @@ class Master(object):
 
 
 class Product(object):
-    """ Product is some food we can eat or put to refrigerator
+    """Product is some food we can eat or put to refrigerator
 
     It can be cold and freeze type.
     Every product aso have size -oit shows how many cells this product need
@@ -167,9 +167,10 @@ class Product(object):
 
 
 class Refrigerator(object):
-    """ Refrigerator is place where we can save products
+    """Refrigerator is place where we can save products
 
-    New refrigerator always is empty and able to work"""
+    New refrigerator always is empty and able to work
+    """
     freeze_cells = 0
     cold_cells = 0
     broken = False
@@ -178,7 +179,7 @@ class Refrigerator(object):
         self.name = name
 
     def display_info(self):
-        """ Show information about refrigerator and free cells"""
+        """Show information about refrigerator and free cells"""
         print('Hi, I am {0} aka {1}\nNow it is {2} free cold cells'
               ' and {3} free freeze cells '.format(type(self).__name__,
                                                    self.name,
@@ -187,14 +188,14 @@ class Refrigerator(object):
 
 
 class RefrigeratorAtlant(Refrigerator):
-    """ Belorussian refrigerator with small capacity"""
+    """Belorussian refrigerator with small capacity"""
     made_in = 'Belarus'
     freeze_cam_capacity = 4
     cold_cam_capacity = 6
 
 
 class RefrigeratorPhillips(Refrigerator):
-    """ High quality netherlands refrigerator with meddle capacity"""
+    """High quality netherlands refrigerator with meddle capacity"""
     made_in = 'The Netherlands'
     freeze_camera_capacity = 6
     cold_camera_capacity = 12
