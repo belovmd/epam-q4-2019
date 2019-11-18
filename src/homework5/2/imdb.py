@@ -11,8 +11,8 @@ from collections import Counter
 import os
 
 
-def count_and_write_to_file(filename, column):
-    data = Counter([movie[column] for movie in movies_top250])
+def count_and_write_to_file(movies, filename, column):
+    data = Counter([movie[column] for movie in movies])
     min_value, max_value = min(data.values()), max(data.values())
     max_len = len(str(max_value))
     max_key_len = max(len(str(key)) for key in data) + 1
@@ -28,29 +28,34 @@ def count_and_write_to_file(filename, column):
         [file.write(str(key).rjust(max_key_len)) for key in data_order]
 
 
-movies_top250 = []
-try:
-    path = os.path.join("homework5", "2", "data", "ratings.list")
-    with open(path, encoding="latin_1") as rating_file:
-        for i, line in enumerate(rating_file):
-            if i == 27:  # read keys
-                keys = line.split()
-                keys.append("Year")
-            elif 27 < i <= 277:  # read movies
-                movie = [""] + line.strip().split(None, 3)
-                movie = movie[:-1] + movie[-1].rsplit(" ", 1)  # separate year
-                movie[-1] = movie[-1][1:5]  # delete braces
-                movies_top250.append(dict(zip(keys, movie)))
-            elif i > 277:  # 27+250
-                break
+def process_data():
+    movies_top250 = []
+    try:
+        path = os.path.join("homework5", "2", "data", "ratings.list")
+        with open(path, encoding="latin_1") as rating_file:
+            for i, line in enumerate(rating_file):
+                if i == 27:  # read keys
+                    keys = line.split()
+                    keys.append("Year")
+                elif 27 < i <= 277:  # read movies
+                    movie = [""] + line.strip().split(None, 3)
+                    movie = movie[:-1] + movie[-1].rsplit(" ", 1)  # get year
+                    movie[-1] = movie[-1][1:5]  # delete braces
+                    movies_top250.append(dict(zip(keys, movie)))
+                elif i > 277:  # 27+250
+                    break
 
-        t_path = os.path.join("homework5", "2", "data", "top250_movies.txt")
-        with open(t_path, "w", encoding="utf_8") as titles_file:
-            [titles_file.write(movie["Title"] + "\n") for movie in
-             movies_top250]
+            t_path = os.path.join("homework5", "2", "data",
+                                  "top250_movies.txt")
+            with open(t_path, "w", encoding="utf_8") as titles_file:
+                [titles_file.write(movie["Title"] + "\n") for movie in
+                 movies_top250]
 
-        count_and_write_to_file("ratings.txt", "Rank")
+            count_and_write_to_file(movies_top250, "ratings.txt", "Rank")
 
-        count_and_write_to_file("years.txt", "Year")
-except Exception as e:
-    print(str(e))
+            count_and_write_to_file(movies_top250, "years.txt", "Year")
+    except Exception as e:
+        print(str(e))
+
+
+process_data()
