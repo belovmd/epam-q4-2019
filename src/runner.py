@@ -11,8 +11,8 @@ from random import choice
 def runner(*funcs):
     module_funcs = dir(pytasks)
     module_funcs = [func for func in module_funcs
-                    if not func.startswith('__')
-                    and callable(getattr(pytasks, func))]
+                    if not func.startswith('__') and
+                    callable(getattr(pytasks, func))]
     if not funcs:
         for func in module_funcs:
             print(getattr(pytasks, func)())

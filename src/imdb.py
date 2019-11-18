@@ -73,7 +73,7 @@ def write_other(data, key_, file):
     return out_str
 
 
-"""" Second version to write histogram. keys: rank,year. 
+""""Second version for write histogram. keys: rank,year. 
 Space - space between columns"""
 
 
