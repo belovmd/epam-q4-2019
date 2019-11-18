@@ -1,5 +1,4 @@
-from pytasks import is_palindrome, generate_numbers
-from pytasks import fizzbuzz, count_characters
+from pytasks import is_palindrome, generate_numbers, fizzbuzz, count_characters
 
 tasks_dict = {
     'is_palindrome': is_palindrome,
