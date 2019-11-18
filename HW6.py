@@ -1,7 +1,7 @@
 import random
 
 
-class User:
+class User(object):
     def __init__(self, name):
         self.name = name
 
@@ -63,7 +63,7 @@ class Child(User):
             print('{} hit {}, but not broke.'.format(self.name, refr.name))
 
 
-class Master:
+class Master(object):
     money = 100
 
     def __init__(self, skill, name='Master', company=None):
@@ -93,7 +93,7 @@ class Master:
             print('{self.master} don\'t have enough money to study')
 
 
-class Product:
+class Product(object):
     in_cold_cam = False
     in_freeze_cam = False
 
@@ -103,7 +103,7 @@ class Product:
         self.size = size
 
 
-class Refrigerator:
+class Refrigerator(object):
     freeze_cells = 0
     cold_cells = 0
     broken = False
