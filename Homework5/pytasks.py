@@ -37,9 +37,3 @@ def is_palindrome(number=12321):
         number //= div
         div = div / 100
     return True
-
-
-# print(generate_numbers())
-# print(count_characters())
-# print(fizzbuzz())
-# print(is_palindrome())
