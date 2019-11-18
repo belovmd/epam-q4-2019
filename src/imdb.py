@@ -5,17 +5,30 @@ from collections import Counter
 from collections import defaultdict
 
 
-def rd_data():
+def read_data():
     data = defaultdict(list)
+
+    start_line = 28
+    end_line = 278
+
+    index_rank = 2
+    index_year = -1
+
+    start_year = 1
+    end_year = 5
+    start_title = 3
+
     try:
         with open('ratings.list', 'r') as rd_file:
             for num, line in enumerate(rd_file):
-                if num in range(0, 278):
-                    if num in range(28, 278):
+                if num in range(end_line):
+                    if num in range(start_line, end_line):
                         list_line = line.split()
-                        data['title'].append(' '.join(list_line[3:-1]))
-                        data['rank'].append(list_line[2])
-                        data['year'].append(list_line[-1][1:-1])
+                        data['title'].append(
+                            ' '.join(list_line[start_title:index_year]))
+                        data['rank'].append(list_line[index_rank])
+                        data['year'].append(
+                            list_line[index_year][start_year:end_year])
                 else:
                     break
     except FileNotFoundError as exc:
@@ -23,16 +36,16 @@ def rd_data():
     return data
 
 
-def wr_title(data, file, key='title'):
-    if key == 'title':
-        with open(file + '.txt', 'w') as wr_file:
-            wr_file.write('\n'.join(data[key]))
-        return 'Done'
-    else:
-        return 'You should use other func '
+def write_title(data, file):
+    with open(file + '.txt', 'w') as wr_file:
+        wr_file.write('\n'.join(data['title']))
+    return 'Done'
 
 
-def wr_other(data, key_, file):
+"""Keys: year, rank """
+
+
+def write_other(data, key_, file):
     data = dict(Counter(data[key_]))  # key -x, value -y
     height = max(data.values())
     lst_str = [[str(line)] for line in range(height, 0, -1)]  # elem - str
@@ -60,7 +73,11 @@ def wr_other(data, key_, file):
     return out_str
 
 
-def wr_other2(data, key, file, space=3, sym='x'):
+"""" Second version to write histogram. keys: rank,year. 
+Space - space between columns"""
+
+
+def write_other2(data, key, file, space):
     data = dict(Counter(data[key]))
     max_len_key = len(max(data.keys()))
     out_str = ''
@@ -69,7 +86,7 @@ def wr_other2(data, key, file, space=3, sym='x'):
         difference = max_len_key - len_key
         indent = difference * ' '
         quantity_sym = data[key]
-        data[key] = indent + data[key] * (sym + ' ' * space)
+        data[key] = indent + data[key] * ('x' + ' ' * space)
         out_str += '{0}{1}:{2} \n'.format(key, data[key], quantity_sym)
     with open(file + '.txt', 'w') as wr_file:
         wr_file.write(out_str)
@@ -77,9 +94,9 @@ def wr_other2(data, key, file, space=3, sym='x'):
 
 
 if __name__ == '__main__':
-    data = rd_data()
-    print(wr_title(data, 'top250_movies'))
-    print(wr_other(data, 'rank', 'ranting'))
-    print(wr_other(data, 'year', 'years'))
-    print(wr_other2(data, 'rank', 'ranting2'))
-    print(wr_other2(data, 'year', 'years2'))
+    data = read_data()
+    print(write_title(data, 'top250_movies'))
+    print(write_other(data, 'rank', 'ranting'))
+    print(write_other(data, 'year', 'years'))
+    print(write_other2(data, 'rank', 'ranting2', 3))
+    print(write_other2(data, 'year', 'years2', 3))

@@ -10,23 +10,23 @@ from random import choice
 
 def runner(*funcs):
     module_funcs = dir(pytasks)
-    module_funcs = [func for func in module_funcs if not func.startswith('__')]
+    module_funcs = [func for func in module_funcs
+                    if not func.startswith('__')
+                    and callable(getattr(pytasks, func))]
     if not funcs:
         for func in module_funcs:
             print(getattr(pytasks, func)())
-    elif 'happy_numbers' in funcs:
+
+    else:
         for func in funcs:
-            attr = hasattr(pytasks, func)
-            if attr:
-                print(getattr(pytasks, func)())
-            elif not attr and func == 'happy_numbers':
-                func = choice(module_funcs)
-                print(getattr(pytasks, func)())
-            else:
-                print('My function : {0}'.format(','.join(module_funcs)))
-    elif funcs:
-        for func in funcs:
-            print(getattr(pytasks, func)())
+            try:
+                if func == 'happy_numbers':
+                    func = choice(module_funcs)
+                    print(getattr(pytasks, func)())
+                else:
+                    print(getattr(pytasks, func)())
+            except AttributeError:
+                print('Function {0} not found'.format(func))
 
 
 if __name__ == '__main__':
