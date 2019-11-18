@@ -25,12 +25,14 @@ class Room(object):
                 checkout_date=checkout_date) and not self.is_booked():
             confirm_obj = hashlib.md5((checkin_date + checkout_date).encode())
             confirmation_number = confirm_obj.hexdigest()
-            print('Booking Ok, checkin: {}, checkout: {}'.format(checkin_date,
-                                                                 checkout_date))
+            print('Booking Ok, checkin: {}, checkout: {}'.format(
+                checkin_date, checkout_date))
             print('Conf. number: {}'.format(confirmation_number))
-            self._booking_history[confirmation_number] = [checkin_date, checkout_date]
+            self._booking_history[confirmation_number] = [checkin_date,
+                                                          checkout_date]
         else:
-            print('Error: {}-{} not available'.format(checkin_date, checkout_date))
+            print('Error: {}-{} not available'.format(checkin_date,
+                                                      checkout_date))
             return -1
         return confirmation_number
 
@@ -39,7 +41,8 @@ class Room(object):
             dates = self._booking_history.pop(confirmation_number)
             print('{}, booking canceled'.format(dates))
         else:
-            print('Error: booking with conf. number {} not found'.format(confirmation_number))
+            print('Error: booking with conf. number {} not found'.format(
+                confirmation_number))
 
     def check_booking_interval(self, checkin_date, checkout_date):
         # check is interval valid
