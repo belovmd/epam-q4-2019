@@ -14,18 +14,15 @@ runner(‘generate_numbers’, ‘count_characters’) – print results for
 generate_numbers() and  count_characters(). Any combination of functions
 can be specified. """
 
-from pytasks import count_characters
-from pytasks import fizzbuzz
-from pytasks import generate_numbers
-from pytasks import is_palindrome
+import pytasks
 
 
 def runner(*args):
-    if not args:
-        for fun in generate_numbers, count_characters, fizzbuzz, is_palindrome:
-            print(fun())
-    elif args == ('generate_numbers',):
-        print(generate_numbers())
-    elif args == ('generate_numbers', 'count_characters'):
-        for fun in generate_numbers, count_characters:
-            print(fun())
+    if args:
+        for func in args:
+            if hasattr(pytasks, func) and callable(getattr(pytasks, func)):
+                print(getattr(pytasks, func)())
+    else:
+        for atr in dir(pytasks):
+            if callable(getattr(pytasks, atr)) and not atr.startswith('__'):
+                print(getattr(pytasks, atr)())

@@ -25,61 +25,64 @@ def write_titles(file_path):
 def write_rating_histogram(file_path):
     ratings_path = os.path.join(script_dir, file_path)
     with open(ratings_path, 'w') as ratings:
-        symbols_in_marks = []
-        for mark in marks_list:
-            symbols = int(mark.split(',')[0]) * 10 + int(mark.split(',')[1])
-            symbols_in_marks.append(symbols)
-        marks_count = Counter(symbols_in_marks)
-        symbols_in_string = 0
-        for symb_count in range(max(symbols_in_marks), 0, -1):
-            symbols_in_string += marks_count[symb_count]
-            ratings.write('#   ' * symbols_in_string + '\n')
-        for mark in marks_list:
+        marks_count = Counter(marks_list)
+        ascending_marks = sorted(set(marks_list), reverse=True)
+        most_met = marks_count.most_common()[0][1]
+        for sym_count in range(most_met, 0, -1):
+            symbols_in_string = ''
+            for mark in ascending_marks:
+                if sym_count <= marks_count[mark]:
+                    symbols_in_string += '#   '
+                else:
+                    symbols_in_string += '    '
+            ratings.write(symbols_in_string + '\n')
+        for mark in ascending_marks:
             ratings.write(mark + ' ')
 
 
 def write_years_histogram(file_path):
     years_path = os.path.join(script_dir, file_path)
     with open(years_path, 'w') as years:
-        yr_count = Counter(years_list)
-        count_yr = {}
-        for yr in yr_count:
-            count_yr[yr_count[yr]] = count_yr.get(yr_count[yr], []) + [yr]
-        count_exist = sorted(count_yr, reverse=True)
+        years_count = Counter(years_list)
         ascending_years = sorted(set(years_list))
-        for count in range(len(count_exist) - 1):
-            file_string = ''
+        most_met = years_count.most_common()[0][1]
+        for sym_count in range(most_met, 0, -1):
+            symbols_in_string = ''
             for year in ascending_years:
-                if year not in count_yr[count_exist[count]]:
-                    file_string += '  '
+                if sym_count <= years_count[year]:
+                    symbols_in_string += '# '
                 else:
-                    file_string += '# '
-                    count_yr[count_exist[count + 1]] += [year]
-            years.write(file_string + '\n')
-        years.write('# ' * len(ascending_years) + '\n\n')
-        ascending_years_str = [str(i) for i in ascending_years]
-        for i in range(3, -1, -1):
+                    symbols_in_string += '  '
+            years.write(symbols_in_string + '\n')
+        years.write('\n')
+        for i in range(4):
             file_string = ''
-            for j in range(len(ascending_years_str)):
-                file_string += ascending_years_str[j][i] + ' '
-            if i:
+            for j in range(len(ascending_years)):
+                digits_raw = ascending_years[j][i] + ' '
+                file_string += digits_raw
+            if i != 3:
                 years.write(file_string + '\n')
             else:
                 years.write(file_string)
 
 
 script_dir = os.path.dirname(__file__)
-top250_path = os.path.join(script_dir, r'For Homework5/rating.list')
+top250_path = os.path.join(script_dir, r'For Homework5/ratings.list')
 with open(top250_path) as top250:
     titles_list = []
     marks_list = []
     years_list = []
-    data = top250.readline()
-    while data:
-        titles_list.append(data.split('(')[0][5:-1])
-        marks_list.append(data.split()[-1])
-        years_list.append(int(data.split('(')[1][:4]))
+    ind = 0
+    while ind < 278:
         data = top250.readline()
+        if ind > 27:
+            film = ' '.join(data.split()[3:-1])
+            mark = data.split()[2]
+            year = data.split('(')[1][:4]
+            titles_list.append(film)
+            marks_list.append(mark)
+            years_list.append(year)
+        ind += 1
 
 write_titles('top250_movies.txt')
 write_rating_histogram('ratings.txt')
