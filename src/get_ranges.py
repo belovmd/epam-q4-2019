@@ -5,15 +5,16 @@
 
 def get_ranges(lst):
     out_str = ''
-    for el in range(len(lst)):
-        try:
+    lenght = len(lst)
+    for el in range(lenght):
+        if el + 1 < lenght:
             if lst[el] == lst[el + 1] - 1:
                 if out_str == '' or out_str[-1] == ',':
                     out_str += str(lst[el]) + '-'
 
             else:
                 out_str += str(lst[el]) + ','
-        except IndexError:
+        else:
             out_str += str(lst[el])
     return out_str
 
