@@ -1,5 +1,5 @@
-from materials import Lecture
 from materials import Hometask
+from materials import Lecture
 from persons import Group
 from persons import Lector
 from persons import Student

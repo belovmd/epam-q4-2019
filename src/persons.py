@@ -43,7 +43,7 @@ class Lector(Person):
         print("{} teach {}".format(self, lecture))
 
 
-class Group():
+class Group(object):
     def __init__(self, id):
         self.id = id
         self.members = []
