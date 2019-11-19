@@ -109,3 +109,4 @@ venv.bak/
 .gitignore/
 src/.vscode/settings.json
 src/.vscode/launch.json
+.vscode/launch.json
