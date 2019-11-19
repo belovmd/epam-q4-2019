@@ -17,8 +17,8 @@ def eto_moy_decorator(func):
         print('Входные параметры', args, kwargs)
         start_time = time.time()
         end_time = time.time()
-        result_of_call = ('Итог = ' + str(func(*args, **kwargs)) + '  '
-                          + 'Время вызова = ' + str(end_time - start_time))
+        result_of_call = ('Итог = ' + str(func(*args, **kwargs)) + '  ' +
+                          'Время вызова = ' + str(end_time - start_time))
         reclist.append(result_of_call)
 
     return obertochka
