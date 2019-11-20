@@ -21,7 +21,7 @@ class TestAddToList(unittest.TestCase):
         add_to_list_in_dict(thedict=t_dict, listname='2', element=2)
         self.assertNotEqual(t_dict, {}, 'Error')
 
-    def test_list_present(self):
+    def test_add_to_existing_list(self):
         t_dict = {'one': [1, 2]}
         add_to_list_in_dict(thedict=t_dict, listname='one', element=3)
         self.assertDictEqual(t_dict, {'one': [1, 2, 3]}, 'Error')
