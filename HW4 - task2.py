@@ -12,10 +12,14 @@ def get_ranges(lst):
     if len(lst) == 1:
         return str(lst[0])
 
-    new_lst = ''
+    short_form = ''
     for pos in range(len(lst) - 1):
-        if lst[pos] != lst[pos + 1] - 1:
-            new_lst += str(lst[pos]) + ','
-        elif pos == 0 or lst[pos] != lst[pos - 1] + 1:
-            new_lst += str(lst[pos]) + '-'
-    return new_lst + str(lst[-1])
+        prev = (lst[pos - 1] if pos != 0 else None)
+        curr = lst[pos]
+        nxt = lst[pos + 1]
+        if curr != nxt - 1:
+            curr = '(' + str(curr) + ')' if curr < 0 else str(curr)
+            short_form += curr + ','
+        elif prev is None or curr != prev + 1:
+            short_form += str(curr) + '-'
+    return short_form + str(lst[-1])
