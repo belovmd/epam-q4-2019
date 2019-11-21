@@ -6,13 +6,15 @@
 import time
 
 
-def log_results(lst):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            before = time.time()
-            result = func(*args, **kwargs)
-            exec_time = time.time() - before
-            lst.append([result, exec_time])
-            return result
-        return wrapper
-    return decorator
+def log_results(func):
+    if not hasattr(log_results, "logs"):
+        log_results.logs = []
+
+    def wrapper(*args, **kwargs):
+        before = time.time()
+        result = func(*args, **kwargs)
+        exec_time = time.time() - before
+        log_results.logs.append({"result": result, "exec_time": exec_time})
+        return result
+
+    return wrapper

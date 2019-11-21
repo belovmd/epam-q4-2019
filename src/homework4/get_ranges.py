@@ -6,15 +6,18 @@
 
 
 def get_ranges(lst):
-    result = ""
-    start, prev = lst[0], lst[0]
-    for num in lst[1:]:
-        if num - prev != 1:
-            result += str(start) + ('-' + str(prev)) * (prev != start) + ','
-            start = num
-        prev = num
-
-    return result + str(start) + ('-' + str(prev)) * (prev != start)
+    result = []
+    start = 0
+    while start < len(lst):
+        end = start
+        while end < len(lst) - 1 and lst[end] == lst[end + 1] - 1:
+            end += 1
+        if start == end:
+            result.append(str(lst[start]))
+        else:
+            result.append("{}-{}".format(lst[start], lst[end]))
+        start = end + 1
+    return ','.join(result)
 
 
 assert get_ranges([0, 1, 2, 3, 4, 7, 8, 10]) == "0-4,7-8,10"
