@@ -10,10 +10,10 @@ def runner(*functions):
     """
 
     if not functions:
-        functions = dir(pytasks)
+        functions = [fun for fun in dir(pytasks) if not fun.startswith('__')]
     for func in functions:
-        if not func.startswith('__'):
-            if hasattr(pytasks, func):
+        if hasattr(pytasks, func):
+            if callable(getattr(pytasks, func)):
                 print('{}: {}'.format(func, getattr(pytasks, func)()))
-            else:
-                print('There is no {} function in pytasks module'.format(func))
+        else:
+            print('There is no {} function in pytasks module'.format(func))
