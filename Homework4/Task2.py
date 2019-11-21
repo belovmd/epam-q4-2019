@@ -10,14 +10,12 @@
 
 def get_ranges(lst):
     res = ""
-    start_el = lst[0]
+    st = lst[0]
     for pos, element in enumerate(lst[1:]):
         if element - lst[pos] != 1:
-            res += \
-                str(start_el) + ("-" + str(lst[pos])) * \
-                (start_el != lst[pos]) + ","
-            start_el = element
-    return res + str(start_el) + ("-" + str(element)) * (start_el != element)
+            res += str(st) + ("-" + str(lst[pos])) * (st != lst[pos]) + ","
+            st = element
+    return res + str(st) + ("-" + str(element)) * (st != element)
 
 
 print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10]))

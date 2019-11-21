@@ -7,11 +7,14 @@ import time
 
 
 def my_decorator(func):
+    result = []
+
     def wrapper(*args, **kwargs):
         start_time = time.time()
-        time.sleep(3)
         res = func(*args, **kwargs)
-        return res, time.time() - start_time
+        result.append({"Result": res,
+                       "Time": time.time() - start_time})
+        return result
     return wrapper
 
 
