@@ -12,6 +12,14 @@ ratings.txt – contains histogram for rating, years.txt –
 contains histogram for years.
 Don’t add ratings.list file to PR, but add your created 3 files
 """
+START_OF_FILE = 28
+END_OF_FILE = 277
+TIT_POS = 3
+END_TITLE = -1
+RATING_POS = 2
+YEAR_POS = -1
+ST_YEAR = 1
+END_YEAR = 5
 
 
 def read_file(filename):
@@ -20,11 +28,11 @@ def read_file(filename):
         i = 0
         with open(filename, "r") as file:
             for line in file:
-                if 28 <= i <= 277:
+                if START_OF_FILE <= i <= END_OF_FILE:
                     words = line.split()
-                    films.append({"title": ' '.join(words[3:-1]),
-                                 "rating": words[2],
-                                  "years": words[-1][1:5]})
+                    films.append({"title": ' '.join(words[TIT_POS:END_TITLE]),
+                                 "rating": words[RATING_POS],
+                                  "years": words[YEAR_POS][ST_YEAR:END_YEAR]})
                 i += 1
         return films
     except IOError:
@@ -38,6 +46,16 @@ def write_file(filename, data):
 
 
 def create_histogram(filename, data, key):
+    """Create Histogram
+
+    :param filename: file name
+    :type filename: string
+    :param data: list of movie dictionary storage
+    :type data: list
+    :param key: dictionary key
+    :type key: string
+    :return: dict
+    """
     histogram = {}
     for films in data:
         histogram[films[key]] = histogram.get(films[key], 0) + 1
