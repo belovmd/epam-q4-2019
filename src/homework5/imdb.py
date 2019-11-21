@@ -38,7 +38,7 @@ def write_titles(filename, data):
 
 
 def create_histogram(data, key):
-    """ return dict where key is name of col and value is height of col """
+    """Return dict where key is name of col and value is height of col."""
     histo = {}
     for movie in data:
         histo[movie[key]] = histo.get(movie[key], 0) + 1
