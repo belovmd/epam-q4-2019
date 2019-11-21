@@ -19,7 +19,7 @@ import pytasks
 def runner(*functions):
     """Функция импорта из pytasks.py"""
     if not functions:
-        for func in dir (pytasks):
+        for func in dir(pytasks):
             if callable(getattr(pytasks, func)):
                 print(getattr(pytasks, func)())
 

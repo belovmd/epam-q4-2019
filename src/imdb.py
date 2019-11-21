@@ -4,8 +4,9 @@ Find list of Top250 movies. Extract  titles information.
 Create 3 text files top250_movies.txt – contains titles, ratings.txt –
 contains histogram for rating, years.txt – contains histogram for years.
 """
-import os
+
 from collections import OrderedDict
+import os
 
 
 try:
