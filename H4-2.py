@@ -7,15 +7,15 @@
 """
 
 
-def get_ranges(line):
-    new_line = ""
-    for i in range(len((line)) - 1):
-        if line[i] + 1 != line[i + 1]:
-            new_line += str(line[i]) + ","
-        elif line[i] - 1 != line[i - 1]:
-            new_line += str(line[i]) + "-"
-    new_line += str(line[-1])
-    return new_line
+def get_ranges(list):
+    new_list = ""
+    for i in range(len(list) - 1):
+        if line[i] + 1 != list[i + 1]:
+            new_list += str(list[i]) + ","
+        elif list[i] - 1 != list[i - 1]:
+            new_list += str(list[i]) + "-"
+    new_list += str(list[-1])
+    return new_list
 
 
 print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10]))  # "0-4,7-8,10"
