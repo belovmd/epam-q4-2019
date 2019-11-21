@@ -10,7 +10,7 @@
 def get_ranges(list):
     new_list = ""
     for i in range(len(list) - 1):
-        if line[i] + 1 != list[i + 1]:
+        if list[i] + 1 != list[i + 1]:
             new_list += str(list[i]) + ","
         elif list[i] - 1 != list[i - 1]:
             new_list += str(list[i]) + "-"
