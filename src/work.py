@@ -1,7 +1,14 @@
+""" Create simulator from real life. This can be booking room in hotel,
+visit to casino, visit to bar. Create 3-4 objects, that can describe situation.
+Objects should contain attributes and methods to simulate some use cases.
+Completed program should print object states, it actions (methods) and
+objects interaction.
+"""
+
 from random import randint
 
 
-class CreateHuman:
+class CreateHuman(object):
     def create_human(self, name, surname):
         self.name = name
         self.surname = surname
@@ -57,7 +64,7 @@ class Director(CreateHuman):
         self.work_experience = work_experience
 
 
-class Company():
+class Company(object):
     def __init__(self, company_name, work_cost):
         self.name = company_name
         self.work_cost = work_cost
@@ -67,8 +74,8 @@ class Company():
     def choose_workers(self, *workers):
         self.workers = []
         for worker in workers:
-            if worker.salary < self.work_cost and \
-                     not worker.company:
+            if worker.salary < self.work_cost and not \
+                    worker.company:
                 self.workers.append(worker)
                 worker.company_name = self.name
                 worker.company = self
