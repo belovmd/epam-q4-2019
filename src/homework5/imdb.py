@@ -8,18 +8,23 @@ contains histogram for rating, years.txt – contains histogram for years.
 
 
 def read_data(filename):
+    lines_to_skip = 28
+    movies_count = 250
+
     try:
         movies = []
-        with open(filename, 'r') as file:
-            for i in range(28):
+        with open(filename, 'r', encoding="latin_1") as file:
+            for i in range(lines_to_skip):
                 file.readline()
 
-            for i in range(250):
+            for i in range(movies_count):
+                # split line into list where [0] - distribution, [1] - votes,
+                # [2] - rating, [3:-1] - title, [-1] - year
                 movie = [i for i in file.readline().strip().split(' ') if i]
                 movies.append({
                     "title": ' '.join(movie[3:-1]),
                     "rating": float(movie[2]),
-                    "year": int(movie[-1][1:5]),
+                    "year": int(movie[-1][1:5]),  # delete braces in year
                 })
         return movies
     except IOError:
@@ -27,12 +32,15 @@ def read_data(filename):
 
 
 def write_titles(filename, data):
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding="utf_8") as file:
         for movie in data:
             file.write(movie["title"] + '\n')
 
 
 def create_histogram(data, key):
+    """
+    :return: dict where key is name of col and value is height of col
+    """
     histo = {}
     for movie in data:
         histo[movie[key]] = histo.get(movie[key], 0) + 1

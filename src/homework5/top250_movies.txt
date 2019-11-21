@@ -22,9 +22,9 @@ Cidade de Deus
 Se7en
 The Silence of the Lambs
 It's a Wonderful Life
-La vita è bella
+La vita Ã¨ bella
 The Usual Suspects
-Léon
+LÃ©on
 Saving Private Ryan
 Sen to Chihiro no kamikakushi
 Coco
@@ -59,7 +59,7 @@ Hotaru no haka
 Paths of Glory
 Django Unchained
 The Shining
-WALL·E
+WALLÂ·E
 American Beauty
 Mononoke-hime
 The Dark Knight Rises
@@ -80,7 +80,7 @@ M
 Requiem for a Dream
 Kimi no na wa.
 Taare Zameen Par
-Le fabuleux destin d'Amélie Poulain
+Le fabuleux destin d'AmÃ©lie Poulain
 A Clockwork Orange
 Lawrence of Arabia
 Amadeus
@@ -102,16 +102,16 @@ Snatch
 Monty Python and the Holy Grail
 Good Will Hunting
 Jagten
-Per qualche dollaro in più
+Per qualche dollaro in piÃ¹
 Scarface
 L.A. Confidential
 The Apartment
 Metropolis
 Jodaeiye Nader az Simin
-Rashômon
+RashÃ´mon
 Indiana Jones and the Last Crusade
 All About Eve
-Yôjinbô
+YÃ´jinbÃ´
 Babam ve Oglum
 Up
 Batman Begins
@@ -149,7 +149,7 @@ Dunkirk
 The Elephant Man
 V for Vendetta
 The Wolf of Wall Street
-Smultronstället
+SmultronstÃ¤llet
 The General
 Warrior
 Dial M for Murder
@@ -165,7 +165,7 @@ The Thing
 The Big Lebowski
 Finding Nemo
 Andrey Rublev
-Tôkyô monogatari
+TÃ´kyÃ´ monogatari
 Eskiya
 There Will Be Blood
 Cool Hand Luke
@@ -232,7 +232,7 @@ The Bourne Ultimatum
 Groundhog Day
 The Wizard of Oz
 La haine
-8½
+8Â½
 Munna Bhai M.B.B.S.
 Jaws
 The Best Years of Our Lives
@@ -247,4 +247,4 @@ Dog Day Afternoon
 Ah-ga-ssi
 Pirates of the Caribbean: The Curse of the Black Pearl
 PK
-Tenkû no shiro Rapyuta
+TenkÃ» no shiro Rapyuta
