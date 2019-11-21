@@ -11,7 +11,6 @@ def timer(f):
         t0 = time.time()
         res = f(*args, **kwargs)
         t1 = time.time()
-        print("time %f" % (t1 - t0))
         return res
     return wrapper
 
