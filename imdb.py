@@ -39,7 +39,7 @@ def create_vertical_histogram(lst, filename='histogram.txt', counter=True):
     max_key_len = max([len(str(x)) for x in dct.keys()])
 
     histogram_file = open(filename, "w")
-    for row in reversed(range(max_value + counter)):
+    for row in range(max_value + counter)[::-1]:
         for key in sorted(dct.keys()):
             if counter and dct[key] == row:  # write count of "#" on column top
                 symbol = str(dct[key]).center(max_key_len + 1) * counter
