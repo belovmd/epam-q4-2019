@@ -36,6 +36,8 @@ class TestAddToList(unittest.TestCase):
         add_to_list_in_dict(thedict=t_dict, listname='two', element=99)
         self.assertDictEqual(t_dict, {'one': [1, 2], 'two': [99]}, 'Error')
 
+
+class TestIsPalindrome(unittest.TestCase):
     def test_palindrome_true(self):
         p = is_palindrome(input_str='12321')
         self.assertEqual(p, True, 'Error')
