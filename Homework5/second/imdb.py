@@ -58,7 +58,7 @@ def create_histogram(filename, data, key):
     """
     histogram = {}
     for films in data:
-        try: 
+        try:
             histogram[films[key]] += 1
         except KeyError:
             histogram[films[key]] = 1
