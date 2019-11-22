@@ -7,8 +7,10 @@ def get_ranges(lst):
     out_str = ''
     lenght = len(lst)
     for el in range(lenght):
-        if el + 1 < lenght:
-            if lst[el] == lst[el + 1] - 1:
+        next_el = el + 1
+        if next_el < lenght:
+            value_next_el = lst[next_el] - 1
+            if lst[el] == value_next_el:
                 if out_str == '' or out_str[-1] == ',':
                     out_str += str(lst[el]) + '-'
 
