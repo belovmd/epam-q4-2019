@@ -58,7 +58,10 @@ def create_histogram(filename, data, key):
     """
     histogram = {}
     for films in data:
-        histogram[films[key]] = histogram.get(films[key], 0) + 1
+        try: 
+            histogram[films[key]] += 1
+        except KeyError:
+            histogram[films[key]] = 1
     new_key = sorted(histogram.keys())
     with open(filename, "w") as file:
         for films in new_key:
