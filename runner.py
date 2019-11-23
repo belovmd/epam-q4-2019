@@ -15,10 +15,10 @@ generate_numbers() and  count_characters(). Any combination of functions
 can be specified. """
 
 from pytasks import count_characters
-from pytasks import is_palindrome
 from pytasks import fizz_buzz
-from pytasks import generate_numbers
+from pytasks import is_palindrome
 import pytasks
+from pytasks import generate_numbers
 
 
 def runner(*func):
