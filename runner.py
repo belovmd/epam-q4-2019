@@ -16,8 +16,8 @@ can be specified. """
 
 from pytasks import count_characters
 from pytasks import fizz_buzz
-from pytasks import is_palindrome
 import pytasks
+from pytasks import is_palindrome
 from pytasks import generate_numbers
 
 
