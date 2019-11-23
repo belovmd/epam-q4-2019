@@ -1,11 +1,11 @@
 """ Tests for exception.py """
-from exception import add_to_list_in_dict
-from exception import division
-from exception import print_list_element
+from exception_practice import add_to_list_in_dict
+from exception_practice import division
+from exception_practice import print_list_element
 import unittest
 
 
-class TestAddToListInDict(unittest.TestCase):
+class TestExceptionPractice(unittest.TestCase):
     def setUp(self):
         self.dict_ = {'digits': [1]}
 
