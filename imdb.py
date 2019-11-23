@@ -1,3 +1,13 @@
+""" On site IMDB you can find different information about movies.
+Task is process IMDB ratings data stored in text file and create
+histograms. You can find extracted text file in file ./For Homework5/.
+Our application imdb.py can open and read ratings.list file.
+If rating.list file does not exists, script completes with error
+message. Find list of Top250 movies. Extract  titles information.
+Create 3 text files top250_movies.txt – contains titles, ratings.txt –
+contains histogram for rating, years.txt – contains histogram for years.
+Don’t add ratings.list file to PR, but add your created 3 files """
+
 from collections import OrderedDict
 
 
