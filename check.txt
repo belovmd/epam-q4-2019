@@ -1,0 +1,10 @@
+Your purchases:
+1232 m^3 of Sand will cost 18480.
+21 m^3 of Glass will cost 420.
+22 m^3 of Plastic will cost 110.
+0 m^3 of Stone will cost 0.
+0 m^3 of Metal will cost 0.
+0 m^3 of Water will cost 0.
+12 m^3 of Fuel will cost 856.8000000000001.
+
+Total cost: 19866.8
