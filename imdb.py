@@ -13,7 +13,8 @@ def open_file(file_name):
             file.readline()
         for i in range(250):
             movie = [i for i in file.readline().strip().split() if i]
-            list.append({"title": ' '.join(movie[3:-1]), "ratings": float(movie[2]),
+            list.append({"title": ' '.join(movie[3:-1]), 
+                         "ratings": float(movie[2]),
                          "year": int(movie[-1][1:5]), })
 
     with open('top250_movies.txt', 'w') as file:
