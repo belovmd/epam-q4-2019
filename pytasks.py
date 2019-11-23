@@ -20,10 +20,10 @@ def is_palindrome(number=123321):
     return original_number == reversed_number
 
 
-def fizz_buzz(start = 1 , num = 100):
+def fizz_buzz(start=1, num=100):
     result = []
     for i in range(start, num):
-        if not i % 15 :
+        if not i % 15:
             result.append("FizzBuzz")
         elif not i % 3:
             result.append("Fizz")
