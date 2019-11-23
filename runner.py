@@ -14,11 +14,11 @@ runner(‘generate_numbers’, ‘count_characters’) – print results for
 generate_numbers() and  count_characters(). Any combination of functions
 can be specified. """
 
+import pytasks
 from pytasks import count_characters
 from pytasks import fizz_buzz
-import pytasks
-from pytasks import is_palindrome
 from pytasks import generate_numbers
+from pytasks import is_palindrome
 
 
 def runner(*func):
