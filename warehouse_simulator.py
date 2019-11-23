@@ -51,11 +51,11 @@ class Material(Warehouse):
                 self.material_quantity += purchase_quantity
                 print('You purchased {}m^3 of {}. Current quantity is {}/{}. '
                       'You spent {}$.'.format(
-                      purchase_quantity,
-                      self.material_name,
-                      self.material_quantity,
-                      self.material_limit,
-                      purchase_quantity * self.material_price))
+                    purchase_quantity,
+                    self.material_name,
+                    self.material_quantity,
+                    self.material_limit,
+                    purchase_quantity * self.material_price))
             else:
                 print('There will be too much material to store '
                       'at warehouse. Sale some or extend capacity.')
@@ -70,11 +70,11 @@ class Material(Warehouse):
             Warehouse.money += money
             print('You sale {}m^3 of {}. Current quantity is {}/{}. '
                   'You earn {}$.'.format(
-                  sale_quantity,
-                  self.material_name,
-                  self.material_quantity,
-                  self.material_limit,
-                  money))
+                sale_quantity,
+                self.material_name,
+                self.material_quantity,
+                self.material_limit,
+                money))
         else:
             print('There is not enough material to sale. Purchase some.')
 
@@ -84,8 +84,8 @@ class Material(Warehouse):
             Warehouse.money -= extend_value * Warehouse.extend_cost
             print('Capacity extended. Current = {capacity}. '
                   'Spent {money}$.'.format(
-                  capacity=self.material_limit,
-                  money=extend_value * Warehouse.extend_cost))
+                capacity=self.material_limit,
+                money=extend_value * Warehouse.extend_cost))
         else:
             print('Need to sell materials at {sum}$ to extend capacity.'.
                   format(sum=extend_value * Warehouse.extend_cost -
