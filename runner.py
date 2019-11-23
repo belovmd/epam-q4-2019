@@ -18,9 +18,7 @@ def runner(*func):
                 print(method_to_call())
 
 
-
 runner()
 runner('generate_numbers')
 runner('count_characters')
 runner('is_palindrome', 'count_characters', 'fizz_buzz')
-
