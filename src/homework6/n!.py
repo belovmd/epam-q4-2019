@@ -12,11 +12,11 @@ def create_city(max=50):
 
 def generate_visit_order(number, length):
     order = []
-    used = [i for i in range(1, length + 1)]
+    cities = [i for i in range(1, length + 1)]
     for ptr in range(length):
         amount = math.factorial(length - 1 - ptr)
         element = math.floor(number // amount)
-        order.append(used.pop(element))
+        order.append(cities.pop(element))
         number -= element * amount
     return order
 
@@ -37,8 +37,6 @@ def run(*args):
                             visit_order])
             if not res or curr_res < res:
                 res = curr_res
-        if n == 2:
-            res /= 2
         end = time.time()
         print("For {} cities result is {} and time is {} Cities: {}".format(
             n, res, end - start, cities))
