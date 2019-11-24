@@ -13,7 +13,7 @@ class TestHomework7Task1part3(unittest.TestCase):
         ex_dict = {'key1': [1, 2, 3], 'key2': [4]}
         self.assertEqual(add_to_lst(ex_dict, 'new_key', 77)['new_key'], [77])
         self.assertEqual(add_to_lst(ex_dict, 'new_key', 77)['key1'], [1, 2, 3])
-        self.assertEqual(add_to_lst(ex_dict, 'key2', 5)['key2'], [4,5])
+        self.assertEqual(add_to_lst(ex_dict, 'key2', 5)['key2'], [4, 5])
 
 
 class TestPreviousHomeworks(unittest.TestCase):

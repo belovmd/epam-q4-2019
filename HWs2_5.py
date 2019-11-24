@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def finding_palindrome():
     """finding_palindrome
 
