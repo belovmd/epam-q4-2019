@@ -8,20 +8,23 @@ try-except block.
 
 def add_to_list_in_dict(thedict, listname, element):
     try:
-        lst = thedict[listname]
+        try:
+            lst = thedict[listname]
+        except TypeError:
+            raise TypeError("Input correct arguments.")
         print("%s already has %d elements." % (listname, len(lst)))
     except KeyError:
         thedict[listname] = []
         print("Created %s." % listname)
-    else:
-        print("Added %s to %s." % (element, listname))
-    finally:
         thedict[listname].append(element)
+    else:
+        thedict[listname].append(element)
+    finally:
+        print("Added %s to %s." % (element, listname))
+    return thedict
 
 
 if __name__ == '__main__':
     dct = {'a': [1, 2, 3], 'b': [], 'c': ['sss', 'sds']}
     add_to_list_in_dict(dct, 'a', 77)
-    print(dct)
     add_to_list_in_dict(dct, 'x', 12)
-    print(dct)
