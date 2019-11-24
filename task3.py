@@ -1,6 +1,6 @@
 """Cover function from 1.3 with tests."""
-import unittest
 from task1_3 import add_to_list_in_dict
+import unittest
 
 
 class FuncTest(unittest.TestCase):
