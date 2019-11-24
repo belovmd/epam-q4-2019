@@ -1,7 +1,7 @@
+from calculator import Calculator
 from chef import Chef
 from cucumber import Cucumber
 from onion import Onion
-from calculator import Calculator
 from tomato import Tomato
 import unittest
 

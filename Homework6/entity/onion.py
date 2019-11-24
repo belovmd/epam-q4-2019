@@ -10,5 +10,5 @@ class Onion(Product):
         self.color = color
 
     def __str__(self):
-        """ Print all parameters """
+        """Print all parameters """
         return 'Onion:' + self.weight + self.calories + self.color
