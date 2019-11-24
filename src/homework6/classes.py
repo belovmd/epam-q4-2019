@@ -5,7 +5,7 @@ Completed program should print object states, it actions (methods)
 and objects interaction."""
 
 
-class Vehicle:
+class Vehicle(object):
     """Describes vehicle with model, key and size.
 
     Key is unique for each vehicle.
@@ -20,7 +20,7 @@ class Vehicle:
         return self.model
 
 
-class Driver:
+class Driver(object):
     """Describes person who owns vehicle and key for it.
 
     He can buy, sell, park and pick up from parking lot vehicle.
@@ -97,7 +97,7 @@ class Driver:
         print("Vehicle:", self.vehicle)
 
 
-class Parking:
+class Parking(object):
     """Describes place where driver can park his vehicle."""
     def __init__(self, capacity):
         self.vehicles = {}
@@ -107,7 +107,8 @@ class Parking:
         """Park vehicle.
 
         Return False if there is not enough space
-        else return True."""
+        else return True.
+        """
         if vehicle.size > self.free_space:
             return False
 
@@ -119,7 +120,8 @@ class Parking:
         """Pick up vehicle.
 
         Return None if it doesn't contain vehicle with that key
-        else return instance of Vehicle."""
+        else return instance of Vehicle.
+        """
         vehicle = self.vehicles.get(key, None)
         if vehicle:
             del self.vehicles[key]
