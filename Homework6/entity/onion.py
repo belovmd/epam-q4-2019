@@ -2,10 +2,10 @@ from product import Product
 
 
 class Onion(Product):
-    """ Class to create Onion """
+    """Class to create Onion """
 
     def __init__(self, weight, calories, color):
-        """ Initiate our Onion """
+        """Initiate our Onion """
         super().__init__(weight, calories)
         self.color = color
 

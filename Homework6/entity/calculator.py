@@ -1,4 +1,4 @@
-class Calculator:
+class Calculator(object):
     @staticmethod
     def total_weight_salt(chef):
         final_weight = 0

@@ -1,4 +1,4 @@
-class Product:
+class Product(object):
 
     def __init__(self, weight, calories):
         self.weight = weight
