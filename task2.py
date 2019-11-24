@@ -13,7 +13,8 @@ def count_characters(s):
 class TestCountCharacters(unittest.TestCase):
     def test_normal(self):
         res = count_characters('coromilly')
-        self.assertEqual(res, {'c': 1, 'o': 2, 'r': 1, 'm': 1, 'i': 1, 'l': 2, 'y': 1})
+        self.assertEqual(
+            res, {'c': 1, 'o': 2, 'r': 1, 'm': 1, 'i': 1, 'l': 2, 'y': 1})
 
     def test_upper(self):
         self.assertEqual('coromilly'.upper(), 'COROMILLY')
