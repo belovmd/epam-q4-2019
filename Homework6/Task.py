@@ -12,7 +12,7 @@ his own norm in drinking alcohol
 """
 
 
-class Bar:
+class Bar(object):
     earned = 0
     name = "Unknown"
 
@@ -42,7 +42,7 @@ class Bar:
         self.earned += self.menu_prices[drink]
 
 
-class Person:
+class Person(object):
     name = "Unknown"
     cur_bar = None
     money = 0
