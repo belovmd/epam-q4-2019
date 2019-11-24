@@ -106,4 +106,6 @@ venv.bak/
 #additional
 .idea/
 .tox/
+newfile.txt
+ratings.list
 .gitignore/
