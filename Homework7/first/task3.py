@@ -11,7 +11,7 @@ and finally clauses in your try-except block:
 def add_to_list_in_dict(thedict, listname, element):
     try:
         l = thedict[listname]
-    except (KeyError, NoneType):
+    except KeyError:
         thedict[listname] = []
         print("Created %s." % listname)
     else:

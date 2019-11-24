@@ -19,4 +19,3 @@ def add_to_list_in_dict(thedict, listname, element):
     finally:
         thedict[listname].append(element)
         print("Added %s to %s." % (element, listname))
-
