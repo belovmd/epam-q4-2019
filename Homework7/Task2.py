@@ -10,7 +10,7 @@ class TestModule(unittest.TestCase):
         self.assertEqual(tested_module.generate_numbers(2), {1: 1, 2: 4})
 
     def test_count_characters(self):
-        self.assertEqual(tested_module.count_characters('ab'), {'a': 1, 'b': 1})
+        self.assertEqual(tested_module.count_characters('a'), {'a': 1})
 
     def test_list_1(self):
         self.assertEqual(tested_module.list_1[1], 'ac')
