@@ -5,127 +5,133 @@ use cases. Completed program should print object states, it actions (
 methods) and objects interaction."""
 # flake8: noqa:H238
 import random
-import sys
 
 
 class FightUnit:
-    def __init__(self, strength=random.randint(1, 20)):
+    """Unit that has strength and can fight with other ones"""
+
+    def __init__(self, strength=random.randint(1, 20), name="Unit"):
+        """Init unit with strength and name"""
         self.strength = strength
+        self.name = name
 
     def throw_dice(self):
+        """Throw dice to determine luck in fighting"""
         return random.randint(1, self.strength + 1)
 
+    def fight_with_another_unit(self, enemy):
+        """Determine luck and destroy unlucky one"""
+        self_luck, enemy_luck = self.throw_dice(), enemy.throw_dice()
+        if self_luck >= enemy_luck:
+            enemy.is_destroyed()
+        if self_luck <= enemy_luck:
+            self.is_destroyed()
 
-class CrimeFighter(FightUnit):
-    strength = 0
-
-    def fight_gang(self, gang):
-        self_luck, gang_luck = self.throw_dice(), gang.throw_dice()
-        if (self_luck > gang_luck):
-            self.strength -= 1
-            gang.is_eliminated()
-        elif (self_luck == gang_luck):
-            self.strength = 0
-            gang.is_eliminated()
-        else:
-            self.strength = 0
-
-
-class PoliceSquad(CrimeFighter):
-    def fight_gang(self, gang):
-        super().fight_gang(gang)
-        if not self.strength:
-            print("Police squad is destroyed")
-
-
-class Gang(FightUnit):
-    def is_eliminated(self):
+    def is_destroyed(self):
+        """Destroy unit"""
         self.strength = 0
-        print("Gang was eliminated!")
+        print("{} is destroyed.".format(self.name), end=" ")
+
+
+class Batman(FightUnit):
+    """Batman, fight unit that can lost strength, but every day heals"""
+    strength = 40
+
+    def __init__(self):
+        """Create Batman with great strength"""
+        super().__init__(Batman.strength, "Batman")
+
+    def is_destroyed(self):
+        """Batman lost but not defeated"""
+        self.strength = 0
+        print("{} has lost.".format(self.name), end=" ")
+
+    def is_ready_for_fight(self):
+        """Return 1 if strength is positive, else return 0"""
+        return int(self.strength > 0)
+
+    def heal_batman(self):
+        """Heal Batman to initial strength"""
+        self.strength = Batman.strength
+
+    def __rmul__(self, other):
+        """define multiplication by a number"""
+        if other:
+            return self
 
 
 class OrganizedStructure:
-    group_name = ""
-    group_type = FightUnit
-    group_size = 3
-    max_group_number = 10
-    reserve = 30
+    """Structure that has fight units, can count it, restore from reserve"""
+    reserve = 25
 
-    def __init__(self):
-        setattr(self, self.group_name,
-                [self.group_type(self.group_size) for i in
-                 range(random.randint(1, self.max_group_number))])
+    def __init__(self, unit_strength=3, max_units=10, unit_name="Unit"):
+        """Create fight units"""
+        self.unit_strength = unit_strength
+        self.units = [FightUnit(unit_strength, unit_name) for _ in
+                      range(random.randint(1, max_units))]
 
-    def count_groups(self):
-        return len([group for group in getattr(self, self.group_name) if
-                    group.strength > 0])
+    def count_units(self):
+        """Count figth units with nonzero strength"""
+        return len(self.get_units())
 
-    def get_groups(self):
-        return getattr(self, self.group_name)
+    def get_units(self):
+        """Get figth units with nonzero strength"""
+        return [unit for unit in self.units if unit.strength]
 
-    def restore_groups(self):
-        for group in self.get_groups():
-            if self.reserve and group.strength < self.group_size:
+    def restore_units(self):
+        """Restore units from reserve if it's possible"""
+        for unit in self.units:
+            if self.reserve and unit.strength < self.unit_strength:
                 restore_size = min(self.reserve,
-                                   self.group_size - group.strength)
+                                   self.unit_strength - unit.strength)
                 self.reserve -= restore_size
-                group.strength += restore_size
+                unit.strength += restore_size
 
 
 class PoliceDepartment(OrganizedStructure):
-    group_name = "squads"
-    group_type = PoliceSquad
-    group_size = 3
-    max_group_number = 10
+    """Police, can find the strongest unit to send to fight"""
 
-    def find_squad(self):
-        max_strength = max(
-            squad.strength for squad in getattr(self, self.group_name))
+    def find_unit(self):
+        """Find and return the strongest unit. Return None if all were
+        destroyed"""
+        max_strength = max(unit.strength for unit in self.units)
         return None if max_strength == 0 else next(
-            (squad for squad in getattr(self, self.group_name) if
-             squad.strength == max_strength), None)
-
-
-class OCG(OrganizedStructure):
-    group_name = "gangs"
-    group_type = Gang
-    group_size = random.randint(1, 10)
-    max_group_number = 20
-
-
-class Batman(CrimeFighter):
-    def __init__(self):
-        super().__init__(sys.maxsize)
-
-    def fight_gang(self, gang):
-        super().fight_gang(gang)
-        if not self.strength:
-            print("Batman can't destroy gang. Should try another time.")
-            self.__init__()
-        else:
-            print("Batman saves Gotham!")
+            unit for unit in self.units if unit.strength == max_strength)
 
 
 def fight_against_crime():
-    days_in_month = 31
-    ocg, police, batman = OCG(), PoliceDepartment(), Batman()
+    days_in_month = 20
+    ocg = OrganizedStructure(unit_strength=random.randint(1, 20), max_units=20,
+                             unit_name="Criminal group")
+    police, batman = PoliceDepartment(unit_name="Police squad"), Batman()
     for day in range(days_in_month):
-        print("What we have on {} day: {} squads and {} gangs and Batman"
-              .format(day + 1, police.count_groups(), ocg.count_groups()))
-        for gang in ocg.get_groups():
-            while gang.strength:
-                squad = police.find_squad()
-                if squad:
-                    squad.fight_gang(gang)
-                else:
-                    batman.fight_gang(gang)
-            print("Now we have {} squads and {} gangs and Batman"
-                  .format(police.count_groups(), ocg.count_groups()))
-        print("By the end of {} day we have: {} squads and {} gangs and Batman"
-              .format(day + 1, police.count_groups(), ocg.count_groups()))
-        ocg.restore_groups(), police.restore_groups()
-    print("By the end of month we have: {} squads and {} gangs and Batman"
-          .format(police.count_groups(), ocg.count_groups()))
+        print("What we have on {} day: {} squads and {} gangs and {} Batman."
+              .format(day + 1, police.count_units(), ocg.count_units(),
+                      batman.is_ready_for_fight()))
+        for criminal_group in ocg.get_units():
+            # while criminal_group.strength:
+            fighter = police.find_unit() or batman.is_ready_for_fight() * \
+                      batman
+            if fighter:
+                fighter.fight_with_another_unit(criminal_group)
+            else:
+                print("Criminal groups won fight this day.")
+                break
+            print(
+                "Now we have {} squads and {} gangs and {} Batman.".format(
+                    police.count_units(), ocg.count_units(),
+                    batman.is_ready_for_fight()))
+        print("By the end of {} day we have: {} squads and {} gangs and {} "
+              "Batman."
+              .format(day + 1, police.count_units(), ocg.count_units(),
+                      batman.is_ready_for_fight()))
+        ocg.restore_units(), police.restore_units(), batman.heal_batman()
+        if not ocg.count_units():
+            print("All criminal groups were destroyed.")
+            break
+    print("By the end of month we have: {} squads and {} gangs and {} Batman."
+          .format(police.count_units(), ocg.count_units(),
+                  batman.is_ready_for_fight()))
 
 
 fight_against_crime()
