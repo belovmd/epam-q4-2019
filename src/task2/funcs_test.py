@@ -27,7 +27,9 @@ class Test_generate_numbers(unittest.TestCase):
 
     def test_5(self):
         self.assertEqual(len(funcs.generate_numbers(5).keys()), 5)
-        self.assertEqual(funcs.generate_numbers(5), {1: 1, 2: 4, 3: 9, 4: 16, 5: 25})
+        self.assertEqual(
+            funcs.generate_numbers(5),
+            {1: 1, 2: 4, 3: 9, 4: 16, 5: 25})
 
     def test_1(self):
         self.assertEqual(len(funcs.generate_numbers(1).keys()), 1)
