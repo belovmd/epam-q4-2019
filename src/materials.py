@@ -3,6 +3,8 @@ from abc import abstractmethod
 
 
 class Material(ABC):
+    """Abstract class for learning material."""
+
     name = ''
 
     def __init__(self, name):
@@ -14,10 +16,9 @@ class Material(ABC):
 
 
 class Lecture(Material):
-    topic = ''
+    """Representation of lecture."""
 
-    def __init__(self, name):
-        super().__init__(name)
+    topic = ''
 
     def __str__(self):
         return "[Lect]{}:{}".format(
@@ -25,14 +26,15 @@ class Lecture(Material):
         )
 
     def prepare(self, topic):
+        """Prepare a lecture."""
+
         self.topic = topic
 
 
 class Hometask(Material):
-    tasks = []
+    """Representation of hometask."""
 
-    def __init__(self, name):
-        super().__init__(name)
+    tasks = []
 
     def __str__(self):
         return "[Ht]{}, tasks:{}".format(
@@ -40,4 +42,6 @@ class Hometask(Material):
         )
 
     def prepare(self, taskcount):
+        """Prepare a hometask"""
+
         self.tasks = ['task' + str(task) for task in range(taskcount)]
