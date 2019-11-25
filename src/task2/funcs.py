@@ -20,7 +20,8 @@ def generate_numbers(num=20):
     Define a function generate_numbers(number) which returns a dictionary
     where the keys are numbers between 1 and n (both included)
     and the values are square of keys. n – function argument.
-    Default is 20."""
+    Default is 20.
+    """
     result = {el: el**2 for el in range(1, num + 1)}
 
     return result

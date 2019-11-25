@@ -1,5 +1,5 @@
-import unittest
 from func import add_to_list_in_dict
+import unittest
 
 
 class Test_task13(unittest.TestCase):

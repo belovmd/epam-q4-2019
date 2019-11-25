@@ -1,5 +1,5 @@
-import unittest
 import funcs
+import unittest
 
 
 class Test_is_palindrome(unittest.TestCase):
