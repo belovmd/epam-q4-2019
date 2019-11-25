@@ -4,69 +4,71 @@ situation. Objects should contain attributes and methods to simulate
 some use cases. Completed program should print object states, it actions
 (methods) and objects interaction.
     There is aggregation in created classes. Person can visit any bar
-spending his money, some objects can take debt, all classes communicate
-with each other and can count own money. """
+spending his money and can take debt. """
 
 
 class Bar(object):
     def __init__(self, name):
         self.name = name
-        self.income = 0
+        self.visitors = {}
 
-    def visited(self, visitor_money):
-        if visitor_money:
-            print('{}: Thank you!'.format(self.name))
-        else:
-            print('{}: Give us anything!'.format(self.name))
-        self.income += visitor_money
+    def visited(self, person):
+        """ Counts how many times a person visited this bar """
+        self.visitors[person] = self.visitors.get(person, 0) + 1
+        print('{}: {} visited us!'.format(self.name, person.name))
 
-    def total_income(self):
-        print('{}: Today we earned {}$'.format(self.name, self.income))
+    def show_person_visits(self, person):
+        """ Shows how many times a person visited this bar """
+        visits = self.visitors.get(person, 0)
+        str_to_format = '{}: {} visited us {} time(s)'
+        print(str_to_format.format(self.name, person.name, visits))
 
 
 class Person(object):
     def __init__(self, name, money):
         self.name = name
         self.money = money
+        self.debt = 0
 
-    def go_to_bar(self, bar_name, spent_money):
+    def go_to_bar(self, bar, spent_money):
+        """ Person chooses bar to visit and set money he wants to spend.
+
+        If he has not enough money, he borrows it.
+        After that choosen bar's method "visited" is called
+        """
         if spent_money <= self.money:
             self.money -= spent_money
         else:
-            spent_money = self.money
+            borrowed_money = spent_money - self.money
+            self.debt += borrowed_money
             self.money = 0
+            print('{}: I borrowed {}$'.format(self.name, borrowed_money))
         print('{}: I spent {}$'.format(self.name, spent_money))
-        return bar_name.visited(spent_money)
+        return bar.visited(self)
 
     def show_balance(self):
+        """ Shows person's balance """
         print('{}: I have {}$'.format(self.name, self.money))
 
 
 class Deputy(Person):
     def __init__(self, name, money):
+        """ Deputy is always richer twice """
         super().__init__(name, money)
         self.money = money * 2
 
 
 class Teacher(Person):
-    def __init__(self, name, money):
-        super().__init__(name, money)
-        self.debt = 0
+    @property
+    def debt(self):
+        return self._debt
 
-    def take_debt(self, amount):
-        if amount <= 500:
-            self.money += amount
-            self.debt += amount
-            print('{}: I took in debt {}$'.format(self.name, amount))
-        else:
-            print(self.name + ', please, go home!')
-
-    def show_balance(self):
-        real_amount = self.money - self.debt
-        if real_amount:
-            print('{}: My real balance is {}$'.format(self.name, real_amount))
-        else:
-            print('{}: My real debt is {}$'.format(self.name, -real_amount))
+    @debt.setter
+    def debt(self, value):
+        """ Teacher's debt can't be more than 1000$ """
+        if value > 1000:
+            raise ValueError('{}, your debt is too high'.format(self.name))
+        self._debt = value
 
 
 bar_1 = Bar('Best')
@@ -74,12 +76,10 @@ bar_2 = Bar('Hot')
 andrey = Deputy('Andrey', 1000)
 ivan = Teacher('Ivan', 100)
 andrey.go_to_bar(bar_1, 300)
-andrey.go_to_bar(bar_2, 500)
-andrey.show_balance()
-ivan.go_to_bar(bar_1, 100)
-ivan.go_to_bar(bar_2, 0)
-ivan.take_debt(400)
 ivan.go_to_bar(bar_2, 100)
+ivan.go_to_bar(bar_2, 500)
 ivan.show_balance()
-bar_1.total_income()
-bar_2.total_income()
+andrey.show_balance()
+bar_1.show_person_visits(andrey)
+bar_1.show_person_visits(ivan)
+bar_2.show_person_visits(ivan)
