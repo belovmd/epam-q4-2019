@@ -14,8 +14,7 @@ class CreateHuman(object):
         self.surname = surname
         self.salary = randint(1, 15)
         self.money = 0
-        self.company = False
-        self.company_name = False
+        self.company = None
 
 
 class Worker(CreateHuman):
@@ -32,19 +31,14 @@ class Worker(CreateHuman):
               .format(self.name, self.surname, self.salary))
 
     def work(self, hours):
-        if not self.company:
-            money = int(hours * self.salary)
-            self.money += money
-            print('Salary is {0}. I have {1} dollars now.'
-                  .format(money, self.money))
-        else:
-            print('You work in a company')
+        money = int(hours * self.salary)
+        self.money += money
+        print('Salary is {0}. I have {1} dollars now.'
+              .format(money, self.money))
 
     def dismissal(self):
         if self.company:
-            self.company.workers.remove(self)
-            self.company = False
-            self.company_name = False
+            self.company.dismiss_worker(self.name, self.surname)
 
     @property
     def name(self):
@@ -73,11 +67,12 @@ class Company(object):
 
     def choose_workers(self, *workers):
         self.workers = []
+        work_cost = self.work_cost
         for worker in workers:
-            if worker.salary < self.work_cost and not \
-                    worker.company:
+            salary = worker.salary
+            company = worker.company
+            if salary < work_cost and not company:
                 self.workers.append(worker)
-                worker.company_name = self.name
                 worker.company = self
 
     def add_director(self, director):
@@ -103,14 +98,12 @@ class Company(object):
         self.money += money
 
     def show_director(self):
-        if not self.director:
-            return "Company {0} doesn't has a director".format(self.name)
-        else:
-            return 'Director is {0} {1}' \
-                .format(self.director.name, self.director.surname)
+
+        return 'Director is {0} {1}' \
+            .format(self.director.name, self.director.surname)
 
     def dismiss_worker(self, worker_name, worker_surname):
-        for worker in self.worker:
+        for worker in self.workers:
             if worker.name == worker_name and \
                     worker.surname == worker_surname:
                 worker.company = False
@@ -123,22 +116,19 @@ def example():
     worker3 = Worker('Bogdan', 'Tym')
     worker4 = Worker('Sasha', 'Timi')
     director1 = Director('Slava', 'Tom', 2)
-    worker2.work(5)
+    director2 = Director('Vova', 'Zuru', 1)
     company1 = Company('Udi', 6)
-    worker2.work(5)
-    print(company1.show_director())
     company2 = Company('Ralo', 14)
     company1.add_director(director1)
     company1.choose_workers(worker1, worker2, worker3, worker4)
     company2.choose_workers(worker1, worker2, worker3, worker4)
-    worker2.work(5)
+    company2.add_director(director2)
+    company2.show_director()
     company1.show_workers()
     company2.show_workers()
     company1.work(10)
     print(company1.money)
-    print(worker2.company_name)
     worker2.dismissal()
-    print(worker2.company_name)
     worker2.name = 'jamshut'
 
 
