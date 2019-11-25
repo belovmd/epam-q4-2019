@@ -13,12 +13,12 @@ class Bar(object):
         self.visitors = {}
 
     def visited(self, person):
-        """ Counts how many times a person visited this bar """
+        """Counts how many times a person visited this bar """
         self.visitors[person] = self.visitors.get(person, 0) + 1
         print('{}: {} visited us!'.format(self.name, person.name))
 
     def show_person_visits(self, person):
-        """ Shows how many times a person visited this bar """
+        """Shows how many times a person visited this bar """
         visits = self.visitors.get(person, 0)
         str_to_format = '{}: {} visited us {} time(s)'
         print(str_to_format.format(self.name, person.name, visits))
@@ -31,7 +31,7 @@ class Person(object):
         self.debt = 0
 
     def go_to_bar(self, bar, spent_money):
-        """ Person chooses bar to visit and set money he wants to spend.
+        """Person chooses bar to visit and set money he wants to spend.
 
         If he has not enough money, he borrows it.
         After that choosen bar's method "visited" is called
@@ -47,13 +47,13 @@ class Person(object):
         return bar.visited(self)
 
     def show_balance(self):
-        """ Shows person's balance """
+        """Shows person's balance """
         print('{}: I have {}$'.format(self.name, self.money))
 
 
 class Deputy(Person):
     def __init__(self, name, money):
-        """ Deputy is always richer twice """
+        """Deputy is always richer twice """
         super().__init__(name, money)
         self.money = money * 2
 
@@ -65,7 +65,7 @@ class Teacher(Person):
 
     @debt.setter
     def debt(self, value):
-        """ Teacher's debt can't be more than 1000$ """
+        """Teacher's debt can't be more than 1000$ """
         if value > 1000:
             raise ValueError('{}, your debt is too high'.format(self.name))
         self._debt = value
