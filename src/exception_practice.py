@@ -35,15 +35,15 @@ def add_to_list_in_dict(dict_, list_name, element):
         dict_[list_name] = []
     else:
         print('%s already has %d elements.' % (list_name, len(l)))
-    finally:
-        dict_[list_name].append(element)
-        print('Added %s to %s' % (element, list_name))
-        return dict_
+
+    dict_[list_name].append(element)
+    print('Added %s to %s' % (element, list_name))
+    return dict_
 
 
 if __name__ == '__main__':
     print(division(5, 0))
-    print(print_list_element([1, 2, 5, 6, 7], 10))
+    print_list_element([1, 2, 5, 6, 7], 10)
     dct = {'digits': [digit for digit in range(5)]}
     add_to_list_in_dict(dct, 'digits', 10)
-    add_to_list_in_dict(dct, 'digit', 10)
+    print(add_to_list_in_dict(dct, 'digit', 10))
