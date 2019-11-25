@@ -47,6 +47,5 @@ def add_to_list_in_dict(thedict, listname, element):
         print("Created %s." % listname)
     else:
         print("%s already has %d elements." % (listname, len(ll)))
-    finally:
-        thedict[listname].append(element)
-        print("Added %s to %s." % (element, listname))
+    thedict[listname].append(element)
+    print("Added %s to %s." % (element, listname))

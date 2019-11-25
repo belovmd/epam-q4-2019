@@ -4,12 +4,13 @@ import unittest
 
 
 def add_to_list_in_dict(thedict, listname, element):
-    if listname in thedict:
+    try:
         ll = thedict[listname]
-        print("%s already has %d elements." % (listname, len(ll)))
-    else:
+    except KeyError:
         thedict[listname] = []
         print("Created %s." % listname)
+    else:
+        print("%s already has %d elements." % (listname, len(ll)))
     thedict[listname].append(element)
     print("Added %s to %s." % (element, listname))
     return thedict
