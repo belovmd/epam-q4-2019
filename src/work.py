@@ -9,7 +9,7 @@ from random import randint
 
 
 class CreateHuman(object):
-    def create_human(self, name, surname):
+    def __init__(self, name, surname):
         self.name = name
         self.surname = surname
         self.salary = randint(1, 15)
@@ -18,9 +18,6 @@ class CreateHuman(object):
 
 
 class Worker(CreateHuman):
-
-    def __init__(self, name, surname):
-        super().create_human(name, surname)
 
     def raise_salary(self, allowance):
         self.salary += allowance
@@ -54,7 +51,7 @@ class Worker(CreateHuman):
 
 class Director(CreateHuman):
     def __init__(self, name, surname, work_experience):
-        super().create_human(name, surname)
+        super().__init__(name, surname)
         self.work_experience = work_experience
 
 
