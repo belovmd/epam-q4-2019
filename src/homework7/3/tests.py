@@ -8,22 +8,41 @@ sys.path.insert(1, "../1")
 
 
 class TestRunner(unittest.TestCase):
-    def test_run(self):
-        months = {1: ["January"], 3: ["March"], 4: ["April"], 5: ["May"],
-                  6: ["June"], 7: ["July"], 8: ["August"], 9: ["September"],
-                  10: ["October"], 11: ["November"], 12: ["December"]}
+    def test_empty_dict(self):
+        months = {}
         output = StringIO()
         with redirect_stdout(output):
-            add_to_list_in_dict(months, 3, "M?rz")
-            add_to_list_in_dict(months, 2, "February")
-            add_to_list_in_dict(months, 2, "Februar")
+            add_to_list_in_dict(months, 1, "January")
             self.assertEqual(output.getvalue(),
-                             "3 already has 1 elements.\n" +
-                             "Added M?rz to 3.\n" +
+                             "Created 1.\n" +
+                             "Added January to 1.\n")
+
+    def test_add_value(self):
+        months = {1: ["January"]}
+        output = StringIO()
+        with redirect_stdout(output):
+            add_to_list_in_dict(months, 1, "Janvier")
+            self.assertEqual(output.getvalue(),
+                             "1 already has 1 elements.\n" +
+                             "Added Janvier to 1.\n")
+
+    def test_add_key(self):
+        months = {1: ["January", "Janvier"]}
+        output = StringIO()
+        with redirect_stdout(output):
+            add_to_list_in_dict(months, 2, "February")
+            self.assertEqual(output.getvalue(),
                              "Created 2.\n" +
-                             "Added February to 2.\n" +
-                             "2 already has 1 elements.\n" +
-                             "Added Februar to 2.\n")
+                             "Added February to 2.\n")
+
+    def test_add_duplicate_value(self):
+        months = {1: ["January", "Janvier"], 2: ["February"]}
+        output = StringIO()
+        with redirect_stdout(output):
+            add_to_list_in_dict(months, 1, "January")
+            self.assertEqual(output.getvalue(),
+                             "1 already has 2 elements.\n" +
+                             "Added January to 1.\n")
 
 
 if __name__ == '__main__':
