@@ -26,14 +26,15 @@ class TestPrintListElement(unittest.TestCase):
         self.assertEqual(print_list_element(self.list_, 0), 1)
 
     def test_with_index_error(self):
-        self.assertEqual(print_list_element(self.list_, 20),
-                         "list index out of range")
+        self.assertIsNone(print_list_element(self.list_, 20))
 
 
 class TestDivision(unittest.TestCase):
-    def test_division(self):
+    def test_without_division_error(self):
         self.assertEqual(division(10, 2), 5.0)
-        self.assertEqual(division(5, 0), "division by zero")
+
+    def test_with_division_error(self):
+        self.assertIsNone(division(5, 0))
 
 
 if __name__ == '__main__':

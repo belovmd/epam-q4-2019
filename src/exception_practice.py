@@ -6,7 +6,7 @@ def division(first_digit, second_digit):
     try:
         return first_digit / second_digit
     except ZeroDivisionError as exc:
-        return str(exc)
+        print(exc)
 
 
 """Add a try-except statement to the body of this function which handles a
@@ -18,7 +18,7 @@ def print_list_element(list_, index):
     try:
         return list_[index]
     except IndexError as exc:
-        return str(exc)
+        print(exc)
 
 
 """This function adds an element to a list inside a dict of lists. Rewrite
