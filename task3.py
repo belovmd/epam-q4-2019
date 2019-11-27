@@ -4,17 +4,15 @@ import unittest
 
 
 class FuncTest(unittest.TestCase):
-    def setUp(self):
+    def test_if_exists(self):
         self.dct = {'a': [1, 2], 'b': ['sx', 12]}
-        self.dct1 = {'a': [1], 'b': [2]}
         self.res = add_to_list_in_dict(self.dct, 'a', 'df')
-        self.res1 = add_to_list_in_dict(self.dct1, 'c', 3)
+        self.assertEqual(self.res, self.dct)
 
-    def test_exixts(self):
-        self.assertEqual(self.res, {'a': [1, 2, 'df'], 'b': ['sx', 12]})
-
-    def test_not_exists(self):
-        self.assertEqual(self.res1, {'a': [1], 'b': [2], 'c': [3]})
+    def test_if_not_exists(self):
+        self.dct = {'a': [1], 'b': [2]}
+        self.res = add_to_list_in_dict(self.dct, 'c', 3)
+        self.assertEqual(self.res, self.dct)
 
 
 if __name__ == '__main__':
