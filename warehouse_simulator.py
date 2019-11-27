@@ -128,8 +128,8 @@ class Calculator(Warehouse):
                 mater=material,
                 price=Warehouse.price[material] * amount)
         with open('check.txt', 'w') as check:
-            check.write(purchases + '\n' + 'Total cost: '
-                        + str(summary) + '$')
+            check.write(purchases + '\n' + 'Total cost: ' +
+                        str(summary) + '$')
         print('\n' + purchases)
         print('Total cost: ', summary, '$')
 
