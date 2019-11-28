@@ -28,10 +28,9 @@ class Bar(object):
                      "vodka": 50,
                      "whiskey": 50}
 
-    # if arg = 0 - set default value
-    def __init__(self, name, menu_am, menu_pr):
-        if name:
-            self.name = name
+    def __init__(self, name=name, menu_am=None,
+                 menu_pr=None):
+        self.name = name
         if menu_am:
             self.menu_amount = menu_am
         if menu_pr:
@@ -53,29 +52,27 @@ class Person(object):
                         "overdose": 100}
     done = False
 
-    # if arg = 0 - set default value
-    def __init__(self, name, money, cond_stages, condition):
-        if name:
-            self.name = name
-        if money:
-            self.money = money
+    def __init__(self, name=name, money=money,
+                 cond_stages=None, condition=condition):
+        self.name = name
+        self.money = money
+        self.condition = condition
         if cond_stages:
             self.condition_stages = cond_stages
-        if condition:
-            self.condition = condition
 
     def check_condition(self):
         if self.condition >= self.condition_stages["overdose"]:
             self.done = True
-            return self.name + " fell asleep"
-        if self.condition >= self.condition_stages["stop"]:
-            return self.name + " drank too much"
-        if self.condition >= self.condition_stages["enough"]:
-            return self.name + " is drunk"
-        if self.condition >= self.condition_stages["almost_ok"]:
-            return "maybe " + self.name + " should buy more"
+            condition = self.name + " fell asleep"
+        elif self.condition >= self.condition_stages["stop"]:
+            condition = self.name + " drank too much"
+        elif self.condition >= self.condition_stages["enough"]:
+            condition = self.name + " is drunk"
+        elif self.condition >= self.condition_stages["almost_ok"]:
+            condition = "maybe " + self.name + " should buy more"
         else:
-            return self.name + " is sober"
+            condition = self.name + " is sober"
+        return condition
 
     def go_to_bar(self, bar):
         self.cur_bar = bar
@@ -88,7 +85,6 @@ class Person(object):
         if self.money <= 0:
             print("{} can't drink - he(she) has no money left \n"
                   .format(self.name))
-
             return
         if drink not in self.cur_bar.menu_amount.keys():
             print("There is no {} in {}"
@@ -115,8 +111,8 @@ superman_stages = {"almost_ok": 10000,
                    "stop": 10000,
                    "overdose": 1000}
 
-person1 = Person("Alex", 100, 0, 0)
-person2 = Person("Dimon", 20, 0, 0)
+person1 = Person("Alex", 100, {}, 0)
+person2 = Person("Dimon", 20, {}, 0)
 superman = Person("Super man", 1000, superman_stages, 0)
 
 bar1 = Bar("Kafedra", 0, 0)
