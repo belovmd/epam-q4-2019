@@ -99,39 +99,40 @@ class PoliceDepartment(OrganizedStructure):
             unit for unit in self.units if unit.strength == max_strength)
 
 
+def log(message, *args):
+    print(message.format(*args))
+
+
 def fight_against_crime():
     days_in_month = 20
     ocg = OrganizedStructure(unit_strength=random.randint(1, 20), max_units=20,
                              unit_name="Criminal group")
     police, batman = PoliceDepartment(unit_name="Police squad"), Batman()
     for day in range(days_in_month):
-        print("What we have on {} day: {} squads and {} gangs and {} Batman."
-              .format(day + 1, police.count_units(), ocg.count_units(),
-                      batman.is_ready_for_fight()))
+        log("What we have on {} day: {} squads and {} gangs and {} Batman.",
+            day + 1, police.count_units(), ocg.count_units(),
+            batman.is_ready_for_fight())
         for criminal_group in ocg.get_units():
-            # while criminal_group.strength:
             fighter = police.find_unit() or batman.is_ready_for_fight() * \
                       batman
             if fighter:
                 fighter.fight_with_another_unit(criminal_group)
             else:
-                print("Criminal groups won fight this day.")
+                log("Criminal groups won fight this day.")
                 break
-            print(
-                "Now we have {} squads and {} gangs and {} Batman.".format(
-                    police.count_units(), ocg.count_units(),
-                    batman.is_ready_for_fight()))
-        print("By the end of {} day we have: {} squads and {} gangs and {} "
-              "Batman."
-              .format(day + 1, police.count_units(), ocg.count_units(),
-                      batman.is_ready_for_fight()))
+            log("Now we have {} squads and {} gangs and {} Batman.",
+                police.count_units(), ocg.count_units(),
+                batman.is_ready_for_fight())
+        log("By the end of {} day we have: {} squads and {} gangs and {} "
+            "Batman.", day + 1, police.count_units(), ocg.count_units(),
+            batman.is_ready_for_fight())
         ocg.restore_units(), police.restore_units(), batman.heal_batman()
         if not ocg.count_units():
-            print("All criminal groups were destroyed.")
+            log("All criminal groups were destroyed.")
             break
-    print("By the end of month we have: {} squads and {} gangs and {} Batman."
-          .format(police.count_units(), ocg.count_units(),
-                  batman.is_ready_for_fight()))
+    log("By the end of month we have: {} squads and {} gangs and {} Batman.",
+        police.count_units(), ocg.count_units(),
+        batman.is_ready_for_fight())
 
 
 fight_against_crime()
