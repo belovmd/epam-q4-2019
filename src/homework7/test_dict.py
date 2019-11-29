@@ -2,6 +2,7 @@
 
 from exception_practice import add_to_list_in_dict
 from io import StringIO
+from contextlib import redirect_stdout
 import sys
 import unittest
 
@@ -12,8 +13,9 @@ class TestDict(unittest.TestCase):
         dct = {}
 
         out = StringIO()
-        sys.stdout = out
-        add_to_list_in_dict(dct, "list1", 10)
+        with redirect_stdout(out):
+            add_to_list_in_dict(dct, "list1", 10)
+
         self.assertEqual(dct, {"list1": [10]})
         self.assertEqual(out.getvalue(),
                          "Created list1.\n"
@@ -23,8 +25,9 @@ class TestDict(unittest.TestCase):
         dct = {"list1": [10]}
 
         out = StringIO()
-        sys.stdout = out
-        add_to_list_in_dict(dct, "list1", 20)
+        with redirect_stdout(out):
+            add_to_list_in_dict(dct, "list1", 20)
+
         self.assertEqual(dct, {"list1": [10, 20]})
         self.assertEqual(out.getvalue(),
                          "list1 already has 1 elements.\n"

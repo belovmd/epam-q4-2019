@@ -33,6 +33,8 @@ def add_to_list_in_dict(thedict, listname, element):
         print("Created %s." % listname)
     else:
         print("%s already has %d elements." % (listname, len(l)))
+    # we need finally here because task has this line:
+    # "Include else and finally clauses in your try-except block"
     finally:
         thedict[listname].append(element)
         print("Added %s to %s." % (element, listname))
