@@ -22,87 +22,93 @@ class Bar(object):
 
 
 class ManInBar(object):
-    def __init__(self, name):
+
+    ETHANOL = 0
+    DANGER_LEVEL = 'В ПОРЯДКЕ'
+
+    def __init__(self, name, money, card_limit):
         self.name = name
-        self.money = 100
-        self.ethanol = 0
-        self.danger_level = 'OK'
-        self.card_limit = 1
+        self.money = money
+        self.card_limit = card_limit
 
     def drink(self, type_of_drink, place):
-        if self.danger_level == 'DROP DEAD':
-            print('No more tonight, wait until tomorrow')
-        else:
-            if type_of_drink == 'vodka':
-                if self.money - place.vodka_price >= 0:
-                    self.money -= place.vodka_price
-                    self.ethanol += 0.04
-                else:
-                    print('Not enough funds')
-            elif type_of_drink == 'beer':
-                if self.money - place.beer_price >= 0:
-                    self.money -= place.beer_price
-                    self.ethanol += 0.025
-                else:
-                    print('Not enough funds')
-            elif type_of_drink == 'wine':
-                if self.money - place.wine_price >= 0:
-                    self.money -= place.wine_price
-                    self.ethanol += 0.03
-                else:
-                    print('Not enough funds')
+        if self.DANGER_LEVEL == 'БЕЗ ЧУВСТВ':
+            print('Хватит на сегодня, подожди завтра')
+            return
+
+        if type_of_drink == 'vodka':
+            if self.money - place.vodka_price >= 0:
+                self.money -= place.vodka_price
+                self.ETHANOL += 0.04
             else:
-                print('No such drinks in our place')
-        if self.ethanol >= 0.15:
-            self.danger_level = 'DROP DEAD'
-        elif self.ethanol >= 0.07:
-            self.danger_level = 'DRUNK'
+                print('Недостаточно средств')
+                return
+        elif type_of_drink == 'beer':
+            if self.money - place.beer_price >= 0:
+                self.money -= place.beer_price
+                self.ETHANOL += 0.025
+            else:
+                print('Недостаточно средств')
+                return
+        elif type_of_drink == 'wine':
+            if self.money - place.wine_price >= 0:
+                self.money -= place.wine_price
+                self.ETHANOL += 0.03
+            else:
+                print('Недостаточно средств')
+                return
+        else:
+            print('Такого у нас не наливают')
+
+        if self.ETHANOL >= 0.15:
+            self.DANGER_LEVEL = 'БЕЗ ЧУВСТВ'
+        elif self.ETHANOL >= 0.07:
+            self.DANGER_LEVEL = 'ПЬЯН'
 
     def info(self):
         print('И вот перед нами', self.name)
         print('У него в кармане', self.money)
-        print('Уровень этанола в крови', round(self.ethanol, 3))
-        print('Состояние -', self.danger_level)
+        print('Уровень этанола в крови', round(self.ETHANOL, 3))
+        print('Состояние -', self.DANGER_LEVEL)
 
     def borrow(self, friend, ammount):
-        if self.danger_level == 'DROP DEAD':
-            print('Sorry, you cant take an action, wait until tomorrow')
+        if self.DANGER_LEVEL == 'БЕЗ ЧУВСТВ':
+            print('Не в состоянии двинуться')
         else:
             if isinstance(friend, ManInBar):
-                if friend.money - ammount > 0:
+                if friend.money - ammount >= friend.money / 2:
                     self.money += ammount
                     friend.money -= ammount
                 else:
-                    print(friend.name, 'said: "Maaan, its too much')
+                    print(friend.name, 'отвечает: "Чувак, у меня столько нет"')
 
-    def cash(self):
-        if self.card_limit == 1:
-            self.money += 50
-            self.card_limit = 0
+    def cash(self, ammount):
+        if self.card_limit - ammount >= 0:
+            self.money += ammount
+            self.card_limit -= ammount
         else:
-            print('Out of money for tonight, wait until tomorrow')
+            print('На вашей карте закончились средства')
 
     def tomorrow(self):
-        self.ethanol = 0.02
-        self.danger_level = 'OK'
-        self.card_limit = 1
+        self.ETHANOL = 0.02
+        self.DANGER_LEVEL = 'В ПОРЯДКЕ'
 
 
 oyster = Bar('Blue Oyster Bar', 10, 15, 20)
 zyba = Bar('Zybitskaya Luxury Place', 20, 25, 40)
 oyster.menu()
 zyba.menu()
-kolya = ManInBar('Николай')
+kolya = ManInBar('Николай', 100, 50)
 kolya.drink('wine', zyba)
 kolya.info()
 kolya.drink('wine', zyba)
 kolya.info()
 kolya.drink('beer', zyba)
-kolya.cash()
+kolya.cash(30)
 kolya.info()
 kolya.drink('beer', zyba)
 kolya.drink('beer', zyba)
-maxim = ManInBar('Максим')
+maxim = ManInBar('Максим', 200, 100)
 maxim.info()
 maxim.drink('beer', oyster)
 maxim.drink('beer', oyster)
@@ -110,7 +116,7 @@ maxim.drink('beer', oyster)
 maxim.drink('beer', oyster)
 maxim.info()
 # kolya meets maxim in blue oyster bar
-kolya.borrow(maxim, 50)
+kolya.borrow(maxim, 150)
 kolya.borrow(maxim, 30)
 kolya.info()
 maxim.info()
