@@ -15,6 +15,7 @@ class Vehicle(object):
         self.model = model
         self.size = size
         self.key = id(self)
+        self.parked = False
 
     def __str__(self):
         return self.model
@@ -23,144 +24,120 @@ class Vehicle(object):
 class Driver(object):
     """Describes person who owns vehicle and key for it.
 
-    He can buy, sell, park and pick up from parking lot vehicle.
+    He can buy, sell, park and pick up vehicle from parking lot.
     """
-    def __init__(self, name, vehicle=None):
+    def __init__(self, name, *vehicles):
         self.name = name
-        self.vehicle = vehicle
-        if vehicle:
-            self.key = vehicle.key
+        if vehicles:
+            self.vehicles = {vehicle.key: vehicle for vehicle in vehicles}
         else:
-            self.key = None
+            self.vehicles = {}
 
     def buy_vehicle(self, vehicle):
-        """Buy vehicle.
+        self.vehicles[vehicle.key] = vehicle
+        print("{} bought {}".format(self.name, vehicle))
 
-        Driver won't be able to buy a new vehicle until he sells his.
-        """
-        if self.key:
-            print(self.name, "already has vehicle.".format(self.name))
-        else:
-            self.vehicle = vehicle
-            self.key = vehicle.key
-            print("{} bought {}".format(self.name, vehicle))
-
-    def sell_vehicle(self):
+    def sell_vehicle(self, key):
         """Sell vehicle.
 
         Driver won't be able to sell his vehicle
         until it is in the parking lot.
         """
-        if self.vehicle:
-            self.vehicle = None
-            self.key = None
-            print("{} sold {}".format(self.name, self.vehicle))
-        elif self.key:
+        vehicle = self.vehicles.get(key, None)
+        if not vehicle:
+            print(self.name, "has no vehicle with this key.")
+        elif vehicle.parked:
             print(self.name, "can't sell vehicle, it is in the parking lot.")
         else:
-            print(self.name, "has no vehicle.")
+            del self.vehicles[key]
+            print("{} sold {}".format(self.name, vehicle))
 
-    def park_vehicle(self, parking):
+    def park_vehicle(self, parking, key):
         """Park vehicle int the parking lot.
 
         Driver can't park vehicle if parking has not enough space.
         """
-        if not self.key:
-            print(self.name, "has no vehicle.")
-        elif not self.vehicle:
+        vehicle = self.vehicles.get(key, None)
+        if not vehicle:
+            print(self.name, "has no vehicle with this key.")
+        elif vehicle.parked:
             print(self.name, "already has parked vehicle.")
         else:
-            success = parking.park(self.vehicle)
-            if success:
-                print("{} parked {}.".format(self.name, self.vehicle))
-                self.vehicle = None
+            parking.park(vehicle)
+            if vehicle.parked:
+                print("{} parked {}.".format(self.name, vehicle))
             else:
                 print("Parking has not enough space.")
 
-    def pick_up_vehicle(self, parking):
+    def pick_up_vehicle(self, parking, key):
         """Pick up vehicle from the parking lot."""
-        if self.vehicle:
+        vehicle = self.vehicles.get(key, None)
+        if not vehicle:
+            print(self.name, "has no vehicle with this key.")
+        elif not vehicle.parked:
             print(self.name, "didn't park his vehicle.")
-        elif not self.key:
-            print(self.name, "has no vehicle.")
         else:
-            self.vehicle = parking.pick_up(self.key)
-            if not self.vehicle:
-                print("In parking there is no vehicle belongs to", self.name)
+            parking.pick_up(vehicle)
+            if vehicle.parked:
+                print("In parking there is no vehicle with this key.")
             else:
-                print("{} picked up {}".format(self.name, self.vehicle))
+                print("{} picked up {}".format(self.name, vehicle))
 
     def print_info(self):
         """Display info about driver."""
         print("Driver:", self.name)
-        print("Key:", self.key)
-        print("Vehicle:", self.vehicle)
+        print("Vehicles:")
+        [print(vehicle) for vehicle in self.vehicles.values()]
 
 
 class Parking(object):
     """Describes place where driver can park his vehicle."""
     def __init__(self, capacity):
-        self.vehicles = {}
+        self.keys = set()
         self.free_space = capacity
 
     def park(self, vehicle):
-        """Park vehicle.
-
-        Return False if there is not enough space
-        else return True.
-        """
         if vehicle.size > self.free_space:
-            return False
+            return
 
-        self.vehicles[vehicle.key] = vehicle
+        vehicle.parked = True
+        self.keys.add(vehicle.key)
         self.free_space -= vehicle.size
-        return True
 
-    def pick_up(self, key):
-        """Pick up vehicle.
-
-        Return None if it doesn't contain vehicle with that key
-        else return instance of Vehicle.
-        """
-        vehicle = self.vehicles.get(key, None)
-        if vehicle:
-            del self.vehicles[key]
+    def pick_up(self, vehicle):
+        if vehicle.key in self.keys:
+            vehicle.parked = False
             self.free_space += vehicle.size
-        return vehicle
+            self.keys.remove(vehicle.key)
 
     def print_info(self):
         """Display info about parking."""
         print("Free space in parking:", self.free_space)
-        print("Vehicles in parking:")
-        for vehicle in self.vehicles.values():
-            print(vehicle)
+        print("Count of vehicles in parking:", len(self.keys))
 
 
 if __name__ == "__main__":
     parking = Parking(100)
 
-    maxim = Driver("Maxim", Vehicle("Bugatti La Voiture Noire", 10))
+    bugatti = Vehicle("Bugatti La Voiture Noire", 10)
+    maxim = Driver("Maxim", bugatti)
     maxim.print_info()
+    maxim.park_vehicle(parking, bugatti.key)
 
-    maxim.park_vehicle(parking)
-    maxim.print_info()
-
-    artem = Driver("Artemiy", Vehicle("Aist Bicycle", 1))
-    artem.park_vehicle(parking)
+    aist = Vehicle("Aist Bicycle", 1)
+    artem = Driver("Artemiy", aist)
+    artem.park_vehicle(parking, aist.key)
     parking.print_info()
-    artem.sell_vehicle()
+    artem.sell_vehicle(aist.key)
 
-    veh = Vehicle("BelAZ", 100)
-
-    maxim.buy_vehicle(veh)
-
+    bel = Vehicle("BelAZ", 100)
     nazar = Driver("Nazar")
-    nazar.park_vehicle(parking)
-    nazar.buy_vehicle(veh)
-    nazar.park_vehicle(parking)
+    nazar.park_vehicle(parking, bel.key)
+    nazar.buy_vehicle(bel)
+    nazar.park_vehicle(parking, bel.key)
 
-    maxim.pick_up_vehicle(parking)
-    artem.pick_up_vehicle(parking)
+    maxim.pick_up_vehicle(parking, bugatti.key)
+    artem.pick_up_vehicle(parking, aist.key)
 
-    nazar.park_vehicle(parking)
-    artem.pick_up_vehicle(parking)
+    nazar.park_vehicle(parking, bel.key)
+    artem.pick_up_vehicle(parking, aist.key)
