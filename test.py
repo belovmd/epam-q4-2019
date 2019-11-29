@@ -9,4 +9,3 @@ class TestMetods(unittest.TestCase):
 
     def test_2(self):
         self.assertEqual(palindrome(12321), True)
-
