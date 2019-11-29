@@ -1,7 +1,7 @@
 """Cover function from 1.3 with tests."""
 
-from exception_practice import add_to_list_in_dict
 from contextlib import redirect_stdout
+from exception_practice import add_to_list_in_dict
 from io import StringIO
 import unittest
 
