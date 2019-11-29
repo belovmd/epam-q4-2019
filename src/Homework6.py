@@ -8,13 +8,17 @@ it actions (methods) and objects interaction.
 
 
 class Bar(object):
+
+    """Бары: ассортимент и цены"""
     def __init__(self, name, vodka_price, beer_price, wine_price):
+        """Создание бара"""
         self.name = name
         self.vodka_price = vodka_price
         self.beer_price = beer_price
         self.wine_price = wine_price
 
     def menu(self):
+        """Информация о баре"""
         print('Бар', self.name)
         print('Водка', self.vodka_price)
         print('Пиво', self.beer_price)
@@ -23,15 +27,18 @@ class Bar(object):
 
 class ManInBar(object):
 
+    """Люди"""
     ETHANOL = 0
     DANGER_LEVEL = 'В ПОРЯДКЕ'
 
     def __init__(self, name, money, card_limit):
+        """Создаем человека, задаем имя, деньги и лимит по карте"""
         self.name = name
         self.money = money
         self.card_limit = card_limit
 
     def drink(self, type_of_drink, place):
+        """Симулируем покупку и употребление человеком алкоголя"""
         if self.DANGER_LEVEL == 'БЕЗ ЧУВСТВ':
             print('Хватит на сегодня, подожди завтра')
             return
@@ -66,12 +73,14 @@ class ManInBar(object):
             self.DANGER_LEVEL = 'ПЬЯН'
 
     def info(self):
+        """Информация о текущем состоянии человека"""
         print('И вот перед нами', self.name)
         print('У него в кармане', self.money)
         print('Уровень этанола в крови', round(self.ETHANOL, 3))
         print('Состояние -', self.DANGER_LEVEL)
 
     def borrow(self, friend, ammount):
+        """Симулируем заём денег у друга, можно взять не больше половины"""
         if self.DANGER_LEVEL == 'БЕЗ ЧУВСТВ':
             print('Не в состоянии двинуться')
         else:
@@ -83,6 +92,7 @@ class ManInBar(object):
                     print(friend.name, 'отвечает: "Чувак, у меня столько нет"')
 
     def cash(self, ammount):
+        """Симулируем снятие денег с карты"""
         if self.card_limit - ammount >= 0:
             self.money += ammount
             self.card_limit -= ammount
@@ -90,6 +100,7 @@ class ManInBar(object):
             print('На вашей карте закончились средства')
 
     def tomorrow(self):
+        """Наступление дивного нового завтра для человека"""
         self.ETHANOL = 0.02
         self.DANGER_LEVEL = 'В ПОРЯДКЕ'
 
