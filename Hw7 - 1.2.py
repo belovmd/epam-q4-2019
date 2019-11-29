@@ -3,6 +3,7 @@ of this function which handles a possible IndexError,
 which could occur if the index provided exceeds
 the length of the list"""
 
+
 def print_list_element(thelist, index):
     try:
         print(thelist[index])
