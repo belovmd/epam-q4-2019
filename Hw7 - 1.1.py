@@ -4,6 +4,7 @@ and use try/except to catch
 the DevisionError exception.
 """
 
+
 def devisionError():
     try:
         return 5 / 0
