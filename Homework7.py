@@ -7,6 +7,7 @@ whether it does. Include else and finally
 clauses in your try-except block:
 """
 
+
 def add_to_list_in_dict(thedict, listname, element):
     try:
         l = thedict[listname]
@@ -21,5 +22,3 @@ def add_to_list_in_dict(thedict, listname, element):
         print("Added %s to %s." % (element, listname))
 
 dict1 = {1: [556]}
-
-
