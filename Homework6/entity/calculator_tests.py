@@ -18,7 +18,7 @@ class CalculatorTest(unittest.TestCase):
     chef1 = Chef("Raf", ingridients1)
     chef2 = None
     chef3 = Chef("Vasil", ingridients2)
-
+    print(chef1)
     def test_total_weight_salt1_is_35(self):
         exp_result = 35
         result = Calculator.total_weight_salt(self.chef1)
