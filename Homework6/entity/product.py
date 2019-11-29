@@ -8,4 +8,4 @@ class Product(object):
 
     def __str__(self):
         """Print all parameters """
-        return 'Weight:' + self.weight + 'Calories:' + self.calories
+        return 'Weight:' + str(self.weight) + 'Calories:' + str(self.calories)
