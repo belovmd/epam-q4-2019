@@ -14,4 +14,4 @@ class Chef(object):
 
     def __str__(self):
         """Print all parameters """
-        return 'Chef:' + self.name + self.salt
+        return 'Chef:' + str(self.name) + str(self.salt)

@@ -1,6 +1,8 @@
 class Calculator(object):
+    """The class stores the main business logic of the program"""
     @staticmethod
     def total_weight_salt(chef):
+        """Counts total weight of salad"""
         final_weight = 0
 
         if not chef:
@@ -14,6 +16,7 @@ class Calculator(object):
 
     @staticmethod
     def total_calories_salt(chef):
+        """Counts total calories of salad"""
         final_calories = 0
 
         if not chef:

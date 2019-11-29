@@ -11,4 +11,4 @@ class Onion(Product):
 
     def __str__(self):
         """Print all parameters """
-        return 'Onion:' + self.weight + self.calories + self.color
+        return 'Onion:' + str(self.weight) + str(self.calories) + self.color

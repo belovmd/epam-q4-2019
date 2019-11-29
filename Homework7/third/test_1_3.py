@@ -1,4 +1,4 @@
-from task3 import add_to_list_in_dict
+from first.task3 import add_to_list_in_dict
 import unittest
 
 
