@@ -9,4 +9,4 @@ def print_list_element(thelist, index):
     except IndexError as err:
         print("KeyError")
 
-print_list_element((1,2,3,4,5), 8)
+print_list_element((1, 2, 3, 4, 5), 8)
