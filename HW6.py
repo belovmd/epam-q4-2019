@@ -1,6 +1,7 @@
 from abc import ABC
 from abc import abstractmethod
 import random
+
 """Homework 6 - Kitchen
 
 This program describe family using refrigerators. Users (parents and children)
@@ -11,6 +12,7 @@ hit refrigerator, and if it will broke, parents need call to the master.
 
 class User(object):
     """User is person who can use refrigerator"""
+
     def __init__(self, name):
         self.name = name
 
@@ -24,14 +26,15 @@ class User(object):
 
         refr = product.location
         if not refr:
-            print('{product_} is in kitchen, not in refrigerator'.format(product_=product.name))
+            print('{product_} is in kitchen, not in'
+                  ' refrigerator'.format(product_=product.name))
         elif refr.broken:
             print('{refr_} is broken!'.format(refr_=refr))
         else:
-            print('{user_} take {product_} from {refr_}'.format(user_=self.name,
-                                                                product_=product.name,
-                                                                refr_=refr.name,
-                                                                ))
+            print('{user_} take {prod} from {refr_}'.format(user_=self.name,
+                                                            prod=product.name,
+                                                            refr_=refr.name,
+                                                            ))
             refr.occupied_cells[product.pr_type] -= product.size
             product.location = None
 
@@ -47,22 +50,31 @@ class User(object):
         if refr.broken:
             print('{refr_} is broken!'.format(refr_=refr.name))
         elif product.location == refr:
-            print('{product_} is already in {refr_}!'.format(product_=product.name, refr_=refr.name))
+            print('{prod} is already in {refr_}!'.format(prod=product.name,
+                                                         refr_=refr.name))
         else:
             camera_type = product.pr_type
-            if refr.occupied_cells[camera_type] + product.size <= refr.capacity[camera_type]:
+            if refr.occupied_cells[camera_type] + product.size <= \
+                    refr.capacity[camera_type]:
                 product.location = refr
             else:
-                print('{user_name} can\'t put {product_} in {refr_} - not enough place!'.format(user_name=self.name,
-                                                                                                product_=product.name,
-                                                                                                refr_=refr.name))
+                print('{user_name} can\'t put {product_} in {refr_} - not '
+                      'enough place!'.format(user_name=self.name,
+                                             product_=product.name,
+                                             refr_=refr.name))
 
     def eat(self, product):
-        """User can eat product if is not in refrigerator, and product object will be deleted forever"""
+        """User will try to eat product
+
+        User can eat product only if it is not in refrigerator, and product
+        object will be deleted forever
+        """
         if not product.location:
-            print('{user_} can\'t eat product from refrigerator!'.format(user_=self.name))
+            print('{user_} cant eat product from refrigerator!'.format(
+                user_=self.name))
         else:
-            print('{user_} eat {product_}'.format(user_=self.name, product_=product.name))
+            print('{user_} eat {product_}'.format(user_=self.name,
+                                                  product_=product.name))
             del product
 
 
@@ -78,7 +90,9 @@ class Parent(User):
         be printed
         """
         job_result = master.try_to_fix(self, refr)
-        print('{user_} called to {master_}.'.format(user_=self.name, master_=master.name), end=' ')
+        print('{user_} called to {master_}.'.format(user_=self.name,
+                                                    master_=master.name),
+              end=' ')
         print('He fixed it' if job_result else 'He can\'t fix it')
 
     def earn_money(self, salary=200):
@@ -88,21 +102,27 @@ class Parent(User):
 
 class Child(User):
     """Child is user who can hit refrigerator"""
+
     def hit_fridge(self, refr):
         """After hit refriger. will be broken with a thirty percent chance """
         if random.random() < 0.3:
             refr.broken = True
-            print('{child_name} broke {refr_}!'.format(child_name=self.name, refr_=refr.name))
+            print('{child_name} broke {refr_}!'.format(child_name=self.name,
+                                                       refr_=refr.name))
         else:
-            print('{child_name} hit {refr_}, but not broke.'.format(child_name=self.name, refr_=refr.name))
+            print('{child_name} hit {refr_}, but not broke.'.format(
+                child_name=self.name,
+                refr_=refr.name))
 
 
 class Master(object):
     """Master is a person who can fix refrigerators if he have enough skill
 
-    P.S. I understand that coeefs, fix_difficulty and skills_profit can be properties of Refrigerator class and it
-    better for OOP conception. But it will make my program more difficult for understanding. So, that's why I create
-    this dicts in Master class."""
+    P.S. I understand that coeefs, fix_difficulty and skills_profit can be
+    properties of Refrigerator class and it better for OOP conception. But
+    it will make my program more difficult for understanding. So, that's why
+    I create this dicts in Master class.
+    """
     money = 100
     max_skill = 20
     study_cost = 100
@@ -117,20 +137,25 @@ class Master(object):
 
     def advertisement(self):
         """Advertising of master. Skills always increase by two"""
-        print('Highly skilled master {master_name} from {company_name} company is looking for work! My skill is '
-              '{master_skill}. Prices:\nImport refrigerator: {price_import_refr}\n Domestic refrigerator: '
-              '{price_domestic_refr}'.format(master_name=self.name,
-                                             company_name=self.company,
-                                             master_skill=str(self.skill + 2),
-                                             price_import_refr=str(self.skill * 100 * self.coeefs['The Netherlands']),
-                                             price_domestic_refr=str(self.skill * 100 * self.coeefs['Belarus'])
-                                             ))
+        print('Highly skilled master {master_name} from {company_name} company'
+              ' is looking for work! My skill is {master_skill}. Prices:\n'
+              'Import refrigerator: {price_import_refr}\nDomestic '
+              'refrigerator: {price_domestic_refr}'.
+              format(master_name=self.name,
+                     company_name=self.company,
+                     master_skill=str(self.skill + 2),
+                     price_import_refr=str(
+                         self.skill * 100 * self.coeefs['The Netherlands']),
+                     price_domestic_refr=str(
+                         self.skill * 100 * self.coeefs['Belarus'])
+                     ))
 
     def try_to_fix(self, customer, refr):
         """Master will try to fix refrigerator
 
         Price formula: skill * 100 * сoeff
-        Master can fix refrigerator only if he has enough skill. If not - consultation is free.
+        Master can fix refrigerator only if he has enough skill.
+        If not - consultation is free.
         After fixing master improve skills and earn money.
         Payment is made by the client (Parent)
         """
@@ -148,7 +173,8 @@ class Master(object):
             self.money -= self.study_cost
             self.skill += 1
         else:
-            print('{master_name} don\'t have enough money to study'.format(master_name=self.name))
+            print('{master_name} don\'t have enough money to study'.format(
+                master_name=self.name))
 
 
 class Product(object):
@@ -183,17 +209,23 @@ class Refrigerator(ABC):
         self.capacity = self.models_capacity[model]
 
     @classmethod
-    def create_or_update_model(cls, model, freeze_cam_capacity, cold_cam_capacity):
+    def create_or_update_model(cls, model, freeze_cam_capacity,
+                               cold_cam_capacity):
         """Change models characteristics, or create if it is new model"""
-        cls.models_capacity[model] = {'freeze': freeze_cam_capacity, 'cold': cold_cam_capacity}
+        cls.models_capacity[model] = {'freeze': freeze_cam_capacity,
+                                      'cold': cold_cam_capacity}
 
     def display_info(self):
         """Show information about refrigerator and free cells"""
-        print('It is {refr_type} aka {refr_name}\nNow it is {free_cold_cells} free cold cells and {free_freeze_cells} '
-              'free freeze cells '.format(refr_type=type(self).__name__,
-                                          refr_name=self.name,
-                                          free_cold_cells=self.capacity['cold'] - self.occupied_cells['cold'],
-                                          free_freeze_cells=self.capacity['freeze'] - self.occupied_cells['freeze']))
+        print(
+            'It is {refr_type} aka {refr_name}\nNow it is {free_cold_cells}'
+            'free cold cells and {free_freeze_cells} free freeze cells'.format(
+                refr_type=type(self).__name__,
+                refr_name=self.name,
+                free_cold_cells=(self.capacity['cold'] -
+                                 self.occupied_cells['cold']),
+                free_freeze_cells=(self.capacity['freeze'] -
+                                   self.occupied_cells['freeze'])))
 
 
 class RefrigeratorAtlant(Refrigerator):
