@@ -19,7 +19,7 @@ class TestHomework7AddToListInDict(unittest.TestCase):
                          {'key1': [1, 2], 'key2': [4, 5]})
 
     def test_error_if_not_dict_argument(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(TypeError):
             add_to_lst({'key1', 'key2'}, 'key2', 7)
 
 
@@ -57,12 +57,12 @@ class TestFindingPalindrome(unittest.TestCase):
 
     def test_error_if_input_is_empty(self):
         with patch('builtins.input', return_value=''):
-            with self.assertRaises(Exception):
+            with self.assertRaises(ValueError):
                 HWs2_5.finding_palindrome()
 
     def test_error_if_input_not_number(self):
         with patch('builtins.input', return_value='text'):
-            with self.assertRaises(Exception):
+            with self.assertRaises(ValueError):
                 HWs2_5.finding_palindrome()
 
 
@@ -98,7 +98,7 @@ class TestGenerateNumbers(unittest.TestCase):
                           9: 81, 10: 100, 11: 121, 12: 144, 13: 169})
 
     def test_error_if_not_int_argument(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(TypeError):
             HWs2_5.generate_numbers('twenty')
 
 

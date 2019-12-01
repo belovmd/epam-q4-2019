@@ -3,6 +3,7 @@ import HWs2_5
 
 def runner(*functions):
     """runner
+
     Called function(s) from pytasks module with default values and printed
     results to screen.
     runner() calls all functions from pytasks
