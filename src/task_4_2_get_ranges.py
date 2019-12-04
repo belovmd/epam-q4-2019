@@ -34,15 +34,15 @@ def get_ranges(arr):
     for gr_id, values in groupby(arr, OneFromLast(arr[0])):
         group_list = list(values)
         if len(group_list) == 1:
-            ranges += wrap_num(group_list[0])+','
+            ranges += wrap_num(group_list[0]) + ','
         else:
-            ranges += wrap_num(group_list[0])+'-'+wrap_num(group_list[-1])+','
+            ranges += wrap_num(group_list[0]) + '-' + wrap_num(group_list[-1]) + ','
     return ranges[:-1]
 
 
 def wrap_num(num):
     """Num to str, if num < 0 return (num)."""
-    return str(num) if num >= 0 else '('+str(num)+')'
+    return str(num) if num >= 0 else '(' + str(num) + ')'
 
 
 if __name__ == "__main__":
