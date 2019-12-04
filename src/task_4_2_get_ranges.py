@@ -36,7 +36,8 @@ def get_ranges(arr):
         if len(group_list) == 1:
             ranges += wrap_num(group_list[0]) + ','
         else:
-            ranges += wrap_num(group_list[0]) + '-' + wrap_num(group_list[-1]) + ','
+            ranges += wrap_num(group_list[0]) + '-' + \
+                wrap_num(group_list[-1]) + ','
     return ranges[:-1]
 
 
