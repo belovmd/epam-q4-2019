@@ -22,14 +22,14 @@ class Bacteria(object):
 
     def __init__(self, species, risk, bacteria_count):
         """species - variable to describe the name of bacteria
-        
+
         risk - variable to describe risk of bacterial
         death out of inappropriate media
-        
+
         bacteria_count - contains a list, where each bacteria
         is an integer [1], so we'll be able to manipulate
         with each bacteria in future
-        
+
         """
 
         self.species = species
@@ -70,17 +70,17 @@ class Medium(object):
     def __init__(self, agar, bacterial_life_cycles_limit,
                  bacterial_remaining_cycles_limit, survival_rate):
         """agar - variable to describe the medium (environment)
-        
+
         bacterial_life_cycles_limit - contains an integer to describe
         how many divisions bacterias will be able to provide
-        
+
         bacterial_remaining_cycles_limit - contains an integer to describe
         how many life cycles they'll have
         after they won't be able to divide anymore
-        
+
         survival_rate - describes which % of bacterias will survive 1 life
         cycle without food
-        
+
         """
 
         self.agar = agar
