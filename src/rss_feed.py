@@ -1,6 +1,6 @@
-from xml.dom import minidom
 import json
 import unicodedata
+from xml.dom import minidom
 
 # Names of different rss formats
 RSS_FOMRATS = ['rss', 'atom', 'unknown']

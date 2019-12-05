@@ -1,6 +1,6 @@
-import unittest
 import rss_feed
 from rss_feed import Rss_feed
+import unittest
 
 
 class Test_rss_feed(unittest.TestCase):
