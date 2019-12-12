@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+  <description>
+    <title-info>
+      <author>
+        <first-name>Pavel</first-name>
+        <last-name>Martysiuk</last-name>
+      </author>
+      <book-title>RSS-reader</book-title>
+    </title-info>
+    <document-info>
+      <date>2019</date>
+    </document-info>
+  </description>
+  <body>
+    <title>
+      <p>India</p>
+    </title>
+    <p>Sat, 07 Dec 2019 05:17:55 -0500</p>
+    <a l:href="url">link</a>
+    <empty-line/>
+    <p>description</p>
+    <title>
+      <image l:href="#0.jpg"/>
+    </title>
+    <p>Image not found</p>
+    <title>
+      <p>Europe</p>
+    </title>
+    <p>Sat, 07 Dec 2019 05:17:55 -0500</p>
+    <a l:href="url">link</a>
+    <empty-line/>
+    <p>description</p>
+    <title>
+      <image l:href="#1.jpg"/>
+    </title>
+    <p>Image not found</p>
+  </body>
+</FictionBook>
