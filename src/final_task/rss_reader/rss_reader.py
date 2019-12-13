@@ -1,17 +1,17 @@
 import argparse
-import xml.etree.ElementTree as ET
-import errors
-import sys
-import requests
-import utils
 import json
 import logging
 import logging.config
+import requests
+import errors
+import utils
+import sys
+import xml.etree.ElementTree as ET
 
 
 def version():
     """Dump RSS Reader version"""
-    __version = "v0.1.0"
+    __version = "v0.2.0"
     version_logger = logging.getLogger("version_logger")
 
     version_logger.debug("RSS Reader version {}".format(__version))
@@ -20,17 +20,25 @@ def version():
 
 def create_parser():
     """Parse arguments from CLI interface."""
-    parser = argparse.ArgumentParser(description="Pure Python command-line RSS reader.")
+    parser = argparse.ArgumentParser(
+        description="Pure Python command-line RSS reader."
+    )
     parser.add_argument("source", type=str, help="RSS URL")
-    parser.add_argument("--version", help="Print version info", action="store_true")
+    parser.add_argument(
+        "--version", help="Print version info", action="store_true"
+    )
     parser.add_argument(
         "--json", help="Print result as JSON in stdout", action="store_true"
     )
     parser.add_argument(
-        "--verbose", help="Outputs verbose status messages", action="store_true"
+        "--verbose",
+        help="Outputs verbose status messages",
+        action="store_true",
     )
     parser.add_argument(
-        "--limit", type=int, help="Limit news topics if this parameter required"
+        "--limit",
+        type=int,
+        help="Limit news topics if this parameter required",
     )
     return parser
 
@@ -135,7 +143,14 @@ def main():
 
 
 if __name__ == "__main__":
+    main_inner_logger = logging.getLogger("main_inner_logger")
     try:
+        main_inner_logger.debug("Starting rss_reader inner main func")
         main()
-    except Exception:
-        print(errors.RssReaderCriticalError("Fatal error. Pass --verbose to debug."))
+    except Exception as e:
+        main_inner_logger.error(e)
+        print(
+            errors.RssReaderCriticalError(
+                "Fatal error. Pass --verbose to debug."
+            )
+        )

@@ -1,12 +1,34 @@
 # One-shot command-line RSS reader
 
-Version 0.1.0
+Version 0.2.0
+
+## Build
+
+Update build tools before installation `python -m pip install --upgrade pip setuptools wheel`
+
+Run from root folder `python setup.py sdist bdist_wheel`
+
+##  Install 
+
+After running build, run `pip install ./dist/rss_reader-0.2.0-py3-none-any.whl`
+
+To uninstall, run `pip uninstall rss-reader`
 
 ## Launch
 
 Print all newsitems from RSS 
 
-`python rss_reader.py https://news.yahoo.com/rss`
+### From sources
+
+`python -m rss_reader.py https://news.yahoo.com/rss`
+
+### From python packages
+
+`python -m rss_reader https://news.yahoo.com/rss`
+
+### From console
+
+`rss-reader https://news.yahoo.com/rss`
 
 Options
 
@@ -47,3 +69,4 @@ Run all tests
     ]
 ]
 ```
+
