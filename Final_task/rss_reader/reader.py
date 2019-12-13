@@ -27,8 +27,8 @@ def main(args):
     parser.add_argument('--to-epub', dest='to_epub', help='''Generate .epub
                         file with news''', action='count')
     parser.add_argument('--output-path', dest='path', help='Path to new file')
-    parser.add_argument('--colorize', action='count', help='''Print the result of the utility
-                        in colorized mode''')
+    parser.add_argument('--colorize', action='count', help='''Print the result
+                        of the utility in colorized mode''')
     my_namespace = parser.parse_args(args)
     logging.basicConfig(level=logging.DEBUG, format='%(message)s')
     args_dict = vars(my_namespace)

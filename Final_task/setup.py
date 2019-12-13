@@ -1,14 +1,14 @@
-from setuptools import setup, find_packages
-from os.path import join, dirname
+import os
 import rss_reader
+import setuptools
 
-with open(join(dirname(__file__), 'README.md'), "r") as fh:
+with open(os.path.join(os.path.dirname(__file__), 'README.md'), "r") as fh:
     long_description = fh.read()
 
-setup(
+setuptools.setup(
     name='rss-reader',
     version=rss_reader.__version__,
-    packages=find_packages(),
+    packages=setuptools.find_packages(),
     long_description=long_description,
     long_description_content_type='text/markdown',
     install_requires=['python==3.7', 'feedparser>=5.1.3',

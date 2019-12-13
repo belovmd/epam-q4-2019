@@ -5,22 +5,22 @@ used here
 
 import __init__
 from bs4 import BeautifulSoup
-from colored import fg, bg, attr
+import colored
 from datetime import datetime
 from ebooklib import epub
-from xml.dom import minidom
 import feedparser
 import json
 import logging
 import os
+from xml.dom import minidom
 
 
 def choose_action(**kwargs):
-    """Depending on the arguments passed by the user, determines what action will
+    """Depending on the arguments passed by the user, determines what action
 
-    be performed next and calls related function. if called function returns
-    not None, prints results in human-readable format. Also saves news into the
-    cache in some cases.
+    will be performed next and calls related function. if called function
+    returns not None, prints results in human-readable format. Also saves
+    news into the cache in some cases.
     """
     source = kwargs['source']
     if kwargs['version']:
@@ -59,9 +59,9 @@ def show_version():
 
 
 def show_logs(kwargs):
-    """All arguments parsed by argparse are logged by the program. This function
+    """All arguments parsed by argparse are logged by the program. This
 
-    takes dict formed from these arguments and prints it in stdout.
+    function takes dict formed from these arguments and prints it in stdout.
     """
     args = ''
     for key, value in kwargs.items():
@@ -334,16 +334,16 @@ def show_colored_news(headers):
     and (or) background color.
     """
     feed, titles, dates, links, texts, images = headers
-    reset = attr('reset') + '\n'
-    bold = attr('bold')
-    white = fg('white')
-    black = fg('black')
-    turquoise_fg = fg('turquoise_2')
-    magenta = bg('light_magenta')
-    turquoise_bg = bg('turquoise_2')
-    light_yellow = bg('light_yellow')
-    light_green = bg('light_green')
-    light_red = bg('light_red')
+    reset = colored.attr('reset') + '\n'
+    bold = colored.attr('bold')
+    white = colored.fg('white')
+    black = colored.fg('black')
+    turquoise_fg = colored.fg('turquoise_2')
+    magenta = colored.bg('light_magenta')
+    turquoise_bg = colored.bg('turquoise_2')
+    light_yellow = colored.bg('light_yellow')
+    light_green = colored.bg('light_green')
+    light_red = colored.bg('light_red')
 
     feed_colored = '\n' + magenta + white + bold + 'Feed: '
     title_colored = reset + '\n' + turquoise_bg + black + 'Title: '
