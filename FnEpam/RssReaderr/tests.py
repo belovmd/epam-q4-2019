@@ -54,6 +54,6 @@ class TestCachingModule(TestCase):
             json.dump(json_data, file)
 
         result = ["Title:Britains Political Map Changes Color in Ways Few Could Imagine",
-                "Title:Thunberg calls for `fight for tomorrow&#39; at Italy protest"]
+                  "Title:Thunberg calls for `fight for tomorrow&#39; at Italy protest"]
         news = get_cached_news('20191010')
         self.assertEqual(news, result)
