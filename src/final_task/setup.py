@@ -4,7 +4,7 @@ import setuptools
 setuptools.setup(
     name="rss-reader",
     license="MIT",
-    version="0.2.0",
+    version="0.3.0",
     author="Anastasiya Infarovich",
     author_email="ainfarovich@gmail.com",
     description="A pure Python rss reader",

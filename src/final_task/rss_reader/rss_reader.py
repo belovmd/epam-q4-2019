@@ -1,17 +1,20 @@
+import errors
+import utils
+import cache_db
+import datetime
+from dateutil.parser import parse
 import argparse
 import json
 import logging
 import logging.config
 import requests
-import errors
-import utils
 import sys
 import xml.etree.ElementTree as ET
 
 
 def version():
     """Dump RSS Reader version"""
-    __version = "v0.2.0"
+    __version = "v0.3.0"
     version_logger = logging.getLogger("version_logger")
 
     version_logger.debug("RSS Reader version {}".format(__version))
@@ -40,6 +43,7 @@ def create_parser():
         type=int,
         help="Limit news topics if this parameter required",
     )
+    parser.add_argument("--date", type=str, help="Day in %Y%m%d format")
     return parser
 
 
@@ -68,7 +72,7 @@ def parse_xml(xml, limit=None):
         parse_newsitem_logger = logging.getLogger("parse_newsitem_logger")
         temp_item = {}
         temp_item["Title"] = utils.dehtml(item.find("title").text)
-        temp_item["Date"] = item.find("pubDate").text
+        temp_item["Date"] = parse(item.find("pubDate").text)
         temp_item["Link"] = item.find("link").text
         temp_item["Description"] = utils.dehtml(item.find("description").text)
         parse_newsitem_logger.debug("Got item:\n {}".format(temp_item))
@@ -106,7 +110,10 @@ def print_output(data):
     print(title)
     for item in items:
         for k, v in item.items():
-            print(k, ":", v)
+            if isinstance(v, datetime.datetime):
+                print(k, ":", v.isoformat())
+            else:
+                print(k, ":", v)
         print()
 
 
@@ -116,7 +123,7 @@ def dump_output(data):
     # Enable to check printing data
     #    dump_logger.debug("Dumping data:\n {}".format(data))
     with open("dump.json", "w") as f:
-        json.dump(data, f)
+        json.dump(data, f, default=str)
 
 
 def main():
@@ -130,6 +137,14 @@ def main():
         print(version())
         quit()
 
+    if args.date:
+        conn = cache_db.create_connection()
+        with conn:
+            for i in cache_db.show_db(conn, args.date):
+                for j in i:
+                    print(j)
+            quit()
+
     raw = fetch_rss(args.source)
 
     if args.limit:
@@ -137,6 +152,13 @@ def main():
     else:
         processed = parse_xml(raw)
     print_output(processed)
+
+    title, items = processed
+    conn = cache_db.create_connection()
+    with conn:
+        cache_db.create_news_table(conn)
+        for item in items:
+            cache_db.create_newsitem(conn, title, item)
 
     if args.json:
         dump_output(processed)

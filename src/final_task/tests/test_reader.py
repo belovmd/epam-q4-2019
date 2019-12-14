@@ -1,12 +1,12 @@
-import rss_reader.errors as errors
-import rss_reader.rss_reader as rr
-import tests.testdata.small_valid_parsed_response as svpr
 import unittest
+import rss_reader as rr
+import errors
+import testdata.small_valid_parsed_response as svpr
 
 
 class VersionTest(unittest.TestCase):
     def test_version(self):
-        self.assertEqual(rr.version(), "v0.1.0")
+        self.assertEqual(rr.version(), "v0.3.0")
 
 
 class RequestsTest(unittest.TestCase):
@@ -27,11 +27,11 @@ class RequestsTest(unittest.TestCase):
 
 class elementTreeTest(unittest.TestCase):
     def setUp(self):
-        with open("tests/testdata/valid.xml", "rt") as f:
+        with open("testdata/valid.xml", "rt") as f:
             self.good_xml = f.read()
-        with open("tests/testdata/invalid.xml", "rt") as f:
+        with open("testdata/invalid.xml", "rt") as f:
             self.bad_xml = f.read()
-        with open("tests/testdata/small_valid.xml", "rt") as f:
+        with open("testdata/small_valid.xml", "rt") as f:
             self.small_valid_xml = f.read()
         self.small_valid_parsed_response_channel = svpr.title
         self.small_valid_parsed_response_items = svpr.items
