@@ -1,12 +1,12 @@
 """RSS reader which is responsible for everything
 associated with parsing news"""
 
+from datetime import datetime
+from ebooklib import epub
 import feedparser
 import json
-from ebooklib import epub
-from datetime import datetime
-from RssReader import logger
 from lxml import html
+from RssReader import logger
 
 
 class RssParser(object):

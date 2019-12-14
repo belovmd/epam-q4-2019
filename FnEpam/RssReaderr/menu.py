@@ -1,8 +1,8 @@
 """Main module"""
 
 import argparse
-from RssReader.rssaggregator import RssParser
 from RssReader.getting_news import get_cached_news
+from RssReader.rssaggregator import RssParser
 
 
 def main():

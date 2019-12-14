@@ -1,7 +1,7 @@
-from unittest import TestCase
-from rssaggregator import RssParser
-from getting_news import get_cached_news
 import json
+from getting_news import get_cached_news
+from rssaggregator import RssParser
+from unittest import TestCase
 
 
 class TestRssAggregator(TestCase):
