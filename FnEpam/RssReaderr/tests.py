@@ -1,5 +1,5 @@
-import json
 from getting_news import get_cached_news
+import json
 from rssaggregator import RssParser
 from unittest import TestCase
 
