@@ -1,5 +1,5 @@
-import unittest
 import rss_reader
+import unittest
 
 
 class ParserTest(unittest.TestCase):

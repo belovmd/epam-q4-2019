@@ -1,6 +1,6 @@
 # One-shot command-line RSS reader
 
-Version 0.2.0
+Version 0.4.0
 
 ## Build
 
@@ -44,6 +44,15 @@ Limit printed data
 Display cached data for specific day
 `--date 20191214`
 
+Covert to fb2
+`--to-fb2`
+
+Covert to epb
+`to-epub`
+
+Save converted file, do not pass extension or not-existing folders 
+`--output-path ./dir/file`
+
 ## Test
 
 Run all tests
@@ -75,3 +84,8 @@ Run all tests
 ## Data cache
 
 Using sqlite to stash and retrieve data.
+
+
+## Format conversion
+
+Covert news items as HTML to a folder, then user pandoc to convert to other formats.

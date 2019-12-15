@@ -1,7 +1,7 @@
-import unittest
-import rss_reader as rr
 import errors
+import rss_reader as rr
 import testdata.small_valid_parsed_response as svpr
+import unittest
 
 
 class VersionTest(unittest.TestCase):

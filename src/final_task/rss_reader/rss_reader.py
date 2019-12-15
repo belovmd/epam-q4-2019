@@ -1,14 +1,15 @@
-import errors
-import utils
+import argparse
 import cache_db
 import datetime
 from dateutil.parser import parse
-import argparse
+import ebooker
+import errors
 import json
 import logging
 import logging.config
 import requests
 import sys
+import utils
 import xml.etree.ElementTree as ET
 
 
@@ -44,6 +45,18 @@ def create_parser():
         help="Limit news topics if this parameter required",
     )
     parser.add_argument("--date", type=str, help="Day in %Y%m%d format")
+    parser.add_argument(
+        "--output-path",
+        type=str,
+        help="Format converter output, defaults to home dir",
+    )
+    parser.add_argument(
+        "--to-fb2", action="store_true", help="Convert RSS to fb2 format"
+    )
+    parser.add_argument(
+        "--to-epub", action="store_true", help="Convert RSS to epub format"
+    )
+
     return parser
 
 
@@ -75,6 +88,7 @@ def parse_xml(xml, limit=None):
         temp_item["Date"] = parse(item.find("pubDate").text)
         temp_item["Link"] = item.find("link").text
         temp_item["Description"] = utils.dehtml(item.find("description").text)
+        temp_item["HTML_desc"] = item.find("description").text
         parse_newsitem_logger.debug("Got item:\n {}".format(temp_item))
         return temp_item
 
@@ -110,7 +124,9 @@ def print_output(data):
     print(title)
     for item in items:
         for k, v in item.items():
-            if isinstance(v, datetime.datetime):
+            if k == "HTML_desc":
+                pass
+            elif isinstance(v, datetime.datetime):
                 print(k, ":", v.isoformat())
             else:
                 print(k, ":", v)
@@ -145,6 +161,9 @@ def main():
                     print(j)
             quit()
 
+    if args.to_fb2 or args.to_epub:
+        ebooker.prepare_dirs("HTML_Out")
+
     raw = fetch_rss(args.source)
 
     if args.limit:
@@ -159,6 +178,19 @@ def main():
         cache_db.create_news_table(conn)
         for item in items:
             cache_db.create_newsitem(conn, title, item)
+
+    if args.to_fb2 or args.to_epub:
+        out_file_path = "output"
+        for item in items:
+            ebooker.cook_html(title, args.source, item)
+        if args.output_path:
+            out_file_path = args.output_path
+        if args.to_fb2:
+            out_file_path += ".fb2"
+            ebooker.convert(out_file_path, "fb2")
+        elif args.to_epub:
+            out_file_path += ".epub"
+            ebooker.convert(out_file_path, "epub")
 
     if args.json:
         dump_output(processed)

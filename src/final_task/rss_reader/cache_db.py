@@ -1,20 +1,21 @@
+import logging.config
 import os
 import sqlite3
-import logging.config
 from sqlite3 import Error
-from dateutil.parser import parse
 
+from dateutil.parser import parse
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "news.db")
 cache_db_logger = logging.getLogger("cache_db_logger")
 
 
 def create_connection(db_file=DB_PATH):
-    """ create a database connection to the SQLite database
-        specified by db_file
+    """Create a database connection to the SQLite database specified by db_file
+
     :param db_file: database file
     :return: Connection object or None
     """
+
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -34,7 +35,8 @@ def create_news_table(conn):
                         title text UNIQUE,
                         date DATE UNIQUE,
                         link text UNIQUE,
-                        description text
+                        description text,
+                        HTML_desc text
                         )"""
     cur.execute(newsitems_tbl_sql)
     return cur.lastrowid
@@ -44,8 +46,8 @@ def create_newsitem(conn, channel, values):
     digested_values = values.values()
     cur = conn.cursor()
     newsitem_item_sql = """INSERT OR IGNORE INTO news
-                        (channel, title, date, link, description) VALUES
-                        (?, ?, ?, ?, ?)
+                        (channel, title, date, link, description, HTML_desc)
+                        VALUES (?, ?, ?, ?, ?, ?)
                         """
     cur.execute(newsitem_item_sql, (channel, *digested_values))
     return cur.lastrowid
