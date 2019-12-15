@@ -108,7 +108,3 @@ venv.bak/
 .tox/
 .gitignore/
 .noseids
-.html
-.epub
-.fb2
-.db
