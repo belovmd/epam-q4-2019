@@ -15,7 +15,7 @@ import xml.etree.ElementTree as ET
 
 def version():
     """Dump RSS Reader version"""
-    __version = "v0.3.0"
+    __version = "v0.4.0"
     version_logger = logging.getLogger("version_logger")
 
     version_logger.debug("RSS Reader version {}".format(__version))

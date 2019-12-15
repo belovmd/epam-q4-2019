@@ -6,7 +6,7 @@ import unittest
 
 class VersionTest(unittest.TestCase):
     def test_version(self):
-        self.assertEqual(rr.version(), "v0.3.0")
+        self.assertEqual(rr.version(), "v0.4.0")
 
 
 class RequestsTest(unittest.TestCase):
