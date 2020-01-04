@@ -1,0 +1,5 @@
+include rss_reader/cache.txt
+include rss_reader/logs.log
+include rss_reader/README.md
+include rss_reader/version.txt
+include rss_reader/test/example_feed.xml

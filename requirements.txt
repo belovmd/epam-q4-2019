@@ -1,2 +1,4 @@
-flake8
-pydocstyle
+bs4
+feedparser
+httplib2
+requests
